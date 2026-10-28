@@ -29,7 +29,7 @@ export default async function PracticePage({ searchParams }: { searchParams: Pro
           <div className="stack" style={{ gap: 4, flex: 1, minWidth: 240 }}>
             <b>Difficulty</b>
             <span className="small muted">{level === "beginner"
-              ? "Beginner: a friendly customer who answers your questions plainly and gives hints if you get stuck. Best for new reps."
+              ? "Beginner: a short, friendly call. Ask 3 to 5 basic questions, then make a recommendation. Best for new reps."
               : "Experienced: a busy, realistic customer who only shares details when asked and pushes back on weak recommendations."}</span>
           </div>
           <div className="chips">

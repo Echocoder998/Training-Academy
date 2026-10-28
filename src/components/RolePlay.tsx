@@ -7,7 +7,7 @@ type Scn = { id: string; num: number; opening: string };
 type Level = "beginner" | "experienced";
 
 export const LEVEL_INFO: Record<Level, { label: string; blurb: string }> = {
-  beginner: { label: "Beginner", blurb: "Friendly customer who answers your questions plainly and gives hints if you get stuck." },
+  beginner: { label: "Beginner", blurb: "Short, friendly call. Ask 3 to 5 questions (what it's for, pressure, where it's mounted, how many), then recommend something." },
   experienced: { label: "Experienced", blurb: "Busy, realistic customer who only shares details when asked and pushes back on weak recommendations." },
 };
 
@@ -234,6 +234,9 @@ function ChatCall({ scenario, level, onBusy }: { scenario: Scn; level: Level; on
     setLive(undefined);
   };
 
+  const lastCustomer = [...turns].reverse().find((m) => m.role === "customer")?.text ?? "";
+  const wrapped = asked >= 2 && /send (me )?(a |the )?quote|talk soon/i.test(lastCustomer);
+
   if (g.grade) return <><Transcript turns={turns} /><GradeReport grade={g.grade} goodRec={g.goodRec} onAgain={() => { g.reset(); setTurns([first]); }} /></>;
 
   return (
@@ -245,9 +248,10 @@ function ChatCall({ scenario, level, onBusy }: { scenario: Scn; level: Level; on
         <button className="btn primary" disabled={busy || !input.trim()}>Send</button>
       </form>
       {err && <div className="notice err">{err}</div>}
+      {wrapped && !busy && <div className="notice">The customer wrapped up the call. Click <b>End call &amp; grade me</b> to see how you did.</div>}
       <div className="row spread">
         <span className="small muted">{asked} question{asked === 1 ? "" : "s"} asked</span>
-        <button className="btn dark" disabled={asked < 2 || busy} onClick={() => g.run(turns)}>{g.grading ? "Grading…" : "End call & grade me"}</button>
+        <button className={`btn ${wrapped ? "primary" : "dark"}`} disabled={asked < 2 || busy} onClick={() => g.run(turns)}>{g.grading ? "Grading…" : "End call & grade me"}</button>
       </div>
       {g.error && <div className="notice err">{g.error}</div>}
     </div>
