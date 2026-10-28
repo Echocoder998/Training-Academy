@@ -16,7 +16,7 @@ export default async function TeamPage() {
     d.select().from(t.lessonResults),
     d.select({ personId: t.roleplayAttempts.personId, avg: sql<number>`round(avg(${t.roleplayAttempts.score})::numeric, 1)::float`, n: sql<number>`count(*)::int` }).from(t.roleplayAttempts).groupBy(t.roleplayAttempts.personId),
     d.select({ personId: t.specResults.personId, ok: sql<number>`count(*) filter (where ${t.specResults.correct})::int` }).from(t.specResults).groupBy(t.specResults.personId),
-    d.select({ id: t.roleplayAttempts.id, score: t.roleplayAttempts.score, mode: t.roleplayAttempts.mode, at: t.roleplayAttempts.createdAt, name: t.people.name, email: t.people.email, title: t.scenarios.title, num: t.scenarios.num })
+    d.select({ id: t.roleplayAttempts.id, score: t.roleplayAttempts.score, mode: t.roleplayAttempts.mode, level: t.roleplayAttempts.level, at: t.roleplayAttempts.createdAt, name: t.people.name, email: t.people.email, title: t.scenarios.title, num: t.scenarios.num })
       .from(t.roleplayAttempts).innerJoin(t.people, eq(t.people.id, t.roleplayAttempts.personId)).innerJoin(t.scenarios, eq(t.scenarios.id, t.roleplayAttempts.scenarioId))
       .orderBy(desc(t.roleplayAttempts.createdAt)).limit(15),
   ]);
@@ -76,7 +76,7 @@ export default async function TeamPage() {
           {recent.map((c) => (
             <div key={c.id} className="rowline">
               <span className="n">#{c.num}</span>
-              <div className="t"><Link className="link" href={`/admin/calls/${c.id}`}>{c.name || c.email} · {c.title}</Link><div className="small muted">{c.mode === "voice" ? "Voice" : "Chat"} · {fmtDate(c.at)}</div></div>
+              <div className="t"><Link className="link" href={`/admin/calls/${c.id}`}>{c.name || c.email} · {c.title}</Link><div className="small muted">{c.mode === "voice" ? "Voice" : "Chat"} · {c.level === "experienced" ? "Experienced" : "Beginner"} · {fmtDate(c.at)}</div></div>
               <Pill kind={c.score >= 7 ? "pass" : "fail"}>{c.score}/10</Pill>
             </div>
           ))}

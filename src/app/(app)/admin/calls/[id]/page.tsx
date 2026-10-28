@@ -17,7 +17,7 @@ export default async function CallReview({ params }: { params: Promise<{ id: str
   const g = c.a.grade;
   return (
     <>
-      <Band eyebrow={`Scenario #${c.num} · ${c.a.mode === "voice" ? "Voice" : "Chat"} · ${fmtDate(c.a.createdAt)}`} title={`${c.name || c.email}: ${c.title}`}
+      <Band eyebrow={`Scenario #${c.num} · ${c.a.mode === "voice" ? "Voice" : "Chat"} · ${c.a.level === "experienced" ? "Experienced" : "Beginner"} · ${fmtDate(c.a.createdAt)}`} title={`${c.name || c.email}: ${c.title}`}
         right={<span className="score" style={{ color: "#fff" }}>{c.a.score}/10</span>} />
       <main>
         <div><Link className="link" href="/admin">← Team results</Link></div>

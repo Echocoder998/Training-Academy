@@ -95,6 +95,7 @@ export const roleplayAttempts = pgTable("roleplay_attempts", {
   personId: uuid("person_id").notNull().references(() => people.id, { onDelete: "cascade" }),
   scenarioId: text("scenario_id").notNull().references(() => scenarios.id, { onDelete: "cascade" }),
   mode: text("mode").$type<"chat" | "voice">().notNull(),
+  level: text("level").$type<"beginner" | "experienced">().notNull().default("beginner"),
   score: integer("score").notNull(),
   transcript: jsonb("transcript").$type<ChatTurn[]>().notNull(),
   grade: jsonb("grade").$type<Grade>().notNull(),

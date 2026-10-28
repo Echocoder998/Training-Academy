@@ -9,7 +9,7 @@ import { setMyName } from "@/app/actions";
 export default async function ProgressPage() {
   const me = await requireUser();
   const [{ courses, lessons, paths }, { person, lessonMap }] = await Promise.all([loadCatalog(), loadMyResults(me.personId)]);
-  const calls = await db().select({ id: t.roleplayAttempts.id, score: t.roleplayAttempts.score, mode: t.roleplayAttempts.mode, at: t.roleplayAttempts.createdAt, title: t.scenarios.title, num: t.scenarios.num, sid: t.scenarios.id })
+  const calls = await db().select({ id: t.roleplayAttempts.id, score: t.roleplayAttempts.score, mode: t.roleplayAttempts.mode, level: t.roleplayAttempts.level, at: t.roleplayAttempts.createdAt, title: t.scenarios.title, num: t.scenarios.num, sid: t.scenarios.id })
     .from(t.roleplayAttempts).innerJoin(t.scenarios, eq(t.scenarios.id, t.roleplayAttempts.scenarioId))
     .where(eq(t.roleplayAttempts.personId, me.personId)).orderBy(desc(t.roleplayAttempts.createdAt)).limit(20);
   const path = paths.find((p) => p.id === person?.pathId);
@@ -31,7 +31,7 @@ export default async function ProgressPage() {
             {calls.map((c) => (
               <div key={c.id} className="rowline">
                 <span className="n">#{c.num}</span>
-                <div className="t"><Link className="link" href={`/practice/roleplay/${c.sid}?mode=${c.mode}`}>{c.title}</Link><div className="small muted">{c.mode === "voice" ? "Voice" : "Chat"} · {fmtDate(c.at)}</div></div>
+                <div className="t"><Link className="link" href={`/practice/roleplay/${c.sid}?mode=${c.mode}&level=${c.level}`}>{c.title}</Link><div className="small muted">{c.mode === "voice" ? "Voice" : "Chat"} · {c.level === "experienced" ? "Experienced" : "Beginner"} · {fmtDate(c.at)}</div></div>
                 <Pill kind={c.score >= 7 ? "pass" : "fail"}>{c.score}/10</Pill>
               </div>
             ))}

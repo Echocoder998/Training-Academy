@@ -4,24 +4,40 @@ import { ConversationProvider, useConversation } from "@elevenlabs/react";
 import type { ChatTurn, Grade } from "@/db/schema";
 
 type Scn = { id: string; num: number; opening: string };
+type Level = "beginner" | "experienced";
 
-export function RolePlay({ scenario, initialMode }: { scenario: Scn; initialMode: "voice" | "chat" }) {
+export const LEVEL_INFO: Record<Level, { label: string; blurb: string }> = {
+  beginner: { label: "Beginner", blurb: "Friendly customer who answers your questions plainly and gives hints if you get stuck." },
+  experienced: { label: "Experienced", blurb: "Busy, realistic customer who only shares details when asked and pushes back on weak recommendations." },
+};
+
+export function RolePlay({ scenario, initialMode, initialLevel }: { scenario: Scn; initialMode: "voice" | "chat"; initialLevel: Level }) {
   const [mode, setMode] = useState(initialMode);
+  const [level, setLevel] = useState<Level>(initialLevel);
+  const [busy, setBusy] = useState(false);
   return (
     <div className="card stack" style={{ gap: 16 }}>
-      <div className="tabs" role="tablist">
-        <button role="tab" aria-selected={mode === "voice"} onClick={() => setMode("voice")}>Voice call</button>
-        <button role="tab" aria-selected={mode === "chat"} onClick={() => setMode("chat")}>Chat</button>
+      <div className="row spread">
+        <div className="tabs" role="tablist" style={{ flex: 1 }}>
+          <button role="tab" aria-selected={mode === "voice"} disabled={busy} onClick={() => setMode("voice")}>Voice call</button>
+          <button role="tab" aria-selected={mode === "chat"} disabled={busy} onClick={() => setMode("chat")}>Chat</button>
+        </div>
+        <div className="chips" role="group" aria-label="Difficulty">
+          {(["beginner", "experienced"] as Level[]).map((l) => (
+            <button key={l} className="chip" aria-pressed={level === l} disabled={busy} onClick={() => setLevel(l)}>{LEVEL_INFO[l].label}</button>
+          ))}
+        </div>
       </div>
+      <p className="small muted" style={{ margin: 0 }}><b>{LEVEL_INFO[level].label}:</b> {LEVEL_INFO[level].blurb}</p>
       {mode === "voice"
-        ? <ConversationProvider><VoiceCall scenario={scenario} /></ConversationProvider>
-        : <ChatCall scenario={scenario} />}
+        ? <ConversationProvider><VoiceCall key={level} scenario={scenario} level={level} onBusy={setBusy} /></ConversationProvider>
+        : <ChatCall key={level} scenario={scenario} level={level} onBusy={setBusy} />}
     </div>
   );
 }
 
 /* ─── Shared grading ───────────────────────────────────────────── */
-function useGrader(scenarioId: string, mode: "chat" | "voice") {
+function useGrader(scenarioId: string, mode: "chat" | "voice", level: Level) {
   const [grade, setGrade] = useState<Grade | null>(null);
   const [goodRec, setGoodRec] = useState("");
   const [grading, setGrading] = useState(false);
@@ -29,7 +45,7 @@ function useGrader(scenarioId: string, mode: "chat" | "voice") {
   const run = async (turns: ChatTurn[]) => {
     setGrading(true); setError("");
     try {
-      const r = await fetch("/api/roleplay/grade", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ scenarioId, mode, turns }) });
+      const r = await fetch("/api/roleplay/grade", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ scenarioId, mode, turns, level }) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || "Grading failed");
       setGrade(j.grade); setGoodRec(j.goodRec);
@@ -76,14 +92,14 @@ function Transcript({ turns, live, coachFrom }: { turns: ChatTurn[]; live?: stri
 /* ─── Voice (ElevenLabs) ───────────────────────────────────────── */
 const COACH_CUE = /\b(feedback|how did i do|end (the )?call|coach me)\b/i;
 
-function VoiceCall({ scenario }: { scenario: Scn }) {
+function VoiceCall({ scenario, level, onBusy }: { scenario: Scn; level: Level; onBusy: (b: boolean) => void }) {
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const [err, setErr] = useState("");
   const [coachAt, setCoachAt] = useState<number | null>(null); // index of the turn where coaching starts
   const [ending, setEnding] = useState(false);
   const turnsRef = useRef<ChatTurn[]>([]);
   const coachRef = useRef<number | null>(null);
-  const g = useGrader(scenario.id, "voice");
+  const g = useGrader(scenario.id, "voice", level);
 
   const markCoaching = (index: number) => {
     if (coachRef.current === null) { coachRef.current = index; setCoachAt(index); }
@@ -92,7 +108,7 @@ function VoiceCall({ scenario }: { scenario: Scn }) {
   const conv = useConversation({
     onConnect: () => {
       // The agent asks which scenario to run; answer for the trainee so the call starts in character.
-      setTimeout(() => conv.sendUserMessage(`Scenario ${scenario.num}`), 400);
+      setTimeout(() => conv.sendUserMessage(`Scenario ${scenario.num}, ${level} level`), 400);
     },
     onMessage: (m) => {
       const text = m.message?.trim();
@@ -107,6 +123,7 @@ function VoiceCall({ scenario }: { scenario: Scn }) {
     onError: (message) => setErr(typeof message === "string" ? message : "The call dropped. Try again."),
   });
   const live = conv.status === "connected" || conv.status === "connecting";
+  useEffect(() => { onBusy(live); }, [live, onBusy]);
 
   const reset = () => { turnsRef.current = []; coachRef.current = null; setTurns([]); setCoachAt(null); setEnding(false); g.reset(); };
 
@@ -127,7 +144,7 @@ function VoiceCall({ scenario }: { scenario: Scn }) {
 
   /** Only the sales conversation: after the "Scenario N" setup line and before coaching starts. */
   const callTurns = (all = turnsRef.current) => {
-    const s0 = all.findIndex((m) => m.role === "rep" && /^scenario\s*\d+$/i.test(m.text));
+    const s0 = all.findIndex((m) => m.role === "rep" && /^scenario\s*\d+/i.test(m.text));
     const end = coachRef.current ?? all.length;
     return all.slice(s0 >= 0 ? s0 + 1 : 0, end);
   };
@@ -185,15 +202,16 @@ function VoiceCall({ scenario }: { scenario: Scn }) {
 }
 
 /* ─── Chat ─────────────────────────────────────────────────────── */
-function ChatCall({ scenario }: { scenario: Scn }) {
+function ChatCall({ scenario, level, onBusy }: { scenario: Scn; level: Level; onBusy: (b: boolean) => void }) {
   const first: ChatTurn = { role: "customer", text: scenario.opening };
   const [turns, setTurns] = useState<ChatTurn[]>([first]);
   const [input, setInput] = useState("");
   const [live, setLive] = useState<string | undefined>(undefined);
   const [err, setErr] = useState("");
-  const g = useGrader(scenario.id, "chat");
+  const g = useGrader(scenario.id, "chat", level);
   const busy = live !== undefined || g.grading;
   const asked = turns.filter((m) => m.role === "rep").length;
+  useEffect(() => { onBusy(asked > 0 && !g.grade); }, [asked, g.grade, onBusy]);
 
   const send = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -202,7 +220,7 @@ function ChatCall({ scenario }: { scenario: Scn }) {
     const next = [...turns, { role: "rep" as const, text }];
     setTurns(next); setInput(""); setErr(""); setLive("");
     try {
-      const r = await fetch("/api/roleplay/reply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ scenarioId: scenario.id, turns: next }) });
+      const r = await fetch("/api/roleplay/reply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ scenarioId: scenario.id, turns: next, level }) });
       if (!r.ok || !r.body) throw new Error(await r.text());
       const reader = r.body.getReader(); const dec = new TextDecoder(); let acc = "";
       for (;;) { const { done, value } = await reader.read(); if (done) break; acc += dec.decode(value, { stream: true }); setLive(acc); }

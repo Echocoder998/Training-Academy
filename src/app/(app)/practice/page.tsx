@@ -4,7 +4,8 @@ import { db, t } from "@/db";
 import { requireUser } from "@/lib/session";
 import { Band, Pill } from "@/components/ui";
 
-export default async function PracticePage() {
+export default async function PracticePage({ searchParams }: { searchParams: Promise<{ level?: string }> }) {
+  const level = (await searchParams).level === "experienced" ? "experienced" : "beginner";
   const me = await requireUser();
   const d = db();
   const [scenarios, specs, best, specRes] = await Promise.all([
@@ -24,6 +25,18 @@ export default async function PracticePage() {
         Run a real discovery call with an AI customer by voice or chat, then get graded on what you uncovered and what you recommended.
       </Band>
       <main>
+        <div className="card row spread">
+          <div className="stack" style={{ gap: 4, flex: 1, minWidth: 240 }}>
+            <b>Difficulty</b>
+            <span className="small muted">{level === "beginner"
+              ? "Beginner: a friendly customer who answers your questions plainly and gives hints if you get stuck. Best for new reps."
+              : "Experienced: a busy, realistic customer who only shares details when asked and pushes back on weak recommendations."}</span>
+          </div>
+          <div className="chips">
+            <Link className="chip" href="/practice" aria-current={level === "beginner" ? "true" : undefined}>Beginner</Link>
+            <Link className="chip" href="/practice?level=experienced" aria-current={level === "experienced" ? "true" : undefined}>Experienced</Link>
+          </div>
+        </div>
         <div className="grid">
           {scenarios.map((s) => {
             const b = bestMap[s.id];
@@ -36,8 +49,8 @@ export default async function PracticePage() {
                 <div><div className="eyebrow">{s.industry}</div><h3>{s.title}</h3></div>
                 <p>{s.persona}</p>
                 <div className="row">
-                  <Link className="btn primary sm" href={`/practice/roleplay/${s.id}?mode=voice`}>Practice by voice</Link>
-                  <Link className="btn sm" href={`/practice/roleplay/${s.id}?mode=chat`}>Practice in chat</Link>
+                  <Link className="btn primary sm" href={`/practice/roleplay/${s.id}?mode=voice&level=${level}`}>Practice by voice</Link>
+                  <Link className="btn sm" href={`/practice/roleplay/${s.id}?mode=chat&level=${level}`}>Practice in chat</Link>
                 </div>
               </div>
             );

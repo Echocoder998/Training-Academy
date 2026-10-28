@@ -6,10 +6,10 @@ import { requireUser } from "@/lib/session";
 import { Band } from "@/components/ui";
 import { RolePlay } from "@/components/RolePlay";
 
-export default async function RolePlayPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ mode?: string }> }) {
+export default async function RolePlayPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ mode?: string; level?: string }> }) {
   await requireUser();
   const { id } = await params;
-  const { mode } = await searchParams;
+  const { mode, level } = await searchParams;
   const [s] = await db().select().from(t.scenarios).where(eq(t.scenarios.id, id));
   if (!s) notFound();
   return (
@@ -20,7 +20,7 @@ export default async function RolePlayPage({ params, searchParams }: { params: P
       <main>
         <div><Link className="link" href="/practice">← All scenarios</Link></div>
         {/* Only what the trainee should see goes to the browser. Hidden details stay on the server. */}
-        <RolePlay scenario={{ id: s.id, num: s.num, opening: s.opening }} initialMode={mode === "chat" ? "chat" : "voice"} />
+        <RolePlay scenario={{ id: s.id, num: s.num, opening: s.opening }} initialMode={mode === "chat" ? "chat" : "voice"} initialLevel={level === "experienced" ? "experienced" : "beginner"} />
       </main>
     </>
   );

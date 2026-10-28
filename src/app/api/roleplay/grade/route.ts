@@ -10,6 +10,7 @@ const Body = z.object({
   scenarioId: z.string(),
   mode: z.enum(["chat", "voice"]),
   turns: z.array(z.object({ role: z.enum(["customer", "rep"]), text: z.string().max(4000) })).min(2).max(200),
+  level: z.enum(["beginner", "experienced"]).default("beginner"),
 });
 
 export async function POST(req: Request) {
@@ -18,11 +19,11 @@ export async function POST(req: Request) {
   if (!aiConfigured()) return Response.json({ error: "AI is not configured" }, { status: 503 });
   const parsed = Body.safeParse(await req.json());
   if (!parsed.success) return Response.json({ error: "Bad request" }, { status: 400 });
-  const { scenarioId, mode, turns } = parsed.data;
+  const { scenarioId, mode, turns, level } = parsed.data;
   const [s] = await db().select().from(t.scenarios).where(eq(t.scenarios.id, scenarioId));
   if (!s) return Response.json({ error: "Scenario not found" }, { status: 404 });
 
-  const raw = await generateJson<Partial<Grade>>(gradePrompt(s, turns), GRADE_SCHEMA);
+  const raw = await generateJson<Partial<Grade>>(gradePrompt(s, turns, level), GRADE_SCHEMA);
   const arr = (v: unknown) => (Array.isArray(v) ? v.map(String).slice(0, 8) : []);
   const grade: Grade = {
     score: Math.max(0, Math.min(10, Math.round(Number(raw.score) || 0))),
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
     recommendation: String(raw.recommendation || ""),
     tips: arr(raw.tips),
   };
-  await db().insert(t.roleplayAttempts).values({ personId: me.personId, scenarioId, mode, score: grade.score, transcript: turns, grade });
+  await db().insert(t.roleplayAttempts).values({ personId: me.personId, scenarioId, mode, level, score: grade.score, transcript: turns, grade });
   await db().update(t.people).set({ lastActive: new Date() }).where(eq(t.people.id, me.personId));
   return Response.json({ grade, goodRec: s.goodRec });
 }
