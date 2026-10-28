@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { upload } from "@vercel/blob/client";
+import { upload, uploadPresigned } from "@vercel/blob/client";
 import { saveLesson } from "@/app/admin-actions";
 import type { QuizQuestion } from "@/db/schema";
 
@@ -11,7 +11,8 @@ type Draft = {
 };
 type EditQ = { q: string; options: string[]; answer: number | null; why: string };
 
-export function LessonEditor({ courses, initial, aiReady, blobReady }: { courses: { id: string; title: string }[]; initial: Draft; aiReady: boolean; blobReady: boolean }) {
+export function LessonEditor({ courses, initial, aiReady, blobMode }: { courses: { id: string; title: string }[]; initial: Draft; aiReady: boolean; blobMode: "token" | "presigned" | null }) {
+  const blobReady = blobMode !== null;
   const router = useRouter();
   const [d, setD] = useState<Draft>(initial);
   const [qs, setQs] = useState<EditQ[]>(initial.quiz.map((q) => ({ q: q.q, options: [0, 1, 2, 3].map((i) => q.options[i] ?? ""), answer: q.answer, why: q.why ?? "" })));
@@ -25,7 +26,11 @@ export function LessonEditor({ courses, initial, aiReady, blobReady }: { courses
     if (!f) return;
     setMsg({ text: "Uploading video…", kind: "" }); setProgress(0);
     try {
-      const blob = await upload(`lessons/${f.name}`, f, { access: "public", handleUploadUrl: "/api/upload", multipart: f.size > 50 * 1024 * 1024, onUploadProgress: (p) => setProgress(Math.round(p.percentage)) });
+      const safe = f.name.replace(/[^a-zA-Z0-9._-]/g, "-");
+      const opts = { access: "public" as const, handleUploadUrl: "/api/upload", multipart: f.size > 50 * 1024 * 1024, onUploadProgress: (p: { percentage: number }) => setProgress(Math.round(p.percentage)) };
+      const blob = blobMode === "token"
+        ? await upload(`lessons/${safe}`, f, opts)
+        : await uploadPresigned(`lessons/${Date.now()}-${safe}`, f, opts);
       set("videoUrl", blob.url);
       setMsg({ text: "Video uploaded. Save the lesson to keep it.", kind: "ok" });
     } catch (e) {
@@ -87,7 +92,7 @@ export function LessonEditor({ courses, initial, aiReady, blobReady }: { courses
         {d.videoUrl && <><video className="video" controls preload="metadata" src={d.videoUrl} /><div><button type="button" className="btn sm" onClick={() => set("videoUrl", null)}>Remove video</button></div></>}
         {blobReady
           ? <label className="f">Upload a video (MP4 recommended, up to 2 GB)<input type="file" accept="video/mp4,video/webm,video/quicktime" disabled={progress !== null} onChange={(e) => onFile(e.target.files?.[0])} /></label>
-          : <p className="small muted" style={{ margin: 0 }}>Video upload turns on once a Vercel Blob store is connected (BLOB_READ_WRITE_TOKEN).</p>}
+          : <p className="small muted" style={{ margin: 0 }}>Video upload turns on once a Vercel Blob store is connected to the project.</p>}
         {progress !== null && <div className="small">Uploading… {progress}%</div>}
         <label className="f">Or link to a video hosted elsewhere (YouTube, SharePoint, Stream)<input type="url" placeholder="https://" value={d.videoLink ?? ""} onChange={(e) => set("videoLink", e.target.value)} /></label>
       </div>

@@ -25,7 +25,7 @@ export default async function EditLesson({ params, searchParams }: { params: Pro
           <LessonEditor
             courses={courses.map((c) => ({ id: c.id, title: c.title }))}
             aiReady={aiConfigured()}
-            blobReady={!!process.env.BLOB_READ_WRITE_TOKEN}
+            blobMode={process.env.BLOB_READ_WRITE_TOKEN ? "token" : process.env.BLOB_STORE_ID ? "presigned" : null}
             initial={l ?? { id: "", courseId, title: "", order: lessons.filter((x) => x.courseId === courseId).length + 1, minutes: null, passScore: 80, keyPoints: "", videoUrl: null, videoLink: null, quiz: [] }}
           />
         )}
