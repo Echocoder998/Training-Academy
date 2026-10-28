@@ -72,3 +72,11 @@ export async function myRoleplayBest(scenarioId: string) {
     .where(and(eq(t.roleplayAttempts.personId, u.personId), eq(t.roleplayAttempts.scenarioId, scenarioId)));
   return r?.best ?? null;
 }
+
+export async function setMyName(fd: FormData) {
+  const u = await me();
+  const name = String(fd.get("name") ?? "").trim().slice(0, 60);
+  if (!name) return;
+  await db().update(t.people).set({ name }).where(eq(t.people.id, u.personId));
+  revalidatePath("/", "layout");
+}

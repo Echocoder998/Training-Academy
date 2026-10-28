@@ -19,10 +19,13 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </Link>
           <Nav admin={me.role === "admin"} />
           <div className="userbox">
-            <span>{me.name}</span>
-            <form action={async () => { "use server"; await signOut({ redirectTo: "/sign-in" }); }}>
-              <button>Sign out</button>
-            </form>
+            {me.testMode && <span className="pill" style={{ background: "var(--red)", color: "#fff" }}>Test mode</span>}
+            <Link href="/progress" style={{ color: "#d0d0d0", textDecoration: "none" }}>{me.name}</Link>
+            {!me.testMode && (
+              <form action={async () => { "use server"; await signOut({ redirectTo: "/sign-in" }); }}>
+                <button>Sign out</button>
+              </form>
+            )}
           </div>
         </div>
       </header>

@@ -4,6 +4,7 @@ import { db, t } from "@/db";
 import { requireUser } from "@/lib/session";
 import { loadCatalog, loadMyResults, lessonsOf, lessonStatus, courseDone, fmtDate } from "@/lib/data";
 import { Band, Gauge, Pill } from "@/components/ui";
+import { setMyName } from "@/app/actions";
 
 export default async function ProgressPage() {
   const me = await requireUser();
@@ -18,6 +19,12 @@ export default async function ProgressPage() {
     <>
       <Band eyebrow="My progress" title={me.name} />
       <main>
+        {me.testMode && (
+          <form className="card row" action={setMyName}>
+            <label className="f" style={{ flex: 1, minWidth: 220 }}>Your name (shows on Team Results)<input name="name" defaultValue={me.name} maxLength={60} required /></label>
+            <button className="btn primary" style={{ alignSelf: "flex-end" }}>Save name</button>
+          </form>
+        )}
         {calls.length > 0 && (
           <div className="card accent">
             <h3 style={{ marginBottom: 6 }}>Recent practice calls</h3>

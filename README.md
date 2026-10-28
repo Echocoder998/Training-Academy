@@ -6,6 +6,19 @@ The self-hosted version of MCE Sales Academy, a training app for industrial sale
 
 ---
 
+## Test mode (no sign-in)
+
+When no sign-in method is configured, the app runs in **test mode**:
+- Anyone with the link can use it, with no login.
+- Each browser gets its own tester profile and progress.
+- Everyone has admin access (Manage + Team Results).
+- Testers can set their name on **My Progress** so Team Results shows who's who.
+- A red **Test mode** badge shows in the header.
+
+**Sign-in turns on automatically** when you add `ACCESS_CODE` (and optionally `ALLOWED_EMAIL_DOMAINS`) or the Microsoft Entra ID settings in Vercel and redeploy. At that point, `ADMIN_EMAILS` decides who's an admin.
+
+While in test mode, share the link only with your testers. Anyone who has it can use your Anthropic and ElevenLabs credits.
+
 ## What's in the box
 
 | Area | What it does |
@@ -97,18 +110,15 @@ The repo is already on GitHub. Each deploy creates or updates the database table
 3. **Video storage:** go to **Storage → Create → Blob** and connect it. This adds `BLOB_READ_WRITE_TOKEN`.
 4. Under **Settings → Environment Variables**, add the following:
 
-   | Name | Value |
-   | --- | --- |
-   | `AUTH_SECRET` | Run `npx auth secret` on your computer and paste the value |
-   | `ACCESS_CODE` | A long team code, for example `MCE-academy-7Q4x-2026`. Share it only with your team |
-   | `ALLOWED_EMAIL_DOMAINS` | Your company domains, such as `dasco.com,mceautomation.com` |
-   | `ADMIN_EMAILS` | Your work email |
-   | `ANTHROPIC_API_KEY` | From console.anthropic.com |
-   | `ELEVENLABS_AGENT_ID` | `agent_9401m5wj7gdrfbzvrxvt8pjf939w` |
-   | `ELEVENLABS_API_KEY` | Optional but recommended (see step 4 above) |
+   | Name | Value | Needed for |
+   | --- | --- | --- |
+   | `ANTHROPIC_API_KEY` | From console.anthropic.com | AI role-play, grading, quiz writer |
+   | `ELEVENLABS_AGENT_ID` | `agent_9401m5wj7gdrfbzvrxvt8pjf939w` | Voice calls |
+   | `ELEVENLABS_API_KEY` | Optional | Private voice sessions (see step 4 above) |
 
-5. **Deployments → Redeploy.** Open the site, then sign in with your work email and the access code.
-6. **Later:** once IT sets up Microsoft sign-in (step 2), add the three `AUTH_MICROSOFT_ENTRA_ID_*` variables and delete `ACCESS_CODE`.
+   That's all you need for **test mode**. When you're ready for sign-in, add `AUTH_SECRET` (from `npx auth secret`), `ACCESS_CODE`, `ALLOWED_EMAIL_DOMAINS` and `ADMIN_EMAILS`, or the Microsoft settings from step 2.
+
+5. **Deployments → Redeploy** after connecting the database, so the tables get created and the content loads.
 
 **Custom domain:** in Vercel, go to **Settings → Domains** and add something like `academy.yourcompany.com`.
 

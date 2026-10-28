@@ -1,10 +1,12 @@
 import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import { auth, signIn, devLoginEnabled, accessCodeEnabled } from "@/auth";
+import { testMode } from "@/lib/session";
 
 export const dynamic = "force-dynamic";
 
 export default async function SignInPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  if (testMode()) redirect("/");
   const s = await auth();
   if (s?.user?.personId) redirect("/");
   const { error } = await searchParams;
