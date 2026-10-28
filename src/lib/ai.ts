@@ -12,19 +12,38 @@ const SMART = () => process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
 
 export const aiConfigured = () => !!process.env.ANTHROPIC_API_KEY;
 
-/** Streams plain text from the fast model. */
+/**
+ * Streams plain text from the fast model.
+ * Thinking is turned off so the customer answers quickly and never spends the
+ * whole reply budget reasoning (which used to come back as an empty answer).
+ * If a stream still ends with no text, it retries once without streaming.
+ */
 export async function streamText(prompt: string): Promise<ReadableStream<Uint8Array>> {
-  const stream = ai().messages.stream({
+  const params = {
     model: FAST(),
-    max_tokens: 300,
-    messages: [{ role: "user", content: prompt }],
-  });
+    max_tokens: 1024,
+    thinking: { type: "disabled" as const },
+    messages: [{ role: "user" as const, content: prompt }],
+  };
+  const stream = ai().messages.stream(params);
   const enc = new TextEncoder();
   return new ReadableStream({
     async start(controller) {
+      let sent = false;
       try {
         for await (const ev of stream) {
-          if (ev.type === "content_block_delta" && ev.delta.type === "text_delta") controller.enqueue(enc.encode(ev.delta.text));
+          if (ev.type === "content_block_delta" && ev.delta.type === "text_delta" && ev.delta.text) {
+            controller.enqueue(enc.encode(ev.delta.text));
+            sent = true;
+          }
+        }
+        if (!sent) {
+          const final = await stream.finalMessage().catch(() => null);
+          console.warn("Empty role-play reply", { stop_reason: final?.stop_reason, usage: final?.usage });
+          const retry = await ai().messages.create(params);
+          const text = retry.content.map((b) => (b.type === "text" ? b.text : "")).join("").trim();
+          if (text) controller.enqueue(enc.encode(text));
+          else console.warn("Empty role-play reply after retry", { stop_reason: retry.stop_reason });
         }
         controller.close();
       } catch (e) {
@@ -39,7 +58,7 @@ export async function streamText(prompt: string): Promise<ReadableStream<Uint8Ar
 export async function generateJson<T>(prompt: string, schema: Record<string, unknown>): Promise<T> {
   const msg = await ai().messages.create({
     model: SMART(),
-    max_tokens: 2000,
+    max_tokens: 6000,
     messages: [{ role: "user", content: prompt }],
     output_config: { format: { type: "json_schema", schema } },
   });

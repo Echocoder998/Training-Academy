@@ -206,10 +206,12 @@ function ChatCall({ scenario }: { scenario: Scn }) {
       if (!r.ok || !r.body) throw new Error(await r.text());
       const reader = r.body.getReader(); const dec = new TextDecoder(); let acc = "";
       for (;;) { const { done, value } = await reader.read(); if (done) break; acc += dec.decode(value, { stream: true }); setLive(acc); }
-      setTurns([...next, { role: "customer", text: acc.replace(/^customer:\s*/i, "").trim() || "(no answer)" }]);
+      const reply = acc.replace(/^customer:\s*/i, "").trim();
+      if (!reply) throw new Error("empty");
+      setTurns([...next, { role: "customer", text: reply }]);
     } catch {
       setTurns(turns); setInput(text);
-      setErr("The customer didn't answer. Try sending again.");
+      setErr("The customer didn't answer. Your message is back in the box. Click Send to try again.");
     }
     setLive(undefined);
   };
