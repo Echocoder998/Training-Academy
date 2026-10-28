@@ -7,8 +7,8 @@ import { currentUser } from "@/lib/session";
  */
 export async function GET() {
   if (!(await currentUser())) return Response.json({ error: "Not signed in" }, { status: 401 });
-  const agentId = process.env.ELEVENLABS_AGENT_ID;
-  if (!agentId) return Response.json({ error: "ELEVENLABS_AGENT_ID is not set" }, { status: 503 });
+  // The MCE Sales Academy practice-customer agent. Override with ELEVENLABS_AGENT_ID to use a different one.
+  const agentId = process.env.ELEVENLABS_AGENT_ID || "agent_9401m5wj7gdrfbzvrxvt8pjf939w";
   const key = process.env.ELEVENLABS_API_KEY;
   if (!key) return Response.json({ agentId });
   const r = await fetch(`https://api.elevenlabs.io/v1/convai/conversation/get-signed-url?agent_id=${encodeURIComponent(agentId)}`, {
