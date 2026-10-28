@@ -40,13 +40,16 @@ function useGrader(scenarioId: string, mode: "chat" | "voice") {
   return { grade, goodRec, grading, error, run, reset };
 }
 
-function GradeReport({ grade, goodRec, onAgain }: { grade: Grade; goodRec: string; onAgain: () => void }) {
+function GradeReport({ grade, goodRec, onAgain, spoken }: { grade: Grade; goodRec: string; onAgain: () => void; spoken?: string }) {
   const list = (title: string, items: string[]) => items.length > 0 && (
     <div><b>{title}</b><ul className="keypoints">{items.map((x, i) => <li key={i}>{x}</li>)}</ul></div>
   );
   return (
     <div className="stack" style={{ borderTop: "4px solid var(--red)", paddingTop: 16 }}>
       <div className="row spread"><h2>Coaching report</h2><span className="score" style={{ color: grade.score >= 7 ? "var(--good)" : "var(--bad)" }}>{grade.score}/10</span></div>
+      {spoken && (
+        <div className="brief"><b>What your coach said on the call</b><p style={{ margin: "4px 0 0", whiteSpace: "pre-wrap" }}>{spoken}</p></div>
+      )}
       {list("What you uncovered", grade.uncovered)}
       {list("What you missed", grade.missed)}
       {grade.recommendation && <div><b>Your recommendation</b><p style={{ margin: "4px 0 0" }}>{grade.recommendation}</p></div>}
@@ -57,13 +60,13 @@ function GradeReport({ grade, goodRec, onAgain }: { grade: Grade; goodRec: strin
   );
 }
 
-function Transcript({ turns, live }: { turns: ChatTurn[]; live?: string }) {
+function Transcript({ turns, live, coachFrom }: { turns: ChatTurn[]; live?: string; coachFrom?: number | null }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => { ref.current?.scrollTo({ top: ref.current.scrollHeight }); }, [turns.length, live]);
   return (
     <div className="chat" ref={ref}>
       {turns.map((m, i) => (
-        <div key={i} className={`msg ${m.role === "customer" ? "cust" : "rep"}`}><span className="who">{m.role === "customer" ? "Customer" : "You"}</span>{m.text}</div>
+        <div key={i} className={`msg ${m.role === "customer" ? "cust" : "rep"}`}><span className="who">{m.role === "customer" ? (coachFrom != null && i > coachFrom ? "Coach" : "Customer") : "You"}</span>{m.text}</div>
       ))}
       {live !== undefined && <div className="msg cust"><span className="who">Customer</span>{live || "…"}</div>}
     </div>
@@ -71,10 +74,21 @@ function Transcript({ turns, live }: { turns: ChatTurn[]; live?: string }) {
 }
 
 /* ─── Voice (ElevenLabs) ───────────────────────────────────────── */
+const COACH_CUE = /\b(feedback|how did i do|end (the )?call|coach me)\b/i;
+
 function VoiceCall({ scenario }: { scenario: Scn }) {
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const [err, setErr] = useState("");
+  const [coachAt, setCoachAt] = useState<number | null>(null); // index of the turn where coaching starts
+  const [ending, setEnding] = useState(false);
+  const turnsRef = useRef<ChatTurn[]>([]);
+  const coachRef = useRef<number | null>(null);
   const g = useGrader(scenario.id, "voice");
+
+  const markCoaching = (index: number) => {
+    if (coachRef.current === null) { coachRef.current = index; setCoachAt(index); }
+  };
+
   const conv = useConversation({
     onConnect: () => {
       // The agent asks which scenario to run; answer for the trainee so the call starts in character.
@@ -84,14 +98,20 @@ function VoiceCall({ scenario }: { scenario: Scn }) {
       const text = m.message?.trim();
       if (!text) return;
       const role = m.source === "ai" ? "customer" : "rep";
-      setTurns((prev) => [...prev, { role, text }]);
+      const next = [...turnsRef.current, { role, text } as ChatTurn];
+      turnsRef.current = next;
+      setTurns(next);
+      // Trainee asked for feedback out loud: everything after this is coaching, not the sales call.
+      if (role === "rep" && COACH_CUE.test(text)) markCoaching(next.length - 1);
     },
     onError: (message) => setErr(typeof message === "string" ? message : "The call dropped. Try again."),
   });
   const live = conv.status === "connected" || conv.status === "connecting";
 
+  const reset = () => { turnsRef.current = []; coachRef.current = null; setTurns([]); setCoachAt(null); setEnding(false); g.reset(); };
+
   const start = async () => {
-    setErr(""); setTurns([]); g.reset();
+    setErr(""); reset();
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true });
     } catch {
@@ -105,39 +125,60 @@ function VoiceCall({ scenario }: { scenario: Scn }) {
     else conv.startSession({ agentId: j.agentId, connectionType: "webrtc" });
   };
 
-  // Drop the setup lines ("Scenario 3", "which scenario…") before grading.
-  const callTurns = () => {
-    const i = turns.findIndex((m) => m.role === "rep" && /^scenario\s*\d+$/i.test(m.text));
-    return i >= 0 ? turns.slice(i + 1) : turns;
+  /** Only the sales conversation: after the "Scenario N" setup line and before coaching starts. */
+  const callTurns = (all = turnsRef.current) => {
+    const s0 = all.findIndex((m) => m.role === "rep" && /^scenario\s*\d+$/i.test(m.text));
+    const end = coachRef.current ?? all.length;
+    return all.slice(s0 >= 0 ? s0 + 1 : 0, end);
+  };
+  const spokenCoaching = () =>
+    coachRef.current === null ? "" : turnsRef.current.slice(coachRef.current + 1).filter((m) => m.role === "customer").map((m) => m.text).join("\n\n");
+  const repCount = callTurns(turns).filter((m) => m.role === "rep").length;
+
+  const askCoaching = () => {
+    markCoaching(turnsRef.current.length - 1);
+    conv.sendUserMessage("feedback");
   };
 
-  if (g.grade) return <><Transcript turns={turns} /><GradeReport grade={g.grade} goodRec={g.goodRec} onAgain={() => { g.reset(); setTurns([]); }} /></>;
+  const endAndGrade = async () => {
+    setEnding(true);
+    conv.endSession();
+    await new Promise((r) => setTimeout(r, 800)); // let the last transcript lines arrive
+    setEnding(false);
+    if (callTurns().filter((m) => m.role === "rep").length >= 2) g.run(callTurns());
+  };
+
+  if (g.grade) {
+    return <><Transcript turns={turns} coachFrom={coachAt} /><GradeReport grade={g.grade} goodRec={g.goodRec} spoken={spokenCoaching()} onAgain={reset} /></>;
+  }
 
   return (
     <div className="stack">
       <div className="voice-stage">
         <div className={`voice-ring ${live ? (conv.isSpeaking ? "speaking" : "listening") : ""}`}>
-          <span>{conv.status === "connecting" ? "Dialing…" : live ? (conv.isSpeaking ? "Customer talking" : "Your turn") : "Ready"}</span>
+          <span>{conv.status === "connecting" ? "Dialing…" : live ? (conv.isSpeaking ? (coachAt !== null ? "Coach talking" : "Customer talking") : "Your turn") : g.grading || ending ? "Grading…" : "Ready"}</span>
         </div>
         {!live ? (
-          <button className="btn primary" onClick={start}>Start the call</button>
+          <button className="btn primary" onClick={start} disabled={g.grading || ending}>{turns.length ? "Start a new call" : "Start the call"}</button>
         ) : (
-          <div className="row">
+          <div className="row" style={{ justifyContent: "center" }}>
             <button className="btn" onClick={() => conv.setMuted(!conv.isMuted)}>{conv.isMuted ? "Unmute" : "Mute"}</button>
-            <button className="btn dark" onClick={() => conv.endSession()}>End call</button>
+            {coachAt === null && <button className="btn" onClick={askCoaching} disabled={repCount < 2}>Get coaching</button>}
+            <button className={`btn ${coachAt !== null ? "primary" : "dark"}`} onClick={endAndGrade}>End call &amp; see my grade</button>
           </div>
         )}
-        <p className="small muted" style={{ margin: 0, maxWidth: 520 }}>
-          Talk like it&apos;s a real customer call. Ask questions before you recommend anything. When you&apos;re done, end the call and get graded.
+        <p className="small muted" style={{ margin: 0, maxWidth: 540 }}>
+          {coachAt !== null
+            ? "Your coach is giving feedback on the call. Listen, then end the call to see your written grade."
+            : "Talk like it's a real customer call. Ask questions before you recommend anything. When you're done, click Get coaching (or say \"feedback\") to hear what to improve, then end the call for your grade."}
         </p>
       </div>
       {err && <div className="notice err">{err}</div>}
-      {turns.length > 0 && <Transcript turns={turns} />}
-      {!live && callTurns().filter((m) => m.role === "rep").length >= 2 && (
-        <div className="row">
-          <button className="btn primary" disabled={g.grading} onClick={() => g.run(callTurns())}>{g.grading ? "Grading…" : "Grade this call"}</button>
-          {g.error && <span className="notice err">{g.error}</span>}
-        </div>
+      {turns.length > 0 && <Transcript turns={turns} coachFrom={coachAt} />}
+      {!live && !g.grading && turns.length > 0 && (
+        repCount >= 2
+          ? <div className="row"><button className="btn primary" onClick={() => g.run(callTurns())}>Grade this call</button>{g.error && <span className="notice err">{g.error}</span>}</div>
+          : <div className="notice">Ask the customer at least two questions before ending the call to get a grade.</div>
       )}
     </div>
   );
