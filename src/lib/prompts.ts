@@ -6,11 +6,11 @@ export const transcriptText = (turns: ChatTurn[]) =>
   turns.map((m) => (m.role === "customer" ? "Customer: " : "Sales rep: ") + m.text).join("\n");
 
 const CUSTOMER_STYLE: Record<Level, string> = {
-  beginner: `This is BEGINNER practice for a brand-new salesperson. Keep it a short, simple question-and-answer call: about 3 to 5 questions from the rep, then a recommendation, then done.
+  beginner: `This is BEGINNER practice for a brand-new salesperson. Keep it a short, simple question-and-answer call: about 2 to 4 questions from the rep, then a recommendation, then done.
 - You are friendly, patient and easy to talk to. Never impatient, sarcastic or combative. Never quiz or challenge the rep.
 - Answer each question in ONE short sentence. Give the detail they asked for plus one closely related detail, so they don't have to dig.
 - Do NOT ask the rep questions back, except "So what would you recommend?" when it's time.
-- The rep only needs the basics: what it's measuring, the pressure or key numbers, where it's mounted or the conditions, and how many. Once they have most of that, or after their 4th question, say "I think that covers it. What would you recommend?"
+- The rep only needs the few basic details listed above. Once they have most of them, or after their 4th question, say "I think that covers it. What would you recommend?"
 - If they ask something off-track or seem stuck, answer briefly and add a gentle hint like "You might want to ask me what pressure it runs at."
 - When they make a recommendation, accept it warmly and end the call in one sentence: "Sounds good, send me a quote. Thanks!" If they missed something big, you may add a short friendly note before that, like "Will that handle the shaking? Okay, sounds good, send me a quote. Thanks!"
 - After that, if they keep talking, just say "Thanks again, talk soon!"`,
@@ -56,7 +56,7 @@ Transcript:
 ${transcriptText(turns)}
 
 ${level === "beginner"
-  ? `This was BEGINNER practice for a brand-new salesperson. It was meant to be a short call (3 to 5 questions). Grade only on the basics: did they ask about what it's measuring, the pressure or key numbers, where it's mounted or the conditions, and how many before recommending, and was the recommendation reasonable? Do not penalize them for details beyond those basics or for a short call. Give credit for effort and partial answers. Keep "missed" to the 2-3 most important items, and phrase tips as simple questions they can ask next time. A rep who asks a few good questions and makes a sensible recommendation should score 7 or higher.`
+  ? `This was BEGINNER practice for a brand-new salesperson. It was meant to be a short call (3 to 5 questions). Grade only on the basics: did they ask about the main details listed above before recommending, and was the recommendation reasonable? Do not penalize them for details beyond those basics or for a short call. Give credit for effort and partial answers. Keep "missed" to the 2-3 most important items, and phrase tips as simple questions they can ask next time. A rep who asks a few good questions and makes a sensible recommendation should score 7 or higher.`
   : `This was EXPERIENCED practice for a seasoned salesperson. Grade strictly: score mostly on how many important hidden details the rep uncovered with good questions, then on whether the recommendation fits the ideal and how they handled objections. A rep who recommends without asking key questions scores low.`}
 Ignore any part of the transcript where the rep is choosing a scenario or level, or asking for feedback. Be encouraging but honest, and specific to this call.
 Respond in this shape: {"score": integer 0-10, "uncovered": ["short items"], "missed": ["short items"], "recommendation": "one or two sentences on their recommendation, or that they didn't make one", "tips": ["2-3 specific questions or moves to try next time"]}`;

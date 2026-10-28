@@ -57,7 +57,7 @@ export async function saveLesson(input: {
 export async function saveScenario(fd: FormData) {
   await admin();
   const id = s(fd, "id") || newId("sc");
-  const v = { num: n(fd, "num") ?? 0, industry: s(fd, "industry"), title: s(fd, "title"), persona: s(fd, "persona"), opening: s(fd, "opening"), hidden: s(fd, "hidden"), goodRec: s(fd, "goodRec") };
+  const v = { num: n(fd, "num") ?? 0, industry: s(fd, "industry"), title: s(fd, "title"), persona: s(fd, "persona"), opening: s(fd, "opening"), hidden: s(fd, "hidden"), goodRec: s(fd, "goodRec"), level: (s(fd, "level") === "beginner" ? "beginner" : "experienced") as "beginner" | "experienced" };
   if (!v.title || !v.opening) throw new Error("Title and opening line are required");
   await db().insert(t.scenarios).values({ id, ...v }).onConflictDoUpdate({ target: t.scenarios.id, set: v });
   done("practice");

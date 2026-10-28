@@ -9,7 +9,7 @@ export default async function PracticePage({ searchParams }: { searchParams: Pro
   const me = await requireUser();
   const d = db();
   const [scenarios, specs, best, specRes] = await Promise.all([
-    d.select({ id: t.scenarios.id, num: t.scenarios.num, title: t.scenarios.title, industry: t.scenarios.industry, persona: t.scenarios.persona }).from(t.scenarios).orderBy(asc(t.scenarios.num)),
+    d.select({ id: t.scenarios.id, num: t.scenarios.num, title: t.scenarios.title, industry: t.scenarios.industry, persona: t.scenarios.persona }).from(t.scenarios).where(eq(t.scenarios.level, level)).orderBy(asc(t.scenarios.num)),
     d.select({ id: t.specs.id, title: t.specs.title, industry: t.specs.industry }).from(t.specs).orderBy(asc(t.specs.order)),
     d.select({ id: t.roleplayAttempts.scenarioId, best: sql<number>`max(${t.roleplayAttempts.score})::int`, n: sql<number>`count(*)::int` })
       .from(t.roleplayAttempts).where(eq(t.roleplayAttempts.personId, me.personId)).groupBy(t.roleplayAttempts.scenarioId),
@@ -29,8 +29,8 @@ export default async function PracticePage({ searchParams }: { searchParams: Pro
           <div className="stack" style={{ gap: 4, flex: 1, minWidth: 240 }}>
             <b>Difficulty</b>
             <span className="small muted">{level === "beginner"
-              ? "Beginner: a short, friendly call. Ask 3 to 5 basic questions, then make a recommendation. Best for new reps."
-              : "Experienced: a busy, realistic customer who only shares details when asked and pushes back on weak recommendations."}</span>
+              ? "Beginner: short, everyday calls with a friendly customer. Ask a few basic questions, then recommend. Best for new reps."
+              : "Experienced: tougher applications and a busy, realistic customer who only shares details when asked and pushes back."}</span>
           </div>
           <div className="chips">
             <Link className="chip" href="/practice" aria-current={level === "beginner" ? "true" : undefined}>Beginner</Link>
@@ -38,19 +38,19 @@ export default async function PracticePage({ searchParams }: { searchParams: Pro
           </div>
         </div>
         <div className="grid">
-          {scenarios.map((s) => {
+          {scenarios.map((s, i) => {
             const b = bestMap[s.id];
             return (
               <div key={s.id} className="card course stack">
                 <div className="row spread">
-                  <span style={{ fontSize: 30, fontWeight: 800, color: "var(--red)", lineHeight: 1 }}>#{s.num}</span>
+                  <span style={{ fontSize: 30, fontWeight: 800, color: "var(--red)", lineHeight: 1 }}>#{i + 1}</span>
                   {b ? <Pill kind={b.best >= 7 ? "pass" : "fail"}>Best {b.best}/10</Pill> : <Pill kind="new">Not tried</Pill>}
                 </div>
                 <div><div className="eyebrow">{s.industry}</div><h3>{s.title}</h3></div>
                 <p>{s.persona}</p>
                 <div className="row">
-                  <Link className="btn primary sm" href={`/practice/roleplay/${s.id}?mode=voice&level=${level}`}>Practice by voice</Link>
-                  <Link className="btn sm" href={`/practice/roleplay/${s.id}?mode=chat&level=${level}`}>Practice in chat</Link>
+                  <Link className="btn primary sm" href={`/practice/roleplay/${s.id}?mode=voice`}>Practice by voice</Link>
+                  <Link className="btn sm" href={`/practice/roleplay/${s.id}?mode=chat`}>Practice in chat</Link>
                 </div>
               </div>
             );

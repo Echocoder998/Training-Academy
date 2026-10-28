@@ -31,7 +31,7 @@ export default async function ProgressPage() {
             {calls.map((c) => (
               <div key={c.id} className="rowline">
                 <span className="n">#{c.num}</span>
-                <div className="t"><Link className="link" href={`/practice/roleplay/${c.sid}?mode=${c.mode}&level=${c.level}`}>{c.title}</Link><div className="small muted">{c.mode === "voice" ? "Voice" : "Chat"} · {c.level === "experienced" ? "Experienced" : "Beginner"} · {fmtDate(c.at)}</div></div>
+                <div className="t"><Link className="link" href={`/practice/roleplay/${c.sid}?mode=${c.mode}`}>{c.title}</Link><div className="small muted">{c.mode === "voice" ? "Voice" : "Chat"} · {c.level === "experienced" ? "Experienced" : "Beginner"} · {fmtDate(c.at)}</div></div>
                 <Pill kind={c.score >= 7 ? "pass" : "fail"}>{c.score}/10</Pill>
               </div>
             ))}

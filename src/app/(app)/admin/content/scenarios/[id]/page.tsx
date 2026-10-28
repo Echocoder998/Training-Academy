@@ -21,6 +21,7 @@ export default async function EditScenario({ params }: { params: Promise<{ id: s
           <input type="hidden" name="id" value={isNew ? "" : id} />
           <div className="form">
             <label className="f">Number<input name="num" type="number" min={1} required defaultValue={s?.num ?? (top ?? 0) + 1} /></label>
+            <label className="f">Level<select name="level" defaultValue={s?.level ?? "beginner"}><option value="beginner">Beginner</option><option value="experienced">Experienced</option></select></label>
             <label className="f">Industry<input name="industry" defaultValue={s?.industry} placeholder="e.g. Water treatment" /></label>
             <label className="f wide">Title<input name="title" required defaultValue={s?.title} /></label>
             <label className="f wide">Who the customer is<input name="persona" defaultValue={s?.persona} placeholder="Mike, maintenance tech at a city water plant" /></label>

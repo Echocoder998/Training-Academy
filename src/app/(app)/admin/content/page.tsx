@@ -46,7 +46,7 @@ export default async function ManagePage({ searchParams }: { searchParams: Promi
           <div className="card stack">
             <div className="row spread"><h3>Role-play scenarios</h3><Link className="btn sm" href="/admin/content/scenarios/new">New scenario</Link></div>
             <p className="small muted" style={{ margin: 0 }}>Chat role-play uses these directly. For voice, scenario numbers must also exist in your ElevenLabs agent&apos;s prompt.</p>
-            <div>{scenarios.map((s) => <div key={s.id} className="rowline"><span className="n">#{s.num}</span><div className="t">{s.title}<div className="small muted">{s.industry}</div></div><Link className="btn sm" href={`/admin/content/scenarios/${s.id}`}>Edit</Link></div>)}</div>
+            <div>{scenarios.map((s) => <div key={s.id} className="rowline"><span className="n">#{s.num}</span><div className="t">{s.title}<div className="small muted">{s.level === "beginner" ? "Beginner" : "Experienced"} · {s.industry}</div></div><Link className="btn sm" href={`/admin/content/scenarios/${s.id}`}>Edit</Link></div>)}</div>
           </div>
           <div className="card stack">
             <div className="row spread"><h3>Spec challenges</h3><Link className="btn sm" href="/admin/content/specs/new">New challenge</Link></div>

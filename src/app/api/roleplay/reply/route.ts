@@ -18,6 +18,6 @@ export async function POST(req: Request) {
   if (!parsed.success) return new Response("Bad request", { status: 400 });
   const [s] = await db().select().from(t.scenarios).where(eq(t.scenarios.id, parsed.data.scenarioId));
   if (!s) return new Response("Scenario not found", { status: 404 });
-  const stream = await streamText(customerPrompt(s, parsed.data.turns, parsed.data.level));
+  const stream = await streamText(customerPrompt(s, parsed.data.turns, s.level));
   return new Response(stream, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
 }

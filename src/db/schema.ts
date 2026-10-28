@@ -48,6 +48,7 @@ export const scenarios = pgTable("scenarios", {
   opening: text("opening").notNull(),
   hidden: text("hidden").notNull().default(""),
   goodRec: text("good_rec").notNull().default(""),
+  level: text("level").$type<"beginner" | "experienced">().notNull().default("experienced"),
 });
 
 export const specs = pgTable("specs", {

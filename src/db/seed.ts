@@ -9,8 +9,9 @@ config();
 
 import { sql } from "drizzle-orm";
 import { db, t } from "./index";
-import data from "./seed-data.json";
+import raw from "./seed-data.json";
 
+const data = { ...raw, scenarios: raw.scenarios.map((s) => ({ ...s, level: s.level as "beginner" | "experienced" })) };
 const RESET = process.argv.includes("--reset");
 
 async function main() {

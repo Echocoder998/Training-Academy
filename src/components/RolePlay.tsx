@@ -7,31 +7,23 @@ type Scn = { id: string; num: number; opening: string };
 type Level = "beginner" | "experienced";
 
 export const LEVEL_INFO: Record<Level, { label: string; blurb: string }> = {
-  beginner: { label: "Beginner", blurb: "Short, friendly call. Ask 3 to 5 questions (what it's for, pressure, where it's mounted, how many), then recommend something." },
+  beginner: { label: "Beginner", blurb: "Short, friendly call. Ask a few basic questions (like the range, size, connection and how many), then recommend something." },
   experienced: { label: "Experienced", blurb: "Busy, realistic customer who only shares details when asked and pushes back on weak recommendations." },
 };
 
-export function RolePlay({ scenario, initialMode, initialLevel }: { scenario: Scn; initialMode: "voice" | "chat"; initialLevel: Level }) {
+export function RolePlay({ scenario, initialMode, level }: { scenario: Scn; initialMode: "voice" | "chat"; level: Level }) {
   const [mode, setMode] = useState(initialMode);
-  const [level, setLevel] = useState<Level>(initialLevel);
   const [busy, setBusy] = useState(false);
   return (
     <div className="card stack" style={{ gap: 16 }}>
-      <div className="row spread">
-        <div className="tabs" role="tablist" style={{ flex: 1 }}>
-          <button role="tab" aria-selected={mode === "voice"} disabled={busy} onClick={() => setMode("voice")}>Voice call</button>
-          <button role="tab" aria-selected={mode === "chat"} disabled={busy} onClick={() => setMode("chat")}>Chat</button>
-        </div>
-        <div className="chips" role="group" aria-label="Difficulty">
-          {(["beginner", "experienced"] as Level[]).map((l) => (
-            <button key={l} className="chip" aria-pressed={level === l} disabled={busy} onClick={() => setLevel(l)}>{LEVEL_INFO[l].label}</button>
-          ))}
-        </div>
+      <div className="tabs" role="tablist">
+        <button role="tab" aria-selected={mode === "voice"} disabled={busy} onClick={() => setMode("voice")}>Voice call</button>
+        <button role="tab" aria-selected={mode === "chat"} disabled={busy} onClick={() => setMode("chat")}>Chat</button>
       </div>
       <p className="small muted" style={{ margin: 0 }}><b>{LEVEL_INFO[level].label}:</b> {LEVEL_INFO[level].blurb}</p>
       {mode === "voice"
-        ? <ConversationProvider><VoiceCall key={level} scenario={scenario} level={level} onBusy={setBusy} /></ConversationProvider>
-        : <ChatCall key={level} scenario={scenario} level={level} onBusy={setBusy} />}
+        ? <ConversationProvider><VoiceCall scenario={scenario} level={level} onBusy={setBusy} /></ConversationProvider>
+        : <ChatCall scenario={scenario} level={level} onBusy={setBusy} />}
     </div>
   );
 }
