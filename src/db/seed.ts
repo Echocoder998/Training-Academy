@@ -17,11 +17,28 @@ const RESET = process.argv.includes("--reset");
 async function main() {
   const d = db();
   if (!RESET) {
+    const before = new Set((await d.select({ id: t.courses.id }).from(t.courses)).map((c) => c.id));
     await d.insert(t.courses).values(data.courses).onConflictDoNothing();
     await d.insert(t.lessons).values(data.lessons.map((l) => ({ ...l, videoUrl: null, videoLink: null }))).onConflictDoNothing();
     await d.insert(t.scenarios).values(data.scenarios).onConflictDoNothing();
     await d.insert(t.specs).values(data.specs).onConflictDoNothing();
     await d.insert(t.paths).values(data.paths).onConflictDoNothing();
+    // Courses that are brand new in this release get added to existing learning paths that include them,
+    // without removing or reordering anything an admin changed.
+    const fresh = new Set(data.courses.map((c) => c.id).filter((id) => before.size > 0 && !before.has(id)));
+    if (fresh.size) {
+      const live = await d.select().from(t.paths);
+      for (const p of data.paths) {
+        const cur = live.find((x) => x.id === p.id);
+        if (!cur) continue;
+        const add = p.courseIds.filter((c) => fresh.has(c) && !cur.courseIds.includes(c));
+        if (!add.length) continue;
+        const front = add.filter((c) => c === "c-welcome");
+        const back = add.filter((c) => c !== "c-welcome");
+        await d.update(t.paths).set({ courseIds: [...front, ...cur.courseIds, ...back] }).where(sql`${t.paths.id} = ${p.id}`);
+        console.log(`Seed: added ${add.join(", ")} to path ${p.id}.`);
+      }
+    }
     console.log("Seed: added any missing starter content.");
     return;
   }

@@ -76,6 +76,76 @@
       "category": "Brands",
       "summary": "How gauge part numbers are built, and how to avoid ordering mistakes.",
       "order": 11
+    },
+    {
+      "id": "c-welcome",
+      "title": "Welcome to DASCO & MCE",
+      "category": "Onboarding",
+      "order": 0,
+      "summary": "Who we are, what we sell, who we sell to, and who to call for what."
+    },
+    {
+      "id": "c-abb-flow",
+      "title": "ABB Flow Measurement",
+      "category": "ABB",
+      "order": 12,
+      "summary": "ABB's flowmeter lineup: what each family does, where it wins, and how to pick the right one."
+    },
+    {
+      "id": "c-abb-battle",
+      "title": "ABB Battle Cards",
+      "category": "ABB",
+      "order": 13,
+      "summary": "How to position ABB flowmeters against the brands customers already use, and how to answer common objections."
+    },
+    {
+      "id": "c-abb-cross",
+      "title": "ABB Beyond Flow & Cross-Selling",
+      "category": "ABB",
+      "order": 14,
+      "summary": "ABB pressure, temperature, level and positioners, and what to add to every flowmeter quote."
+    },
+    {
+      "id": "c-fundamentals",
+      "title": "Technical Fundamentals",
+      "category": "Fundamentals",
+      "order": 15,
+      "summary": "Units and conversions, 4-20 mA and digital signals, and hazardous areas in plain English."
+    },
+    {
+      "id": "c-safety",
+      "title": "Plant Safety & Site Visits",
+      "category": "Fundamentals",
+      "order": 16,
+      "summary": "How to show up safe and professional at a customer's plant, and what lockout/tagout means for you."
+    },
+    {
+      "id": "c-quoting",
+      "title": "Quoting & Ordering",
+      "category": "Inside Sales & Service",
+      "order": 17,
+      "summary": "Reading model codes, building a clean quote, avoiding ordering mistakes, and handling returns."
+    },
+    {
+      "id": "c-service",
+      "title": "Customer Service Skills",
+      "category": "Inside Sales & Service",
+      "order": 18,
+      "summary": "Calming an upset customer and keeping customers informed when orders run late."
+    },
+    {
+      "id": "c-crm",
+      "title": "CRM, Follow-Up & Forecasting",
+      "category": "Sales Skills",
+      "order": 19,
+      "summary": "Logging your work, following up on quotes, and forecasting honestly."
+    },
+    {
+      "id": "c-ai",
+      "title": "AI Skills for Sales",
+      "category": "AI Skills",
+      "order": 20,
+      "summary": "Using Claude to write follow-ups, research accounts and summarize datasheets, safely."
     }
   ],
   "lessons": [
@@ -196,18 +266,18 @@
       "order": 1,
       "minutes": 10,
       "passScore": 80,
-      "keyPoints": "Most mechanical pressure gauges use a Bourdon tube: a curved tube that straightens slightly as pressure rises and moves the pointer through a gear movement.\nPick a range so normal operating pressure sits in the middle of the dial. A common rule is a range about twice the normal operating pressure.\nASME B40.100 is the standard for pressure gauges in the U.S.\nAccuracy is given as a percent of span. Grade 2A is \u00b10.5% of span; Grade 1A is \u00b11%.\nCommon dial sizes are 2.5, 4 and 4.5 inches. Bigger dials are easier to read from a distance.\nWetted parts (the tube and socket) must suit the media: brass for air and water, 316 stainless steel for most process fluids.\nConnections are usually 1/4\" or 1/2\" NPT, bottom or back (center back or lower back) mount.",
+      "keyPoints": "Most mechanical pressure gauges use a Bourdon tube: a curved tube that straightens slightly as pressure rises and moves the pointer through a gear movement.\nPick a range so normal operating pressure sits in the middle of the dial. A common rule is a range about twice the normal operating pressure.\nASME B40.100 is the standard for pressure gauges in the U.S.\nAccuracy is given as a percent of span. Grade 2A is ±0.5% of span; Grade 1A is ±1%.\nCommon dial sizes are 2.5, 4 and 4.5 inches. Bigger dials are easier to read from a distance.\nWetted parts (the tube and socket) must suit the media: brass for air and water, 316 stainless steel for most process fluids.\nConnections are usually 1/4\" or 1/2\" NPT, bottom or back (center back or lower back) mount.",
       "quiz": [
         {
           "q": "A line normally runs at 100 psi. Which gauge range is the best fit?",
           "options": [
-            "0\u2013100 psi",
-            "0\u2013200 psi",
-            "0\u20131000 psi",
-            "0\u201360 psi"
+            "0–100 psi",
+            "0–200 psi",
+            "0–1000 psi",
+            "0–60 psi"
           ],
           "answer": 1,
-          "why": "0\u2013200 puts 100 psi mid-scale, where gauges are most accurate and last longest."
+          "why": "0–200 puts 100 psi mid-scale, where gauges are most accurate and last longest."
         },
         {
           "q": "What does a Bourdon tube do?",
@@ -221,15 +291,15 @@
           "why": "The tube flexes with pressure, and that motion drives the pointer through the movement."
         },
         {
-          "q": "A Grade 2A gauge on a 0\u2013200 psi range is accurate to about:",
+          "q": "A Grade 2A gauge on a 0–200 psi range is accurate to about:",
           "options": [
-            "\u00b11 psi",
-            "\u00b110 psi",
-            "\u00b10.1 psi",
-            "\u00b15 psi"
+            "±1 psi",
+            "±10 psi",
+            "±0.1 psi",
+            "±5 psi"
           ],
           "answer": 0,
-          "why": "Grade 2A is \u00b10.5% of span: 0.5% of 200 psi is \u00b11 psi."
+          "why": "Grade 2A is ±0.5% of span: 0.5% of 200 psi is ±1 psi."
         },
         {
           "q": "For a mildly corrosive process fluid, which wetted material is the usual default?",
@@ -361,10 +431,10 @@
       "order": 1,
       "minutes": 12,
       "passScore": 80,
-      "keyPoints": "An RTD changes resistance with temperature. The most common type, Pt100, reads 100 ohms at 0 \u00b0C.\nRTDs are more accurate and stable over time. They're typically used below about 600 \u00b0C.\nA thermocouple joins two different metals and produces a small voltage that changes with temperature.\nThermocouples cover higher temperatures, respond faster, and are rugged and lower cost, but are less accurate than RTDs. Type K is the most common general-purpose type.\nA thermowell is a closed tube that protects the sensor from the process and lets you remove the sensor without shutting down or draining the line.\nIn fast-moving fluids, thermowells need a wake frequency calculation (ASME PTC 19.3 TW) to make sure they won't vibrate and break.\nA temperature transmitter converts the sensor signal to 4-20 mA for long wire runs.",
+      "keyPoints": "An RTD changes resistance with temperature. The most common type, Pt100, reads 100 ohms at 0 °C.\nRTDs are more accurate and stable over time. They're typically used below about 600 °C.\nA thermocouple joins two different metals and produces a small voltage that changes with temperature.\nThermocouples cover higher temperatures, respond faster, and are rugged and lower cost, but are less accurate than RTDs. Type K is the most common general-purpose type.\nA thermowell is a closed tube that protects the sensor from the process and lets you remove the sensor without shutting down or draining the line.\nIn fast-moving fluids, thermowells need a wake frequency calculation (ASME PTC 19.3 TW) to make sure they won't vibrate and break.\nA temperature transmitter converts the sensor signal to 4-20 mA for long wire runs.",
       "quiz": [
         {
-          "q": "A customer needs the most accurate, stable reading at 150 \u00b0C. Which sensor fits best?",
+          "q": "A customer needs the most accurate, stable reading at 150 °C. Which sensor fits best?",
           "options": [
             "Type K thermocouple",
             "Bimetal thermometer",
@@ -375,7 +445,7 @@
           "why": "RTDs are the more accurate and stable choice in their temperature range."
         },
         {
-          "q": "A furnace runs at 1,000 \u00b0C. Which sensor is the typical choice?",
+          "q": "A furnace runs at 1,000 °C. Which sensor is the typical choice?",
           "options": [
             "Thermocouple",
             "Pt100 RTD",
@@ -793,6 +863,1766 @@
           "why": "Reading it back in plain words catches mistakes before they ship."
         }
       ]
+    },
+    {
+      "id": "l-welcome-who",
+      "courseId": "c-welcome",
+      "title": "Who we are and what we sell",
+      "order": 1,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "DASCO (Daughtridge Sales Co.) is based in Rocky Mount, NC, and is part of the MCE family of companies.\nWe sell industrial instrumentation and process control: pressure, temperature, flow and level instruments, valves and related products.\nKey brands include Ashcroft, WIKA and Dwyer, and we're growing our ABB business, especially flowmeters.\nOur customers are in chemical, oil and gas, water and wastewater treatment, food and beverage, and pharmaceutical plants.\nMCE is a family of companies (including DASCO, AIC, Power & Pumps, Swanson Flo and RitterTech). Sister companies can help when a customer needs something outside our lines.\nOur value isn't just the product. It's getting the application right, quoting it correctly, and supporting the customer after the sale.\nYour manager will walk you through our history, territories and team in person.",
+      "quiz": [
+        {
+          "q": "Which of these is a key brand we sell?",
+          "options": [
+            "Ashcroft",
+            "Caterpillar",
+            "Whirlpool",
+            "Ford"
+          ],
+          "answer": 0,
+          "why": "Ashcroft, WIKA, Dwyer and ABB are among our key brands."
+        },
+        {
+          "q": "Which industry is a core customer for us?",
+          "options": [
+            "Retail clothing",
+            "Water and wastewater treatment",
+            "Restaurants",
+            "Movie theaters"
+          ],
+          "answer": 1,
+          "why": "We serve process industries like water, chemical, oil and gas, food and pharma."
+        },
+        {
+          "q": "Why do MCE sister companies matter to you?",
+          "options": [
+            "They don't",
+            "They set your schedule",
+            "They can help when a customer needs something outside our lines",
+            "They handle payroll only"
+          ],
+          "answer": 2,
+          "why": "Sister companies broaden what we can offer a customer."
+        },
+        {
+          "q": "What's our real value to customers beyond the product?",
+          "options": [
+            "The cheapest price every time",
+            "Fast email replies only",
+            "Free shipping",
+            "Getting the application right, quoting it correctly and supporting it after the sale"
+          ],
+          "answer": 3,
+          "why": "Application know-how and support are why customers buy from a distributor."
+        }
+      ]
+    },
+    {
+      "id": "l-welcome-who-to-call",
+      "courseId": "c-welcome",
+      "title": "Who to call for what",
+      "order": 2,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "Pricing, quotes and stock checks: inside sales.\nOrder status, tracking and delivery dates: customer service.\nTechnical questions you can't answer: inside sales tech support first, then the manufacturer's rep (for ABB, the ABB regional rep).\nOn-site visits, new accounts and big projects: the outside salesperson for that territory.\nReturns, RMAs and warranty: customer service, who will work with the manufacturer.\nCredit, invoices and payment terms: accounting.\nNot sure? Ask your manager. Guessing wastes the customer's time.\nYour manager will give you the names and numbers for each of these.",
+      "quiz": [
+        {
+          "q": "A customer wants to know when their order will ship. Who handles that?",
+          "options": [
+            "Accounting",
+            "Customer service",
+            "The ABB rep",
+            "The warehouse forklift driver"
+          ],
+          "answer": 1,
+          "why": "Order status and delivery dates go to customer service."
+        },
+        {
+          "q": "You have a technical question about an ABB flowmeter you can't answer. Who do you go to?",
+          "options": [
+            "Inside sales tech support, then the ABB rep",
+            "Guess and tell the customer",
+            "Accounting",
+            "Google only"
+          ],
+          "answer": 0,
+          "why": "Use internal tech support first, then the manufacturer's rep."
+        },
+        {
+          "q": "A customer asks about an invoice. Who handles that?",
+          "options": [
+            "Outside sales",
+            "Customer service",
+            "Accounting",
+            "The ABB rep"
+          ],
+          "answer": 2,
+          "why": "Invoices, credit and terms belong to accounting."
+        },
+        {
+          "q": "When you're not sure who to call, you should:",
+          "options": [
+            "Guess",
+            "Tell the customer it's not your job",
+            "Wait a week",
+            "Ask your manager"
+          ],
+          "answer": 3,
+          "why": "Asking is faster than guessing and keeps the customer happy."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-lineup",
+      "courseId": "c-abb-flow",
+      "title": "The ABB flow lineup and when to lead with it",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "ABB Measurement & Analytics makes flowmeters for liquids, gases and steam, plus pressure, temperature, level, positioners and flow computers.\nElectromagnetic (mag): ProcessMaster for process industries and AquaMaster for water distribution. Conductive liquids only.\nCoriolis: CoriolisMaster measures mass flow and density directly. Best for high accuracy, batching and non-conductive liquids.\nVortex and swirl: VortexMaster and SwirlMaster for steam, gases and clean low-viscosity liquids. SwirlMaster needs very little straight pipe.\nThermal mass: SensyMaster measures the mass flow of gases directly, with no pressure or temperature compensation needed.\nFlow computers: ABB Totalflow (for example the µFLO G5 and XFC G5) for natural gas measurement in oil and gas.\nLead with ABB when the customer needs flow on a new project, is replacing an old meter, or has a problem (accuracy, maintenance, straight-run space) the current meter isn't solving.\nMost ABB meters share a common operating concept: similar menus, clear text displays and setup through the glass, so plants that standardize on ABB train once.",
+      "quiz": [
+        {
+          "q": "A customer needs to measure vegetable oil (not conductive). Which ABB family is the natural fit?",
+          "options": [
+            "ProcessMaster mag",
+            "AquaMaster mag",
+            "CoriolisMaster Coriolis",
+            "SensyMaster thermal"
+          ],
+          "answer": 2,
+          "why": "Mag meters need a conductive liquid. Coriolis measures mass flow of almost any liquid, including oils."
+        },
+        {
+          "q": "Which ABB family measures the mass flow of gases directly, without pressure and temperature compensation?",
+          "options": [
+            "SensyMaster thermal mass",
+            "VortexMaster",
+            "ProcessMaster",
+            "AquaMaster"
+          ],
+          "answer": 0,
+          "why": "Thermal mass meters like SensyMaster measure gas mass flow directly."
+        },
+        {
+          "q": "A plant wants to measure steam but only has a few pipe diameters of straight run. Which ABB meter was designed for that?",
+          "options": [
+            "AquaMaster",
+            "SwirlMaster",
+            "CoriolisMaster",
+            "ProcessMaster"
+          ],
+          "answer": 1,
+          "why": "SwirlMaster needs much shorter inlet and outlet runs than a typical vortex meter."
+        },
+        {
+          "q": "Why does ABB's common operating concept matter to a plant?",
+          "options": [
+            "It makes meters cheaper to ship",
+            "It removes the need for calibration",
+            "It only applies to Coriolis meters",
+            "Technicians learn one menu style across many ABB devices"
+          ],
+          "answer": 3,
+          "why": "Similar menus and setup across devices means less training and fewer setup mistakes."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-mag",
+      "courseId": "c-abb-flow",
+      "title": "Magmeters: ProcessMaster and AquaMaster",
+      "order": 2,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "Mag meters measure the flow of conductive liquids: water, wastewater, slurries, acids, caustics. They have no moving parts and no obstruction in the pipe.\nThey do NOT work on non-conductive liquids like oils, hydrocarbons, solvents or very pure (deionized) water.\nProcessMaster is ABB's process-industry mag: chemical, power, oil and gas, pulp and paper, metals. It offers a very broad choice of liners, electrodes and sizes.\nProcessMaster FEP300 is the cost-effective standard version with quick delivery. Higher-end versions add more diagnostics and options.\nAquaMaster is built for water distribution: billing, district metered areas (DMA) and leak detection, including remote sites. Battery and solar power options mean it can go where there's no power.\nAquaMaster4 can combine flow measurement, pressure monitoring and data logging in one unit.\nABB also has hygienic mags (HygienicMaster) for food and beverage and heavy-duty mags for tough slurries.\nLiner and electrode choice is the key spec: ask what the fluid is, its temperature, and whether it's abrasive or corrosive.\nAlways ask: line size, fluid, normal and max flow, pressure and temperature, output (4-20 mA, HART, pulse), power available, and hazardous area.",
+      "quiz": [
+        {
+          "q": "Which of these can a magmeter NOT measure?",
+          "options": [
+            "Wastewater",
+            "Diesel fuel",
+            "Lime slurry",
+            "Sodium hydroxide solution"
+          ],
+          "answer": 1,
+          "why": "Diesel isn't conductive, so a mag meter won't read it."
+        },
+        {
+          "q": "A water utility needs a meter at a remote site with no power for billing and leak detection. Which ABB mag fits?",
+          "options": [
+            "AquaMaster",
+            "ProcessMaster",
+            "CoriolisMaster",
+            "VortexMaster"
+          ],
+          "answer": 0,
+          "why": "AquaMaster is designed for water distribution and can run on battery or solar power."
+        },
+        {
+          "q": "For a mag meter on an abrasive slurry, which spec matters most to get right?",
+          "options": [
+            "Display color",
+            "Cable length",
+            "Liner and electrode material",
+            "Transmitter housing paint"
+          ],
+          "answer": 2,
+          "why": "Liner and electrodes are wetted by the fluid. The wrong choice wears out or corrodes fast."
+        },
+        {
+          "q": "What's one big advantage of a mag meter in the pipe?",
+          "options": [
+            "It measures gas and steam",
+            "It works on any fluid",
+            "It needs no straight run at all",
+            "No moving parts and no obstruction, so almost no pressure loss"
+          ],
+          "answer": 3,
+          "why": "Mag meters have an open bore with nothing in the flow path."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-coriolis",
+      "courseId": "c-abb-flow",
+      "title": "CoriolisMaster: mass flow and density",
+      "order": 3,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "Coriolis meters measure mass flow directly, plus density and temperature, from one device. Works on almost any liquid and many gases.\nChoose Coriolis for: high-accuracy batching and filling, non-conductive liquids (oils, solvents), custody transfer, and recipes where density or concentration matters.\nCoriolisMaster FCB400 is the standard design. FCH400 is the hygienic design (EHEDG, FDA-compliant materials) for food, beverage and pharma.\nThe 430 models are the standard-accuracy versions. The 450 models are higher accuracy (down to about 0.1% of mass flow for liquids) and handle higher process temperatures.\nBuilt-in software packages: FillMass controls a filling valve directly; DensiMass calculates concentration (for example sugar or alcohol) from density.\nVeriMass checks the meter's health in place, without removing it, so customers can stretch maintenance and calibration intervals.\nUp to five configurable inputs and outputs, so one meter can replace extra devices.\nThe usual objection is price. Answer with what it replaces: separate density meters, flow computers, product giveaway from inaccurate batching, and maintenance on meters with moving parts.",
+      "quiz": [
+        {
+          "q": "What three things can a Coriolis meter measure from one device?",
+          "options": [
+            "Mass flow, density and temperature",
+            "Pressure, level and pH",
+            "Volume flow, pressure and conductivity",
+            "Only mass flow"
+          ],
+          "answer": 0,
+          "why": "Coriolis measures mass flow directly and also gives density and temperature."
+        },
+        {
+          "q": "Which CoriolisMaster model is the hygienic design for food and pharma?",
+          "options": [
+            "FCB400",
+            "FCH400",
+            "FSV430",
+            "FMT430"
+          ],
+          "answer": 1,
+          "why": "FCH400 is the hygienic version. FCB400 is the standard design."
+        },
+        {
+          "q": "A beverage plant wants to know sugar concentration (Brix) as it flows. Which CoriolisMaster feature helps?",
+          "options": [
+            "FillMass",
+            "VeriMass",
+            "DensiMass",
+            "SwirlMaster"
+          ],
+          "answer": 2,
+          "why": "DensiMass calculates concentration from the measured density."
+        },
+        {
+          "q": "A customer says Coriolis is too expensive. What's the best response?",
+          "options": [
+            "Agree and quote the cheapest meter",
+            "Say price doesn't matter",
+            "Change the subject",
+            "Show what it replaces: separate density meters, batching giveaway and maintenance"
+          ],
+          "answer": 3,
+          "why": "Sell the total value. One Coriolis can replace several devices and cut product loss."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-vortex",
+      "courseId": "c-abb-flow",
+      "title": "VortexMaster and SwirlMaster: steam, gas and liquids",
+      "order": 4,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "Vortex and swirl meters measure volume flow of steam, gases and clean, low-viscosity liquids. They're a go-to for steam.\nWith a built-in temperature sensor (RTD) they can calculate saturated steam mass flow without a separate flow computer.\nThe 450 versions (FSV450, FSS450) add flow-computer functions: they can take an external pressure, temperature or density signal and calculate mass and energy flow, including steam energy.\nVortexMaster FSV430/450: flanged and wafer designs. Accuracy about ±0.65% of rate for liquids and ±0.9% for gas and steam. Needs a typical vortex straight run upstream and downstream.\nSwirlMaster FSS430/450: about ±0.5% of rate. Its big advantage is short straight runs: about 3 pipe diameters in and 1 out after an elbow or reducer, and about 5 in after a control valve.\nLead with SwirlMaster when space is tight, in retrofits, or when the only spot is right after an elbow. It can save up to 75% of the straight pipe a vortex would need.\nCommunication options include 4-20 mA with HART, Modbus, and Ethernet-APL on newer models.\nAsk: steam (saturated or superheated?), gas or liquid; line size; pressure and temperature; flow range; available straight run; and whether they want volume, mass or energy.",
+      "quiz": [
+        {
+          "q": "A plant needs a steam meter right after an elbow with almost no straight pipe. Which meter do you lead with?",
+          "options": [
+            "VortexMaster FSV430",
+            "SwirlMaster FSS430 or FSS450",
+            "AquaMaster",
+            "ProcessMaster"
+          ],
+          "answer": 1,
+          "why": "SwirlMaster needs only about 3 diameters in and 1 out after an elbow."
+        },
+        {
+          "q": "What do the 450 versions add over the 430 versions?",
+          "options": [
+            "A larger display only",
+            "Battery power",
+            "Flow-computer functions: external inputs and mass/energy calculation",
+            "Hygienic connections"
+          ],
+          "answer": 2,
+          "why": "FSV450 and FSS450 can take outside signals and calculate mass and energy flow."
+        },
+        {
+          "q": "Which of these is a good fit for a vortex or swirl meter?",
+          "options": [
+            "Saturated steam to a heat exchanger",
+            "Thick slurry",
+            "Peanut butter",
+            "Very low flow of a viscous oil"
+          ],
+          "answer": 0,
+          "why": "Vortex and swirl meters are a top choice for steam. Slurries and viscous fluids are poor fits."
+        },
+        {
+          "q": "A customer asks for steam 'energy' to bill a department. What do you need to ask about?",
+          "options": [
+            "Liner material",
+            "Paint color",
+            "Tri-clamp size",
+            "Steam type, pressure and temperature, and whether condensate returns"
+          ],
+          "answer": 3,
+          "why": "Energy calculations depend on steam conditions and whether condensate is returned."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-thermal",
+      "courseId": "c-abb-flow",
+      "title": "SensyMaster: thermal mass flow for gases",
+      "order": 5,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Thermal mass meters measure gas flow by how much a heated sensor is cooled by the gas. That gives mass flow directly.\nNo pressure or temperature compensation is needed, which keeps the install simple and cheap.\nSensyMaster handles many gases: air, nitrogen, oxygen, CO2, natural gas, biogas, hydrogen, argon, helium, propane and more.\nWide turndown (up to about 1:150), so it reads accurately at very low flows. That's great for leak detection and compressed-air audits.\nFMT430 is the standard version. FMT450 adds higher accuracy, process-gas calibration, higher temperatures and an ApplicationSelector to switch between gases or setups on site.\nComes as wafer pipe components for smaller lines and weld-on adapters for large ducts and pipes. Very low pressure loss.\nSensyMaster FMT400 has SIL 2 certification, so it can be used in safety instrumented systems.\nCommon wins: compressed air usage and leaks, fuel gas and combustion air to burners and boilers, nitrogen blanketing, biogas.\nNot for liquids or steam. Ask about gas type and composition, line size, pressure, temperature and flow range.",
+      "quiz": [
+        {
+          "q": "What does a thermal mass meter measure?",
+          "options": [
+            "Liquid volume",
+            "Mass flow of gases",
+            "Steam energy only",
+            "Tank level"
+          ],
+          "answer": 1,
+          "why": "Thermal mass meters measure gas mass flow directly."
+        },
+        {
+          "q": "A plant wants to find leaks and track compressed air use by department. Good ABB fit?",
+          "options": [
+            "SensyMaster thermal mass",
+            "CoriolisMaster FCH400",
+            "AquaMaster",
+            "LLT100 laser level"
+          ],
+          "answer": 0,
+          "why": "Wide turndown and direct mass flow make thermal meters ideal for compressed air audits."
+        },
+        {
+          "q": "Which model adds process-gas calibration and on-site switching between gases?",
+          "options": [
+            "FMT430",
+            "FCB430",
+            "FSS430",
+            "FMT450"
+          ],
+          "answer": 3,
+          "why": "FMT450 adds the ApplicationSelector and process-gas calibration."
+        },
+        {
+          "q": "Which application is NOT a fit for SensyMaster?",
+          "options": [
+            "Natural gas to a burner",
+            "Nitrogen blanketing",
+            "Water to a cooling tower",
+            "Biogas"
+          ],
+          "answer": 2,
+          "why": "SensyMaster is for gases. Water needs a mag or another liquid meter."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-totalflow",
+      "courseId": "c-abb-flow",
+      "title": "Totalflow flow computers for oil and gas",
+      "order": 6,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Flow computers take signals from a primary meter (orifice, turbine, ultrasonic, Coriolis) and calculate corrected gas or liquid volumes to industry standards.\nABB Totalflow flow computers are widely used in natural gas production, gathering and transmission.\nThe µFLO G5 (microFLO) is a basic single-run gas flow computer with a built-in multivariable sensor (DP, static pressure and temperature).\nThe XFC G5 is the extendable flow computer for more runs, more I/O and newer communications (such as MQTT, Wi-Fi and Bluetooth).\nThey calculate to AGA and API standards (for example AGA 3 for orifice meters and AGA 8 for gas properties), which matters for custody transfer.\nThey're built for remote, unpowered sites, with battery and solar charging options.\nAsk: gas or liquid; primary meter type; single or multiple runs; custody transfer or check metering; power at the site; and how data gets back (radio, cellular, SCADA).\nPair them with ABB pressure transmitters and the right primary meter for a complete package.",
+      "quiz": [
+        {
+          "q": "What does a flow computer do?",
+          "options": [
+            "Replaces the need for any meter",
+            "Takes meter signals and calculates corrected volumes to industry standards",
+            "Measures tank level",
+            "Controls a valve positioner"
+          ],
+          "answer": 1,
+          "why": "It works with a primary meter and applies the correct calculations, like AGA standards."
+        },
+        {
+          "q": "Which Totalflow model is the basic single-run gas flow computer?",
+          "options": [
+            "µFLO G5",
+            "XFC G5",
+            "FSS450",
+            "266 transmitter"
+          ],
+          "answer": 0,
+          "why": "The µFLO G5 is the basic single-run unit with a built-in multivariable sensor."
+        },
+        {
+          "q": "Why do power options matter for flow computers?",
+          "options": [
+            "They don't",
+            "They change the display color",
+            "They set the accuracy class",
+            "Wellsites and remote stations often have no power, so battery and solar are needed"
+          ],
+          "answer": 3,
+          "why": "Many gas measurement sites are remote and unpowered."
+        },
+        {
+          "q": "Which standard family is used for natural gas flow calculations?",
+          "options": [
+            "NACE",
+            "3-A sanitary",
+            "AGA",
+            "NEMA"
+          ],
+          "answer": 2,
+          "why": "AGA reports (like AGA 3 and AGA 8) cover gas measurement calculations."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-pick",
+      "courseId": "c-abb-flow",
+      "title": "Cheat sheet: picking the right ABB flowmeter",
+      "order": 7,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Start with the fluid. Liquid, gas or steam? Conductive or not? Clean, dirty or slurry?\nConductive liquid (water, wastewater, slurry, acids): mag. ProcessMaster for process plants, AquaMaster for water distribution.\nNon-conductive liquid, or you need the highest accuracy, density or batching: CoriolisMaster (FCH400 if hygienic).\nSteam: VortexMaster, or SwirlMaster if straight run is short. Use the 450 versions for mass or energy.\nGas at low or medium pressure where you want mass flow (air, natural gas, nitrogen): SensyMaster thermal.\nNatural gas custody or production measurement: Totalflow flow computer with the right primary meter.\nThen check the details: line size, flow range (min and max), pressure, temperature, accuracy needed, output and communications, power, hazardous area, and straight run available.\nIf two technologies could work, ask what matters most: price, accuracy, maintenance, or space. That usually decides it.\nNot sure? Gather the application data and bring in the ABB rep or inside sales tech support before quoting.",
+      "quiz": [
+        {
+          "q": "What's the first question when picking a flowmeter?",
+          "options": [
+            "What's your budget?",
+            "What's the fluid, and is it liquid, gas or steam?",
+            "What color do you want?",
+            "Who's your current supplier?"
+          ],
+          "answer": 1,
+          "why": "The fluid narrows the choice of technology right away."
+        },
+        {
+          "q": "Wastewater in a 12-inch line. Which ABB family?",
+          "options": [
+            "SensyMaster",
+            "SwirlMaster",
+            "CoriolisMaster",
+            "Mag (ProcessMaster or a water mag)"
+          ],
+          "answer": 3,
+          "why": "Wastewater is conductive and dirty: a mag meter is the classic choice."
+        },
+        {
+          "q": "Compressed air to a production line, mass flow wanted. Which ABB family?",
+          "options": [
+            "SensyMaster thermal mass",
+            "AquaMaster",
+            "ProcessMaster",
+            "FCH400"
+          ],
+          "answer": 0,
+          "why": "Thermal mass meters measure gas mass flow directly."
+        },
+        {
+          "q": "Two technologies could work. What do you ask?",
+          "options": [
+            "Nothing, quote both at random",
+            "Which brand they hate",
+            "What matters most: price, accuracy, maintenance or space",
+            "How many employees they have"
+          ],
+          "answer": 2,
+          "why": "The customer's priority usually decides between workable options."
+        }
+      ]
+    },
+    {
+      "id": "l-bc-mag",
+      "courseId": "c-abb-battle",
+      "title": "Battle card: magmeters",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Who you'll run into: Endress+Hauser Promag, Emerson Rosemount 8700 series, Krohne Optiflux, Yokogawa ADMAG, Siemens Sitrans F M.\nAsk first: what do they have now, how long has it been in service, and are they happy with it? Don't knock the incumbent. Find the pain.\nWhere ABB tends to win: water and wastewater (AquaMaster for remote, battery-powered and billing sites), a very broad choice of liners and electrodes on ProcessMaster, and quick-ship standard models like the FEP300.\nCommon operating concept: if the plant already has other ABB devices, ABB mags use familiar menus.\nRetrofit angle: ABB designs newer mags to be compatible with previous-generation ABB meters, which makes upgrades easier at plants with older ABB installs.\nPain points to listen for: liner wear on slurries, coated electrodes, no power at a remote site, long lead times, hard-to-use setup.\nDon't compete on spec sheet decimals. Compete on fit, service, lead time and ease of use.\nAlways confirm current specs, pricing and lead times with ABB or inside sales before you promise anything.",
+      "quiz": [
+        {
+          "q": "A customer loves their current mag brand. Best first move?",
+          "options": [
+            "Tell them it's bad",
+            "Ask what's working and what's not, and find a pain point",
+            "Drop your price immediately",
+            "End the call"
+          ],
+          "answer": 1,
+          "why": "Find a real problem before you pitch. Knocking the incumbent backfires."
+        },
+        {
+          "q": "Where does ABB's AquaMaster give you a strong angle?",
+          "options": [
+            "Remote water sites with no power, billing and leak detection",
+            "Steam energy",
+            "Gas custody transfer",
+            "Hygienic dairy lines"
+          ],
+          "answer": 0,
+          "why": "AquaMaster is built for water distribution and can run on battery or solar."
+        },
+        {
+          "q": "What should you compete on instead of tiny spec-sheet differences?",
+          "options": [
+            "Logo size",
+            "Who has the longer brochure",
+            "Fit, service, lead time and ease of use",
+            "Nothing, just discount"
+          ],
+          "answer": 2,
+          "why": "Those are what plants actually feel day to day."
+        },
+        {
+          "q": "Before promising a lead time on an ABB mag, you should:",
+          "options": [
+            "Guess",
+            "Use last year's number",
+            "Promise next-day delivery",
+            "Confirm with ABB or inside sales"
+          ],
+          "answer": 3,
+          "why": "Lead times change. Always confirm before you commit."
+        }
+      ]
+    },
+    {
+      "id": "l-bc-coriolis",
+      "courseId": "c-abb-battle",
+      "title": "Battle card: Coriolis",
+      "order": 2,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Who you'll run into: Emerson Micro Motion (the best-known Coriolis brand), Endress+Hauser Promass, Krohne Optimass, Yokogawa Rotamass, Siemens Sitrans FC.\nMicro Motion is often the default spec. Don't fight the name. Ask whether they need that level of meter on every line, and where ABB's value fits.\nWhere ABB tends to win: built-in application software (FillMass for filling, DensiMass for concentration), VeriMass in-place verification, up to five I/Os, and a compact, light design with low pressure loss.\nHygienic angle: FCH400 for food, beverage and pharma with EHEDG and FDA-compliant materials.\nValue story: one CoriolisMaster can replace a separate density meter, a batch controller or flow computer, and the cost of product giveaway.\nQuestions that open doors: How do you verify your meters today? How much product do you give away per batch? Do you measure concentration separately?\nIf the spec says a specific brand 'or equal', ask the engineer what features matter. That's your opening.\nConfirm current specs and pricing with ABB before comparing numbers.",
+      "quiz": [
+        {
+          "q": "Which Coriolis brand is most often the default spec?",
+          "options": [
+            "AquaMaster",
+            "Emerson Micro Motion",
+            "SensyMaster",
+            "Totalflow"
+          ],
+          "answer": 1,
+          "why": "Micro Motion is the best-known Coriolis brand, so expect it as the incumbent."
+        },
+        {
+          "q": "Which ABB features make a strong value story on Coriolis?",
+          "options": [
+            "FillMass, DensiMass and VeriMass",
+            "Battery power and solar",
+            "Laser level",
+            "Tri-clamp only"
+          ],
+          "answer": 0,
+          "why": "Built-in filling, concentration and verification can replace extra devices and work."
+        },
+        {
+          "q": "The spec says 'Brand X or equal.' What do you do?",
+          "options": [
+            "Give up",
+            "Quote Brand X",
+            "Ask the engineer which features matter, and show how ABB meets them",
+            "Ignore the spec"
+          ],
+          "answer": 2,
+          "why": "'Or equal' is an invitation to show equivalence on the features that matter."
+        },
+        {
+          "q": "Which question can open a Coriolis conversation?",
+          "options": [
+            "What's your favorite color?",
+            "How many parking spaces do you have?",
+            "Do you like your current rep?",
+            "How much product do you give away per batch?"
+          ],
+          "answer": 3,
+          "why": "Giveaway is real money. Better accuracy pays for the meter."
+        }
+      ]
+    },
+    {
+      "id": "l-bc-vortex",
+      "courseId": "c-abb-battle",
+      "title": "Battle card: vortex and swirl",
+      "order": 3,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Who you'll run into: Emerson Rosemount 8800 vortex, Endress+Hauser Prowirl, Yokogawa digitalYEWFLO, Krohne Optiswirl.\nABB's unique card is SwirlMaster: about 3 diameters in and 1 out after an elbow or reducer. Many competitors' vortex meters need far more straight pipe.\nRetrofit win: when there's no room for a long straight run, SwirlMaster can go in without re-piping. Re-piping cost often dwarfs the meter price.\nSteam win: FSV450 and FSS450 calculate steam mass and energy internally, so customers can skip a separate flow computer.\nQuestions to ask: Where exactly will it go? How much straight pipe is there? Are you measuring steam for billing or energy savings?\nWalk the line with the customer if you can. Seeing the piping often reveals the straight-run problem that ABB solves.\nDon't promise straight-run numbers from memory. Check the installation guide or ABB for the exact requirement for that layout.",
+      "quiz": [
+        {
+          "q": "What's ABB's strongest card against other vortex meters?",
+          "options": [
+            "SwirlMaster's very short straight-run requirement",
+            "Battery power",
+            "Hygienic design",
+            "Laser measurement"
+          ],
+          "answer": 0,
+          "why": "SwirlMaster can go where long straight runs aren't available."
+        },
+        {
+          "q": "Why can SwirlMaster win even if the meter costs more?",
+          "options": [
+            "It's lighter to ship",
+            "It avoids the cost of re-piping for straight run",
+            "It needs no wiring",
+            "It's a different color"
+          ],
+          "answer": 1,
+          "why": "Re-piping labor and downtime can cost more than the meter."
+        },
+        {
+          "q": "A customer wants steam energy for department billing without a separate flow computer. Lead with:",
+          "options": [
+            "AquaMaster",
+            "FCH400",
+            "FMT430",
+            "FSV450 or FSS450"
+          ],
+          "answer": 3,
+          "why": "The 450 versions calculate steam mass and energy internally."
+        },
+        {
+          "q": "Where do you get the exact straight-run requirement for a layout?",
+          "options": [
+            "From memory",
+            "From the competitor",
+            "From the ABB installation guide or ABB support",
+            "From the customer's guess"
+          ],
+          "answer": 2,
+          "why": "Always check the official installation requirements."
+        }
+      ]
+    },
+    {
+      "id": "l-bc-objections",
+      "courseId": "c-abb-battle",
+      "title": "Handling common objections",
+      "order": 4,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "'We're a [competitor] plant.' Respect it. Ask what they'd change if they could. Offer ABB for one tough application as a trial, not a full switch.\n'Your price is higher.' Ask 'compared to what?' Then compare total cost: installation, straight run, extra devices, maintenance, downtime and lead time.\n'We've never used ABB.' Point to ABB's size and history in flow, and offer references, a demo unit or a site visit with the ABB rep.\n'Lead time is too long.' Check stock and quick-ship models first. Never guess. If it's long, offer a plan: partial ship, temporary solution or alternate model.\n'Our engineer specified another brand.' Ask if the spec allows 'or equal.' Get the engineer the data that shows ABB meets the requirements.\n'Send me a quote and I'll look at it.' Before you hang up, confirm the application details, the decision date and who else is involved.\nUse the formula: listen fully, repeat the concern back, ask a question, then answer with one clear point.\nNever trash a competitor. It makes the customer defend their past choice.",
+      "quiz": [
+        {
+          "q": "'Your price is higher.' Best first response?",
+          "options": [
+            "Drop the price 20%",
+            "Say 'no it isn't'",
+            "Ask 'compared to what?' and look at total cost",
+            "Hang up"
+          ],
+          "answer": 2,
+          "why": "Understand what they're comparing, then show total cost of ownership."
+        },
+        {
+          "q": "'We're an Emerson plant.' Good approach?",
+          "options": [
+            "Tell them Emerson is bad",
+            "Offer ABB on one tough application as a trial",
+            "Refuse to quote",
+            "Insist they switch everything"
+          ],
+          "answer": 1,
+          "why": "A small trial on a problem application is a realistic first win."
+        },
+        {
+          "q": "What's the objection-handling formula from this lesson?",
+          "options": [
+            "Listen, repeat it back, ask a question, answer with one clear point",
+            "Interrupt, argue, discount",
+            "Agree with everything",
+            "Send a brochure"
+          ],
+          "answer": 0,
+          "why": "Listening and clarifying first makes your answer land."
+        },
+        {
+          "q": "Why should you never trash a competitor?",
+          "options": [
+            "It's slow",
+            "It costs money",
+            "It's against ABB policy only",
+            "It makes the customer defend their past choice"
+          ],
+          "answer": 3,
+          "why": "Knocking what they bought makes them dig in."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-pt",
+      "courseId": "c-abb-cross",
+      "title": "ABB pressure and temperature",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "ABB 266 pressure transmitters: gauge, absolute, differential and multivariable models, with base accuracy from about ±0.025% to ±0.06%.\n'Through the glass' setup lets technicians configure the 266 without opening the cover, even in hazardous areas.\n266 multivariable transmitters measure differential pressure, static pressure and temperature at once. That's ideal for DP flow (orifice, wedge) and compensated gas or steam flow.\n266 models are available with remote diaphragm seals for hot, dirty, sanitary or corrosive service, and with NACE options for sour service.\nABB temperature transmitters: TTH300 (head mount) and TTF300 (field mount) accept RTDs or thermocouples, with two inputs for sensor backup and drift monitoring.\nSIL-capable options exist for safety systems on both pressure and temperature.\nCross-sell: every flowmeter, pump and tank usually has pressure and temperature points nearby. Ask about them.",
+      "quiz": [
+        {
+          "q": "What's special about ABB 266 'through the glass' setup?",
+          "options": [
+            "It only works indoors",
+            "Techs can configure it without opening the cover",
+            "It needs a laptop",
+            "It's for level only"
+          ],
+          "answer": 1,
+          "why": "Setup through the glass means no cover removal, even in hazardous areas."
+        },
+        {
+          "q": "Which 266 type helps with DP flow by measuring DP, static pressure and temperature at once?",
+          "options": [
+            "Multivariable",
+            "Gauge",
+            "Absolute",
+            "Hygienic"
+          ],
+          "answer": 0,
+          "why": "Multivariable transmitters measure all three for compensated flow."
+        },
+        {
+          "q": "Why do TTH300/TTF300 have two sensor inputs?",
+          "options": [
+            "To read two tanks",
+            "For more colors",
+            "To measure flow",
+            "Backup if one sensor fails, and drift monitoring"
+          ],
+          "answer": 3,
+          "why": "Dual inputs give redundancy and help catch sensor drift."
+        },
+        {
+          "q": "For a hot, sticky or corrosive process, what option protects a 266 transmitter?",
+          "options": [
+            "A larger display",
+            "A remote diaphragm seal",
+            "A longer cable",
+            "A wafer body"
+          ],
+          "answer": 1,
+          "why": "Diaphragm seals isolate the transmitter from harsh process fluids."
+        }
+      ]
+    },
+    {
+      "id": "l-abb-level-valve",
+      "courseId": "c-abb-cross",
+      "title": "ABB level and positioners",
+      "order": 2,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Guided wave radar (LWT series): continuous level and interface on liquids and solids. ABB's LevelExpert software reduces manual setup like echo mapping.\nLLT100 laser level: non-contact level for harsh environments and solids like aggregates, grain and sumps, where a narrow beam helps.\nMagnetostrictive level (LMT100/LMT200): very precise level and interface measurement for tank gauging and inventory.\nPositioners: TZIDC is ABB's digital positioner for pneumatic linear and rotary valves, with auto-adjust setup and HART. EDP300 is another digital option.\nA positioner makes a control valve go exactly where the control system tells it. Old pneumatic positioners are a common upgrade.\nCross-sell: tanks feeding a flowmeter need level. Control valves after a flowmeter need positioners.\nAsk: tank height, contents (liquid, foam, solids, interface), temperature and pressure, and hazardous area. For valves: actuator type, signal and communication.",
+      "quiz": [
+        {
+          "q": "Which ABB level technology fits precise tank inventory and interface measurement?",
+          "options": [
+            "Magnetostrictive (LMT)",
+            "TZIDC",
+            "AquaMaster",
+            "266 gauge transmitter"
+          ],
+          "answer": 0,
+          "why": "Magnetostrictive transmitters are very precise for level and interface."
+        },
+        {
+          "q": "A quarry needs non-contact level on stone in a bin. Which ABB product fits?",
+          "options": [
+            "FCH400",
+            "LLT100 laser level",
+            "TTH300",
+            "AquaMaster"
+          ],
+          "answer": 1,
+          "why": "The laser's narrow beam works well on solids in harsh conditions."
+        },
+        {
+          "q": "What does a positioner do?",
+          "options": [
+            "Measures flow",
+            "Measures temperature",
+            "Moves a control valve to exactly the position the control system asks for",
+            "Logs data"
+          ],
+          "answer": 2,
+          "why": "It makes the valve follow the control signal precisely."
+        },
+        {
+          "q": "Which is ABB's digital valve positioner?",
+          "options": [
+            "FMT450",
+            "FSS430",
+            "LWT300",
+            "TZIDC"
+          ],
+          "answer": 3,
+          "why": "TZIDC is ABB's digital positioner for pneumatic valves."
+        }
+      ]
+    },
+    {
+      "id": "l-cross-sell",
+      "courseId": "c-abb-cross",
+      "title": "What else to quote with a flowmeter",
+      "order": 3,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Every flowmeter sits in a system. Ask about the rest of it before you send the quote.\nPressure: a 266 transmitter on the line (pump discharge, header pressure, or for compensation on gas and steam).\nTemperature: a TTH300 or TTF300 with a sensor and thermowell, especially for steam, gas or energy calculations.\nControl: if the flow is controlled, there's a control valve. Ask about the positioner (TZIDC).\nLevel: if the flow fills or drains a tank, ask how they measure the tank level.\nInstallation items: flanges, gaskets, grounding rings (mags), cable, mounting kits, and calibration certificates.\nServices: startup help, verification, and spare electronics for critical meters.\nEasy question to use every time: 'What else is on that line that's giving you trouble?'",
+      "quiz": [
+        {
+          "q": "A customer is buying a steam vortex meter for energy. What else should you ask about?",
+          "options": [
+            "A tri-clamp gasket",
+            "A pressure transmitter and temperature sensor for compensation",
+            "A laser level",
+            "Nothing"
+          ],
+          "answer": 1,
+          "why": "Steam energy needs good pressure and temperature data."
+        },
+        {
+          "q": "A customer is quoting a mag on a line that feeds a control valve. What do you ask about?",
+          "options": [
+            "The valve's positioner",
+            "Their parking lot",
+            "A thermal meter",
+            "A hygienic Coriolis"
+          ],
+          "answer": 0,
+          "why": "A controlled flow means a control valve, and often a positioner upgrade."
+        },
+        {
+          "q": "Which is an installation item for mag meters?",
+          "options": [
+            "Snubber",
+            "Siphon",
+            "Grounding rings",
+            "Thermowell"
+          ],
+          "answer": 2,
+          "why": "Grounding rings help mags read accurately on lined or plastic pipe."
+        },
+        {
+          "q": "What's the easy cross-sell question to use every time?",
+          "options": [
+            "Are you sure?",
+            "Can I go now?",
+            "How's the weather?",
+            "What else is on that line that's giving you trouble?"
+          ],
+          "answer": 3,
+          "why": "It opens the door to related products without a hard sell."
+        }
+      ]
+    },
+    {
+      "id": "l-units",
+      "courseId": "c-fundamentals",
+      "title": "Units and conversions you'll hear every day",
+      "order": 1,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "Pressure: psi (pounds per square inch) is most common in the US. 1 bar is about 14.5 psi. 1 psi is about 27.7 inches of water column (in. w.c.).\npsig is pressure above atmosphere (what a normal gauge reads). psia is absolute pressure, measured from a perfect vacuum. psid is differential pressure between two points.\nLow pressures (HVAC, filters, draft) are often in inches of water column. Vacuum is often in inches of mercury (in. Hg).\nTemperature: °F = (°C × 1.8) + 32. Water boils at 212°F (100°C) at sea level.\nLiquid flow: gpm (gallons per minute) is common. Gas flow: SCFM (standard cubic feet per minute). Steam: lb/hr (pounds per hour).\nMass flow (lb/hr, kg/h) doesn't change with pressure and temperature. Volume flow does, which is why gas and steam often need compensation.\nPipe sizes are nominal: a '2-inch' pipe isn't exactly 2 inches inside. Always ask for line size and schedule if it matters.\nAlways confirm units with the customer. A psi vs bar mix-up can mean a gauge that pegs or reads in the bottom 5% of the dial.",
+      "quiz": [
+        {
+          "q": "About how many psi is 1 bar?",
+          "options": [
+            "1 psi",
+            "14.5 psi",
+            "100 psi",
+            "27.7 psi"
+          ],
+          "answer": 1,
+          "why": "1 bar is about 14.5 psi."
+        },
+        {
+          "q": "What's the difference between psig and psia?",
+          "options": [
+            "psig is above atmosphere; psia is from a perfect vacuum",
+            "They're the same",
+            "psia is only for water",
+            "psig is for temperature"
+          ],
+          "answer": 0,
+          "why": "Gauge pressure is relative to atmosphere; absolute starts at zero vacuum."
+        },
+        {
+          "q": "Steam flow is most often given in:",
+          "options": [
+            "gpm",
+            "in. w.c.",
+            "lb/hr",
+            "°F"
+          ],
+          "answer": 2,
+          "why": "Steam is usually measured in pounds per hour."
+        },
+        {
+          "q": "Why do gas and steam flowmeters often need pressure and temperature compensation?",
+          "options": [
+            "To change the display",
+            "Because they're conductive",
+            "It's required by law",
+            "Gas and steam volume changes with pressure and temperature"
+          ],
+          "answer": 3,
+          "why": "Compensation converts actual volume to mass or standard volume."
+        }
+      ]
+    },
+    {
+      "id": "l-signals",
+      "courseId": "c-fundamentals",
+      "title": "4-20 mA, HART and digital communication",
+      "order": 2,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "4-20 mA is the standard analog signal: 4 mA = 0% of range, 20 mA = 100%. 12 mA = 50%.\nStarting at 4 instead of 0 is a 'live zero.' If the signal drops to 0 mA, the control system knows the wire is broken, not that the reading is zero.\nTwo-wire (loop-powered) transmitters get their power from the same two wires that carry the signal.\nHART adds a digital signal on top of 4-20 mA. It lets technicians configure the device and read diagnostics without new wiring.\nFieldbus protocols (FOUNDATION Fieldbus, PROFIBUS PA) carry fully digital data for many devices on one cable.\nModbus is common for connecting to PLCs, SCADA and building systems.\nEthernet-APL is the newest option: Ethernet all the way to field devices, including hazardous areas. Some new ABB flowmeters support it.\nAlways ask what the control system needs: 4-20 mA only, HART, a fieldbus, Modbus, pulse outputs, or Ethernet-APL. The wrong output means a return.",
+      "quiz": [
+        {
+          "q": "A 0-100 psi transmitter outputs 12 mA. What's the pressure?",
+          "options": [
+            "25 psi",
+            "50 psi",
+            "75 psi",
+            "12 psi"
+          ],
+          "answer": 1,
+          "why": "12 mA is halfway between 4 and 20, so it's 50% of range."
+        },
+        {
+          "q": "Why does the signal start at 4 mA instead of 0?",
+          "options": [
+            "So a broken wire (0 mA) can be told apart from a zero reading",
+            "It's cheaper",
+            "It's brighter",
+            "For HART only"
+          ],
+          "answer": 0,
+          "why": "That's the 'live zero.'"
+        },
+        {
+          "q": "What does HART add to a 4-20 mA signal?",
+          "options": [
+            "More power",
+            "A second pair of wires",
+            "A digital signal for setup and diagnostics on the same wires",
+            "Wireless only"
+          ],
+          "answer": 2,
+          "why": "HART rides on top of the analog signal."
+        },
+        {
+          "q": "What should you always confirm before quoting a transmitter or flowmeter?",
+          "options": [
+            "The paint color",
+            "The customer's favorite brand",
+            "The weather",
+            "What output or communication the control system needs"
+          ],
+          "answer": 3,
+          "why": "The wrong output or protocol means the device won't connect."
+        }
+      ]
+    },
+    {
+      "id": "l-hazloc",
+      "courseId": "c-fundamentals",
+      "title": "Hazardous areas in plain English",
+      "order": 3,
+      "minutes": 10,
+      "passScore": 80,
+      "keyPoints": "A hazardous (classified) area is where flammable gas, vapor, dust or fibers could ignite. Electronics there need special protection.\nIn the US system (NEC): Class I = gases and vapors, Class II = combustible dusts, Class III = fibers.\nDivision 1 = the hazard can be present during normal operation. Division 2 = only present under abnormal conditions (like a leak).\nThe international system uses Zones: Zone 0, 1 and 2 for gas, from most to least likely.\nCommon protection methods: explosion-proof (contains an explosion inside the housing), intrinsically safe (limits energy so a spark can't ignite), and purged/pressurized enclosures.\nThe device must carry the right approval (for example FM, CSA, ATEX or IECEx) for the area it's going in.\nNever guess. Ask: 'Is this a classified area? What class, division or zone?' Put it on the quote.\nSelling the wrong approval is a safety issue, not just a return.",
+      "quiz": [
+        {
+          "q": "Class I areas involve:",
+          "options": [
+            "Dusts",
+            "Gases and vapors",
+            "Fibers",
+            "Water"
+          ],
+          "answer": 1,
+          "why": "Class I is flammable gases and vapors."
+        },
+        {
+          "q": "Division 1 means the hazard:",
+          "options": [
+            "Can be present during normal operation",
+            "Is never present",
+            "Only exists outdoors",
+            "Is only dust"
+          ],
+          "answer": 0,
+          "why": "Division 1 is the higher-risk classification."
+        },
+        {
+          "q": "What does 'intrinsically safe' mean?",
+          "options": [
+            "The housing is very thick",
+            "It's waterproof",
+            "Energy is limited so it can't create an igniting spark",
+            "It's painted red"
+          ],
+          "answer": 2,
+          "why": "Intrinsic safety limits electrical energy."
+        },
+        {
+          "q": "What should go on the quote for a device in a classified area?",
+          "options": [
+            "Nothing extra",
+            "The paint color",
+            "The customer's phone number",
+            "The required class/division or zone and the approval"
+          ],
+          "answer": 3,
+          "why": "Document the area classification and the approval being quoted."
+        }
+      ]
+    },
+    {
+      "id": "l-site-visit",
+      "courseId": "c-safety",
+      "title": "PPE and site visit basics",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Every plant has its own rules. Ask your contact before the visit what PPE and training are required.\nTypical PPE: hard hat, safety glasses, steel- or composite-toe boots, and hearing protection in loud areas. Keep a set in your car.\nSome sites need more: flame-resistant (FR) clothing at refineries and chemical plants, H2S monitors in oil and gas, hairnets and no jewelry in food plants.\nSign in, watch the safety orientation if there is one, and stay with your escort.\nDon't touch, open or adjust equipment. You're a visitor, even if you know the product.\nFollow walkway markings, obey signs, and know where the exits and muster point are.\nAsk before taking photos. Many plants restrict cameras.\nIf something looks unsafe, stop and tell your escort. Being safe is part of being professional.",
+      "quiz": [
+        {
+          "q": "When should you find out what PPE a plant requires?",
+          "options": [
+            "Before the visit",
+            "After you arrive",
+            "Never",
+            "Only if someone yells"
+          ],
+          "answer": 0,
+          "why": "Ask ahead so you show up ready."
+        },
+        {
+          "q": "A customer asks you to adjust a valve during a walkthrough. What do you do?",
+          "options": [
+            "Adjust it",
+            "Politely decline and let their people do it",
+            "Take it apart",
+            "Ignore them"
+          ],
+          "answer": 1,
+          "why": "Visitors don't operate equipment. Their staff should."
+        },
+        {
+          "q": "Which site often requires flame-resistant (FR) clothing?",
+          "options": [
+            "An office park",
+            "A school",
+            "A refinery",
+            "A library"
+          ],
+          "answer": 2,
+          "why": "Refineries and many chemical plants require FR clothing."
+        },
+        {
+          "q": "What should you do before taking photos in a plant?",
+          "options": [
+            "Nothing",
+            "Turn off the flash",
+            "Take them quickly",
+            "Ask permission"
+          ],
+          "answer": 3,
+          "why": "Many plants restrict photography."
+        }
+      ]
+    },
+    {
+      "id": "l-loto",
+      "courseId": "c-safety",
+      "title": "Lockout/tagout awareness",
+      "order": 2,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "Lockout/tagout (LOTO) is how plants make sure equipment can't start or release energy while someone works on it.\nEnergy includes electricity, pressure in lines (liquid, gas, steam), stored spring energy, heat and chemicals.\nOnly trained, authorized workers apply locks and tags. As a salesperson, you're usually an 'affected' or visiting person, not an authorized one.\nNever remove, bypass or operate anything with a lock or tag on it. Never.\nInstruments are often removed from live lines. That's a job for the customer's trained techs, with the line isolated and depressurized.\nWhen you recommend a product, think about safe installation: isolation valves, block-and-bleed manifolds and siphons make future maintenance safer.\nIn the US, LOTO is covered by OSHA's standard on the control of hazardous energy.",
+      "quiz": [
+        {
+          "q": "What is lockout/tagout for?",
+          "options": [
+            "Stopping equipment from starting or releasing energy during work",
+            "Locking the front door",
+            "Tracking inventory",
+            "Labeling products for shipping"
+          ],
+          "answer": 0,
+          "why": "LOTO controls hazardous energy during service."
+        },
+        {
+          "q": "You see a lock on a valve handle. What do you do?",
+          "options": [
+            "Remove it if you need to",
+            "Turn the valve gently",
+            "Leave it alone",
+            "Cut it off"
+          ],
+          "answer": 2,
+          "why": "Never remove or operate anything that's locked or tagged out."
+        },
+        {
+          "q": "Which of these is a form of hazardous energy?",
+          "options": [
+            "Pressure in a steam line",
+            "A brochure",
+            "An email",
+            "A parking sign"
+          ],
+          "answer": 0,
+          "why": "Pressurized lines store a lot of energy."
+        },
+        {
+          "q": "Which product suggestion makes future instrument maintenance safer?",
+          "options": [
+            "A brighter display",
+            "A longer warranty",
+            "A cheaper gauge",
+            "An isolation valve or block-and-bleed manifold"
+          ],
+          "answer": 3,
+          "why": "Isolation lets techs safely remove instruments."
+        }
+      ]
+    },
+    {
+      "id": "l-model-codes",
+      "courseId": "c-quoting",
+      "title": "Reading a model code",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "A model code (order code) is a string where each position or group selects an option: size, material, connection, range, output, approvals and more.\nFlowmeter and transmitter codes are long because they have many options. Each character matters.\nUse the manufacturer's datasheet 'ordering information' section or online configurator to build or decode a code. Don't guess.\nDecode it left to right and confirm each option against the customer's application data.\nWatch the easy-to-miss options: process connection size and type, wetted materials, hazardous area approval, output/communication, calibration certificate.\nWhen replacing an existing device, get the full model code from its nameplate (a photo is best). The serial number helps the manufacturer look it up.\nIf a code is obsolete, the manufacturer or rep can usually give a current replacement code. Confirm the fit before quoting.",
+      "quiz": [
+        {
+          "q": "What does each position or group in a model code do?",
+          "options": [
+            "Selects an option like size, material or output",
+            "Nothing, it's random",
+            "Sets the price only",
+            "Identifies the salesperson"
+          ],
+          "answer": 0,
+          "why": "Each part of the code picks a specific option."
+        },
+        {
+          "q": "Best way to get the model code for a replacement?",
+          "options": [
+            "Guess from memory",
+            "Ask for a photo of the nameplate",
+            "Use a competitor's code",
+            "Pick the cheapest"
+          ],
+          "answer": 1,
+          "why": "The nameplate has the exact code and serial number."
+        },
+        {
+          "q": "Where do you go to build or decode a code?",
+          "options": [
+            "A social media post",
+            "The customer's guess",
+            "The datasheet ordering information or the manufacturer's configurator",
+            "Last month's invoice for a different product"
+          ],
+          "answer": 2,
+          "why": "Use the official ordering information."
+        },
+        {
+          "q": "Which option is easy to miss and causes returns?",
+          "options": [
+            "The box color",
+            "Hazardous area approval",
+            "The font",
+            "The logo"
+          ],
+          "answer": 1,
+          "why": "Approvals, connections, materials and outputs are common misses."
+        }
+      ]
+    },
+    {
+      "id": "l-good-quote",
+      "courseId": "c-quoting",
+      "title": "Building a clean quote",
+      "order": 2,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "A good quote lets the customer say yes without calling you back with questions.\nInclude: the full model code and a plain-English description, quantity, unit price, extended price, lead time, freight terms, payment terms and how long the quote is valid.\nRestate the key application data you quoted to (fluid, pressure, temperature, size, area classification). It protects you and the customer if something was wrong.\nList what's included and what's not: accessories, certificates, startup or calibration.\nOffer options when it helps: good/better/best, or a quick-ship alternate.\nDouble-check before sending: units, connection sizes, materials, approvals and quantities.\nPut a follow-up date on your calendar or in the CRM the moment you send it.",
+      "quiz": [
+        {
+          "q": "What's the goal of a good quote?",
+          "options": [
+            "Make it as short as possible",
+            "Let the customer say yes without needing to call back with questions",
+            "Hide the lead time",
+            "Show the most products"
+          ],
+          "answer": 1,
+          "why": "Clear, complete quotes get approved faster."
+        },
+        {
+          "q": "Why restate the application data on the quote?",
+          "options": [
+            "It looks longer",
+            "It's required by law",
+            "It protects both sides if something was wrong",
+            "To fill space"
+          ],
+          "answer": 2,
+          "why": "Documenting what you quoted to avoids misunderstandings."
+        },
+        {
+          "q": "Which of these belongs on every quote?",
+          "options": [
+            "Your home address",
+            "Lead time and how long the quote is valid",
+            "Competitor prices",
+            "Your sales commission"
+          ],
+          "answer": 1,
+          "why": "Lead time and validity are basic quote terms."
+        },
+        {
+          "q": "What should you do the moment you send a quote?",
+          "options": [
+            "Forget about it",
+            "Call the customer immediately",
+            "Set a follow-up date",
+            "Send it again"
+          ],
+          "answer": 2,
+          "why": "Schedule the follow-up right away so it doesn't slip."
+        }
+      ]
+    },
+    {
+      "id": "l-order-mistakes",
+      "courseId": "c-quoting",
+      "title": "Common ordering mistakes",
+      "order": 3,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "Wrong process connection: NPT size, male vs female, flange size and class, or tri-clamp size.\nWrong range: normal pressure should sit in the middle of the range, not near the top or bottom.\nWrong materials for the fluid: brass on something corrosive, or the wrong liner on a mag.\nMissing approvals: hazardous area, sanitary (3-A), NACE or oxygen cleaning.\nUnit mix-ups: psi vs bar, °F vs °C, gpm vs lb/hr.\nWrong output: 4-20 mA when they needed HART or Modbus.\nForgotten accessories: snubbers, siphons, manifolds, grounding rings, mounting kits.\nThe fix for almost all of these: confirm the application data in writing before ordering.",
+      "quiz": [
+        {
+          "q": "A 0-100 psi gauge on a line that runs 95 psi is an example of:",
+          "options": [
+            "A good range choice",
+            "A wrong range: it's too close to the top",
+            "Correct units",
+            "A material mistake"
+          ],
+          "answer": 1,
+          "why": "Normal pressure should sit near mid-scale."
+        },
+        {
+          "q": "Which is a unit mix-up?",
+          "options": [
+            "Quoting bar when the customer said psi",
+            "Quoting stainless instead of brass",
+            "Quoting 2 instead of 3",
+            "Quoting HART"
+          ],
+          "answer": 0,
+          "why": "psi vs bar is a classic mix-up."
+        },
+        {
+          "q": "What prevents most ordering mistakes?",
+          "options": [
+            "Ordering faster",
+            "Using the cheapest part",
+            "Confirming the application data in writing before ordering",
+            "Skipping the model code"
+          ],
+          "answer": 2,
+          "why": "Written confirmation catches mistakes before they ship."
+        },
+        {
+          "q": "Which is a commonly forgotten accessory?",
+          "options": [
+            "Snubber or siphon",
+            "Business card",
+            "Brochure",
+            "Catalog"
+          ],
+          "answer": 0,
+          "why": "Accessories like snubbers and siphons are easy to forget."
+        }
+      ]
+    },
+    {
+      "id": "l-returns",
+      "courseId": "c-quoting",
+      "title": "Returns, RMAs and warranty",
+      "order": 4,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "Never let a customer ship something back without a Return Material Authorization (RMA) number. Unauthorized returns get lost or refused.\nGet the details first: model code, serial number, PO and invoice numbers, and the reason for the return.\nAnything that touched process fluid needs to be cleaned and usually needs a decontamination statement or safety data before the manufacturer will accept it.\nKnow the difference: a warranty claim is a product defect. A misapplication (wrong range, wrong material) usually isn't covered.\nRestocking fees often apply to standard items returned for credit. Custom or configured items are often not returnable.\nBe honest about what happened and what the options are. A fair, fast return builds trust.\nLog the return and the root cause. If it was a quoting mistake, learn from it.",
+      "quiz": [
+        {
+          "q": "What must a customer have before shipping a return?",
+          "options": [
+            "An RMA number",
+            "A new PO only",
+            "Nothing",
+            "A photo of the box"
+          ],
+          "answer": 0,
+          "why": "No RMA, no return."
+        },
+        {
+          "q": "A gauge failed because it was quoted with the wrong range. Is that usually a warranty claim?",
+          "options": [
+            "Yes, always",
+            "No, that's a misapplication, not a product defect",
+            "Only on Fridays",
+            "Only for ABB"
+          ],
+          "answer": 1,
+          "why": "Warranty covers defects, not application mistakes."
+        },
+        {
+          "q": "A used flowmeter that handled chemicals is being returned. What's usually required?",
+          "options": [
+            "Nothing",
+            "Bubble wrap only",
+            "Cleaning and a decontamination statement",
+            "A handwritten note"
+          ],
+          "answer": 2,
+          "why": "Manufacturers need to know it's safe to handle."
+        },
+        {
+          "q": "Why log the root cause of a return?",
+          "options": [
+            "To blame someone",
+            "It's not needed",
+            "To slow things down",
+            "To learn and avoid repeat mistakes"
+          ],
+          "answer": 3,
+          "why": "Root cause tracking prevents the next return."
+        }
+      ]
+    },
+    {
+      "id": "l-upset",
+      "courseId": "c-service",
+      "title": "Calming an upset customer",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Upset customers usually want two things: to be heard, and to know what happens next.\nUse LAST: Listen, Apologize, Solve, Thank.\nListen without interrupting. Let them finish. Take notes.\nApologize for the situation, even if it wasn't your fault: 'I'm sorry this happened. Let's fix it.'\nSolve: say exactly what you'll do and when you'll get back to them. Then do it, early if you can.\nThank them for telling you. Many unhappy customers just leave without saying anything.\nDon't argue, blame other departments or the manufacturer, or make promises you can't keep.\nIf they're abusive or it's beyond you, stay calm and bring in your manager.",
+      "quiz": [
+        {
+          "q": "What does LAST stand for?",
+          "options": [
+            "Listen, Apologize, Solve, Thank",
+            "Log, Ask, Send, Track",
+            "Leave, Argue, Stop, Talk",
+            "Look, Answer, Ship, Test"
+          ],
+          "answer": 0,
+          "why": "Listen, Apologize, Solve, Thank."
+        },
+        {
+          "q": "What should you do while an upset customer is explaining the problem?",
+          "options": [
+            "Interrupt with a fix",
+            "Let them finish and take notes",
+            "Put them on hold",
+            "Correct their facts"
+          ],
+          "answer": 1,
+          "why": "Letting them finish shows you're listening."
+        },
+        {
+          "q": "Which is a good 'Solve' statement?",
+          "options": [
+            "We'll see",
+            "It's not my department",
+            "I'll call ABB and update you by 3 pm today",
+            "Someone will get back to you"
+          ],
+          "answer": 2,
+          "why": "Specific action and a specific time builds trust."
+        },
+        {
+          "q": "What should you avoid?",
+          "options": [
+            "Thanking them",
+            "Taking notes",
+            "Following up",
+            "Blaming another department"
+          ],
+          "answer": 3,
+          "why": "Blaming others makes us look disorganized."
+        }
+      ]
+    },
+    {
+      "id": "l-late-orders",
+      "courseId": "c-service",
+      "title": "Keeping customers informed on late orders",
+      "order": 2,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "Bad news doesn't get better with age. Tell the customer as soon as you know an order is late.\nCall for important or critical orders. Email is fine for small ones, but a call shows you care.\nGive the facts: what's late, the new expected date, and why (briefly).\nOffer options: partial shipment, an in-stock alternate, expediting (and any cost), or a temporary fix.\nTell them when you'll update them next, even if nothing changes. Then do it.\nAsk how the delay affects them. If a plant is down, escalate right away.\nNote every update in the CRM so anyone on the team can answer if the customer calls.",
+      "quiz": [
+        {
+          "q": "When should you tell a customer their order is late?",
+          "options": [
+            "As soon as you know",
+            "Only if they ask",
+            "The day it was due",
+            "Never"
+          ],
+          "answer": 0,
+          "why": "Early warning lets the customer plan."
+        },
+        {
+          "q": "Which is a helpful option for a late order?",
+          "options": [
+            "Saying nothing",
+            "Offering a partial shipment or an in-stock alternate",
+            "Canceling the order",
+            "Raising the price"
+          ],
+          "answer": 1,
+          "why": "Options give the customer control."
+        },
+        {
+          "q": "A customer's plant is down waiting for the part. What do you do?",
+          "options": [
+            "Wait for the normal date",
+            "Send an email next week",
+            "Escalate right away and look for any faster option",
+            "Tell them to call the manufacturer"
+          ],
+          "answer": 2,
+          "why": "Plant-down situations need urgent action."
+        },
+        {
+          "q": "Why log updates in the CRM?",
+          "options": [
+            "It's busywork",
+            "For your eyes only",
+            "To track your hours",
+            "So anyone on the team can answer if the customer calls"
+          ],
+          "answer": 3,
+          "why": "Shared notes keep the whole team informed."
+        }
+      ]
+    },
+    {
+      "id": "l-crm-log",
+      "courseId": "c-crm",
+      "title": "Logging your work and following up on quotes",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "If it's not in the CRM, it didn't happen. Log calls, visits, quotes and next steps the same day.\nGood notes are short and useful: who you talked to, what they need, the application details, and the next step with a date.\nEvery quote gets a follow-up task the day you send it.\nA simple follow-up rhythm: about 2 days after sending (did you get it, any questions?), about 1 week (where does it stand?), then about 2 weeks (decision timing?).\nEvery follow-up should add something: a question answered, a lead-time update, an option, or a relevant case study. Not just 'checking in.'\nIf you lose, ask why (price, lead time, brand, spec) and log it. Lost-quote reasons help the whole team.\nKeep contacts current: titles change, people leave. Note who influences the decision, not just who buys.",
+      "quiz": [
+        {
+          "q": "When should you log a customer call?",
+          "options": [
+            "The same day",
+            "At the end of the month",
+            "Only if it led to an order",
+            "Never"
+          ],
+          "answer": 0,
+          "why": "Same-day notes are accurate and useful."
+        },
+        {
+          "q": "What makes a follow-up worth the customer's time?",
+          "options": [
+            "Saying 'just checking in'",
+            "Adding something useful like an answer, update or option",
+            "Calling five times a day",
+            "Sending the same quote again"
+          ],
+          "answer": 1,
+          "why": "Bring value every time you reach out."
+        },
+        {
+          "q": "Why log the reason you lost a quote?",
+          "options": [
+            "To complain",
+            "It's not needed",
+            "It helps the team spot patterns in price, lead time or brand",
+            "To delete the account"
+          ],
+          "answer": 2,
+          "why": "Loss reasons guide pricing, stocking and strategy."
+        },
+        {
+          "q": "When should a quote get its follow-up task?",
+          "options": [
+            "Next month",
+            "Only if the customer asks",
+            "After it expires",
+            "The day you send it"
+          ],
+          "answer": 3,
+          "why": "Schedule follow-up immediately."
+        }
+      ]
+    },
+    {
+      "id": "l-forecast",
+      "courseId": "c-crm",
+      "title": "Forecasting honestly",
+      "order": 2,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "A forecast predicts what will actually close and when. Management uses it to plan stock, staffing and targets.\nUse stages: identified need, quoted, customer reviewing, verbal yes, PO received.\nEach stage has a rough likelihood. A quote just sent is far less certain than a verbal yes with a PO date.\nAsk closing questions to move deals forward honestly: Who else is involved? When will you decide? What could stop this?\nUpdate close dates when they slip. A pipeline full of old dates isn't a forecast.\nBig deals deserve a plan: decision makers, competition, budget timing and next steps.\nAn honest forecast that's sometimes low beats an optimistic one that's always wrong.",
+      "quiz": [
+        {
+          "q": "What is a sales forecast for?",
+          "options": [
+            "Predicting what will actually close and when",
+            "Listing every customer",
+            "Tracking mileage",
+            "Showing off"
+          ],
+          "answer": 0,
+          "why": "Forecasts help the business plan."
+        },
+        {
+          "q": "Which stage is most likely to close?",
+          "options": [
+            "Identified need",
+            "Quote just sent",
+            "Verbal yes with a PO date",
+            "Customer hasn't replied in 3 months"
+          ],
+          "answer": 2,
+          "why": "A verbal yes with a PO date is the strongest signal."
+        },
+        {
+          "q": "A deal's close date has passed with no PO. What do you do?",
+          "options": [
+            "Leave it",
+            "Update the date based on what the customer says",
+            "Delete the customer",
+            "Mark it won"
+          ],
+          "answer": 1,
+          "why": "Keep dates honest and current."
+        },
+        {
+          "q": "Which question helps forecast accurately?",
+          "options": [
+            "Do you like our logo?",
+            "What's your favorite food?",
+            "Can I have a discount?",
+            "When will you decide, and what could stop this?"
+          ],
+          "answer": 3,
+          "why": "Knowing timing and obstacles makes the forecast real."
+        }
+      ]
+    },
+    {
+      "id": "l-ai-followups",
+      "courseId": "c-ai",
+      "title": "Using Claude to write follow-ups and emails",
+      "order": 1,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "AI assistants like Claude can draft emails in seconds: quote follow-ups, late-order updates, thank-you notes and meeting recaps.\nGive it context: who the customer is, what you quoted, what happened, and what you want them to do next.\nExample prompt: 'Write a short, friendly follow-up to Mike at the water plant about the 6 liquid-filled gauges I quoted Tuesday. Ask if he has questions and mention 2-week lead time.'\nTell it the tone and length: 'casual and under 100 words' or 'formal for a purchasing manager.'\nAlways read and edit before sending. Fix anything that isn't true or doesn't sound like you.\nUse it to rewrite, not just write: paste a rough draft and ask it to make it clearer or more polite.\nSave prompts that work well and reuse them.",
+      "quiz": [
+        {
+          "q": "What makes an AI-drafted email better?",
+          "options": [
+            "Giving it no details",
+            "Giving it context: who, what, and the next step you want",
+            "Using all capital letters",
+            "Asking for 1,000 words"
+          ],
+          "answer": 1,
+          "why": "Context gives the AI what it needs to write something useful."
+        },
+        {
+          "q": "What must you do before sending an AI-drafted email?",
+          "options": [
+            "Read and edit it",
+            "Send it immediately",
+            "Add more emojis",
+            "Forward it to everyone"
+          ],
+          "answer": 0,
+          "why": "You're responsible for what you send."
+        },
+        {
+          "q": "Which is a good way to use AI on your own writing?",
+          "options": [
+            "Delete your draft",
+            "Ask it to make your rough draft clearer or more polite",
+            "Let it reply to all customers automatically",
+            "Never use it"
+          ],
+          "answer": 1,
+          "why": "Rewriting your own draft keeps your voice and facts."
+        },
+        {
+          "q": "How do you control tone and length?",
+          "options": [
+            "You can't",
+            "Use more punctuation",
+            "Tell it, for example 'casual and under 100 words'",
+            "Send it twice"
+          ],
+          "answer": 2,
+          "why": "Just say what you want."
+        }
+      ]
+    },
+    {
+      "id": "l-ai-research",
+      "courseId": "c-ai",
+      "title": "Account research and datasheet summaries",
+      "order": 2,
+      "minutes": 8,
+      "passScore": 80,
+      "keyPoints": "Before a call, ask an AI to research the company's public information: what they make, their plants, recent news and likely instrument needs.\nExample prompt: 'I'm visiting a dairy plant tomorrow. What instrumentation do dairies typically use, and what questions should I ask about sanitary requirements?'\nAsk it to prepare discovery questions for a specific application, like steam flow or tank level.\nPaste or upload a datasheet and ask for a one-paragraph summary, the key specs, and the questions to ask a customer before quoting it.\nAsk it to explain a term you don't know in plain English, like 'turndown' or 'Ethernet-APL.'\nAI can be wrong or out of date. Check specs against the official datasheet before you put them on a quote.\nNever invent or guess specs because an AI said so. If it matters, verify it.",
+      "quiz": [
+        {
+          "q": "Which is a good pre-call use of AI?",
+          "options": [
+            "Guessing the customer's budget",
+            "Researching the company and preparing discovery questions",
+            "Writing the PO for them",
+            "Calling the customer for you"
+          ],
+          "answer": 1,
+          "why": "Prep makes your questions sharper."
+        },
+        {
+          "q": "An AI tells you a meter's accuracy spec. What do you do before quoting it?",
+          "options": [
+            "Check it against the official datasheet",
+            "Put it on the quote as-is",
+            "Round it up",
+            "Ask a competitor"
+          ],
+          "answer": 0,
+          "why": "AI can be wrong. Datasheets are the source of truth."
+        },
+        {
+          "q": "You upload a datasheet. What's a useful request?",
+          "options": [
+            "Translate it to emojis",
+            "Make it longer",
+            "Summarize key specs and list questions to ask before quoting",
+            "Delete it"
+          ],
+          "answer": 2,
+          "why": "Summaries plus questions make you faster and better prepared."
+        },
+        {
+          "q": "What's a good way to learn an unfamiliar term?",
+          "options": [
+            "Pretend you know it",
+            "Ask the customer to explain",
+            "Skip it",
+            "Ask the AI to explain it in plain English, then confirm if it matters"
+          ],
+          "answer": 3,
+          "why": "Plain-English explanations help you learn fast."
+        }
+      ]
+    },
+    {
+      "id": "l-ai-rules",
+      "courseId": "c-ai",
+      "title": "AI do's and don'ts",
+      "order": 3,
+      "minutes": 6,
+      "passScore": 80,
+      "keyPoints": "Do follow company policy on which AI tools are approved for work.\nDon't paste confidential information (customer pricing, margins, contracts, personal data) into tools that aren't approved for it.\nDo treat AI output as a first draft. You're responsible for anything you send or quote.\nDon't let AI make technical selections on its own. Use it to prepare, then confirm with datasheets, inside sales tech support or the manufacturer.\nDo use it for time-savers: emails, call prep, summaries, meeting notes and checklists.\nDon't present AI-written content as verified fact without checking it.\nWhen in doubt, ask your manager.",
+      "quiz": [
+        {
+          "q": "Which should you NOT paste into an unapproved AI tool?",
+          "options": [
+            "A public product name",
+            "Customer pricing and margins",
+            "A general question about vortex meters",
+            "A request to fix your grammar"
+          ],
+          "answer": 1,
+          "why": "Confidential data stays in approved tools only."
+        },
+        {
+          "q": "Who is responsible for an AI-drafted quote email?",
+          "options": [
+            "You",
+            "The AI",
+            "The customer",
+            "Nobody"
+          ],
+          "answer": 0,
+          "why": "You send it, so you own it."
+        },
+        {
+          "q": "Can AI choose the final product for a customer by itself?",
+          "options": [
+            "Yes, always",
+            "Only for ABB",
+            "No. Use it to prepare, then confirm with datasheets or tech support",
+            "Only on weekends"
+          ],
+          "answer": 2,
+          "why": "Technical selections need verification."
+        },
+        {
+          "q": "Which is a great time-saving use of AI?",
+          "options": [
+            "Signing contracts",
+            "Approving credit",
+            "Changing prices",
+            "Drafting meeting notes and call prep"
+          ],
+          "answer": 3,
+          "why": "Drafting and prep are where AI shines."
+        }
+      ]
     }
   ],
   "scenarios": [
@@ -927,6 +2757,61 @@
       "opening": "We keep forgetting to change the air filters on our air handlers. Is there a gauge that tells us when they're dirty?",
       "hidden": "It's for the air filters on the building's air handlers. The pressure is very low, about 0.5 to 1 inch of water column across the filter. She needs 4, one per air handler.",
       "goodRec": "A Dwyer Magnehelic differential pressure gauge, 0-2 inches of water column, mounted across each filter, quantity 4. When the reading climbs, it's time to change the filter."
+    },
+    {
+      "id": "sb-7",
+      "num": 13,
+      "level": "beginner",
+      "industry": "Water treatment",
+      "title": "Replace an old magmeter",
+      "persona": "Dave, operator at a wastewater plant",
+      "opening": "Hi, our old flowmeter on the return line died. Can you help me replace it?",
+      "hidden": "It's a mag meter on wastewater. 6-inch line with flanged connections. It sends a 4-20 mA signal to the plant control system. He needs 1. It's not a hazardous area.",
+      "goodRec": "An ABB ProcessMaster (or ABB water mag) 6-inch flanged magmeter with a liner suited for wastewater and 4-20 mA output, quantity 1."
+    },
+    {
+      "id": "sb-8",
+      "num": 14,
+      "level": "beginner",
+      "industry": "Manufacturing",
+      "title": "Track compressed air use",
+      "persona": "Sarah, maintenance planner at a plastics plant",
+      "opening": "We think we're wasting a lot of compressed air. Is there a way to measure how much we're using?",
+      "hidden": "It's the main compressed air header, a 3-inch line. It runs about 100 psi. She wants to see usage on the plant system with a 4-20 mA signal. She needs 1 to start.",
+      "goodRec": "An ABB SensyMaster FMT430 thermal mass flowmeter for the 3-inch air header with 4-20 mA output, quantity 1. It reads low flows well, so she can see leaks when the plant is idle."
+    },
+    {
+      "id": "sc-7",
+      "num": 15,
+      "level": "experienced",
+      "industry": "Pulp & paper",
+      "title": "Win the steam meter from the other brand",
+      "persona": "Greg, utilities engineer at a paper mill who has always used another brand of vortex meter",
+      "opening": "We've always used the other guys' vortex meters. I need a new steam meter on a line with barely any straight pipe. Why would I look at ABB?",
+      "hidden": "6-inch saturated steam line at about 125 psig. The only meter spot is about 4 pipe diameters after an elbow. The other brand's quote required re-piping for straight run, which means a shutdown. He wants lb/hr into the DCS with HART. He's budget-sensitive. Decision in about 3 weeks, and the plant manager has to approve anything over budget.",
+      "goodRec": "ABB SwirlMaster FSS430 (or FSS450 if they want energy) in 6-inch with the integrated temperature sensor for saturated steam mass flow and HART. Sell the avoided re-piping and shutdown cost, confirm the straight-run requirement from the installation guide, and respect the incumbent instead of knocking it."
+    },
+    {
+      "id": "sc-8",
+      "num": 16,
+      "level": "experienced",
+      "industry": "Chemical",
+      "title": "Defend Coriolis on price",
+      "persona": "Priya, purchasing manager at a specialty chemical plant",
+      "opening": "Your Coriolis quote is almost twice what we pay for the turbine meters we use now. Why should I pay that?",
+      "hidden": "They batch a solvent (not conductive) into reactors on 2-inch lines. The turbine meters wear and need recalibration about every 6 months. Batches are often off-spec, which wastes product. The lab checks density separately on every batch. Operations wants fewer meter failures. The process engineer, Tom, is part of the decision.",
+      "goodRec": "ABB CoriolisMaster FCB430 or FCB450, 2-inch, with batching (FillMass). Sell total cost: no moving parts to wear, VeriMass verification in place instead of pulling meters, in-line density that can cut lab checks, and less product giveaway. Ask what an off-spec batch costs, and bring the process engineer into the conversation."
+    },
+    {
+      "id": "sc-9",
+      "num": 17,
+      "level": "experienced",
+      "industry": "Food & beverage",
+      "title": "Replace the orifice plate on fuel gas",
+      "persona": "Marcus, energy manager at a food processing plant",
+      "opening": "We've got an old orifice plate measuring natural gas to our boilers and nobody trusts the numbers. What would you do?",
+      "hidden": "4-inch natural gas line at about 5 psig. Flow swings from very low at night to high in the morning, and the orifice reads poorly at low flow. The impulse lines clog and have frozen in winter. He wants gas use per boiler to prove energy savings. He needs 4-20 mA plus a totalizer. There are 2 boilers.",
+      "goodRec": "ABB SensyMaster FMT430 or FMT450 thermal mass meters, 4-inch, one per boiler (quantity 2). Direct mass flow, wide turndown for the low night flows, very low pressure loss, and no impulse lines to clog or freeze, with 4-20 mA and a built-in totalizer."
     }
   ],
   "specs": [
@@ -1019,15 +2904,150 @@
       ],
       "answer": 1,
       "why": "Clamp-on ultrasonic straps onto the outside of the pipe, so no cutting or shutdown is needed. It's ideal for temporary checks."
+    },
+    {
+      "id": "sp-abb-1",
+      "title": "Steam meter right after an elbow",
+      "industry": "Chemical",
+      "order": 7,
+      "application": "A chemical plant needs to measure saturated steam to a reboiler on a 4-inch line. The only place for the meter is about 4 pipe diameters after an elbow, and re-piping would mean a shutdown. They want steam mass flow in lb/hr with 4-20 mA and HART.",
+      "options": [
+        "ABB VortexMaster FSV430",
+        "ABB SwirlMaster FSS430 with the integrated temperature sensor",
+        "ABB ProcessMaster magmeter",
+        "ABB SensyMaster thermal mass meter"
+      ],
+      "answer": 1,
+      "why": "SwirlMaster needs only about 3 diameters in and 1 out after an elbow, and with the built-in RTD it calculates saturated steam mass flow. A standard vortex needs much more straight run. Mags can't measure steam, and thermal mass meters are for gases, not steam."
+    },
+    {
+      "id": "sp-abb-2",
+      "title": "Water main in a vault with no power",
+      "industry": "Water treatment",
+      "order": 8,
+      "application": "A water utility wants to measure flow on an 8-inch water main inside an underground vault. There's no power at the site. They want the data for billing and to spot leaks.",
+      "options": [
+        "ABB AquaMaster electromagnetic flowmeter (battery or solar powered)",
+        "ABB CoriolisMaster FCB430",
+        "ABB VortexMaster FSV450",
+        "ABB SensyMaster FMT430"
+      ],
+      "answer": 0,
+      "why": "AquaMaster is built for water distribution, billing and leak detection, and can run on battery or solar power where there's no electricity."
+    },
+    {
+      "id": "sp-abb-3",
+      "title": "Abrasive lime slurry",
+      "industry": "Water treatment",
+      "order": 9,
+      "application": "A treatment plant doses lime slurry through a 3-inch line. The slurry is abrasive and has worn out their last meter. They need 4-20 mA with HART to the control system.",
+      "options": [
+        "ABB SensyMaster thermal mass meter",
+        "ABB VortexMaster FSV430",
+        "ABB ProcessMaster magmeter with an abrasion-resistant liner",
+        "ABB Totalflow µFLO G5 flow computer"
+      ],
+      "answer": 2,
+      "why": "Slurry is conductive, so a mag meter works, and its open bore has no moving parts to wear. The key is choosing an abrasion-resistant liner and suitable electrodes. Vortex meters don't suit slurries, and thermal meters are for gas."
+    },
+    {
+      "id": "sp-abb-4",
+      "title": "Natural gas to a boiler burner",
+      "industry": "Food & beverage",
+      "order": 10,
+      "application": "A food plant wants to control the fuel-to-air ratio on a boiler. They need mass flow of natural gas on a 4-inch line at about 5 psig, with very little pressure loss, plus 4-20 mA to the burner controls.",
+      "options": [
+        "ABB AquaMaster",
+        "ABB ProcessMaster magmeter",
+        "ABB CoriolisMaster FCH400",
+        "ABB SensyMaster thermal mass meter"
+      ],
+      "answer": 3,
+      "why": "SensyMaster measures gas mass flow directly with no pressure or temperature compensation and very low pressure loss, which suits low-pressure fuel gas. Mags only measure conductive liquids."
+    },
+    {
+      "id": "sp-abb-5",
+      "title": "Batching syrup and checking Brix",
+      "industry": "Food & beverage",
+      "order": 11,
+      "application": "A beverage plant batches sugar syrup into mixing tanks. They need accurate mass for each batch and want to see sugar concentration (Brix) in-line instead of sampling in the lab. Sanitary tri-clamp connections are required.",
+      "options": [
+        "ABB CoriolisMaster FCH400 (hygienic) with DensiMass",
+        "ABB HygienicMaster magmeter",
+        "ABB SwirlMaster FSS430",
+        "ABB SensyMaster FMT450"
+      ],
+      "answer": 0,
+      "why": "The hygienic FCH400 measures mass flow and density, and DensiMass converts density to concentration like Brix. A mag measures volume only and can't give concentration."
+    },
+    {
+      "id": "sp-abb-6",
+      "title": "Gas well sales measurement",
+      "industry": "Oil & gas",
+      "order": 12,
+      "application": "A producer measures natural gas sales at a remote wellsite with an orifice meter. There's no utility power. They need volumes calculated to AGA standards and data sent back to their SCADA system.",
+      "options": [
+        "ABB TZIDC positioner",
+        "ABB Totalflow µFLO G5 flow computer with solar charging",
+        "ABB LLT100 laser level",
+        "ABB AquaMaster"
+      ],
+      "answer": 1,
+      "why": "The µFLO G5 is a single-run gas flow computer with a built-in DP, static pressure and temperature sensor, AGA calculations, and battery/solar power for remote sites."
+    },
+    {
+      "id": "sp-x-1",
+      "title": "What else would you quote? Steam energy",
+      "industry": "Chemical",
+      "order": 13,
+      "application": "A customer is ordering a VortexMaster FSV430 for superheated steam. Now they mention they want to bill steam energy to each department. What's the most important change or add-on to suggest?",
+      "options": [
+        "Grounding rings",
+        "A tri-clamp gasket kit",
+        "Upgrade to FSV450 and add an ABB 266 pressure transmitter for the pressure input",
+        "A laser level transmitter"
+      ],
+      "answer": 2,
+      "why": "Superheated steam energy needs pressure and temperature. The FSV450 can take an external pressure signal and calculate mass and energy, and a 266 transmitter supplies that pressure."
+    },
+    {
+      "id": "sp-x-2",
+      "title": "What else would you quote? Mag on plastic pipe",
+      "industry": "Water treatment",
+      "order": 14,
+      "application": "A customer is buying a mag meter for a PVC line that feeds a control valve. They also mention the valve 'hunts' and never settles, and it has an old pneumatic positioner. What should you add to the quote?",
+      "options": [
+        "Grounding rings for the mag, and an ABB TZIDC digital positioner for the valve",
+        "A snubber and a siphon",
+        "A thermowell",
+        "Nothing. Just quote the mag."
+      ],
+      "answer": 0,
+      "why": "Mags on plastic or lined pipe need grounding rings to read accurately. A hunting valve with an old positioner is a classic upgrade for a digital positioner like the TZIDC."
     }
   ],
   "paths": [
+    {
+      "id": "p-newhire",
+      "name": "New Hire Onboarding",
+      "order": 0,
+      "dueDays": 14,
+      "courseIds": [
+        "c-welcome",
+        "c-safety",
+        "c-fundamentals",
+        "c-quoting",
+        "c-service",
+        "c-ai"
+      ]
+    },
     {
       "id": "p-inside",
       "name": "Inside Sales",
       "order": 1,
       "dueDays": 30,
       "courseIds": [
+        "c-welcome",
         "c-sales",
         "c-pressure",
         "c-transmitters",
@@ -1035,7 +3055,13 @@
         "c-ashcroft",
         "c-wika",
         "c-dwyer",
-        "c-partnumbers"
+        "c-partnumbers",
+        "c-fundamentals",
+        "c-quoting",
+        "c-service",
+        "c-crm",
+        "c-ai",
+        "c-abb-flow"
       ]
     },
     {
@@ -1044,6 +3070,7 @@
       "order": 2,
       "dueDays": 60,
       "courseIds": [
+        "c-welcome",
         "c-sales",
         "c-pressure",
         "c-transmitters",
@@ -1054,7 +3081,14 @@
         "c-ashcroft",
         "c-wika",
         "c-dwyer",
-        "c-partnumbers"
+        "c-partnumbers",
+        "c-fundamentals",
+        "c-safety",
+        "c-crm",
+        "c-ai",
+        "c-abb-flow",
+        "c-abb-battle",
+        "c-abb-cross"
       ]
     },
     {
@@ -1063,12 +3097,29 @@
       "order": 3,
       "dueDays": 21,
       "courseIds": [
+        "c-welcome",
         "c-sales",
         "c-pressure",
         "c-ashcroft",
         "c-wika",
         "c-dwyer",
-        "c-partnumbers"
+        "c-partnumbers",
+        "c-quoting",
+        "c-service",
+        "c-ai"
+      ]
+    },
+    {
+      "id": "p-abb",
+      "name": "ABB Flow Specialist",
+      "order": 4,
+      "dueDays": 45,
+      "courseIds": [
+        "c-flow",
+        "c-fundamentals",
+        "c-abb-flow",
+        "c-abb-battle",
+        "c-abb-cross"
       ]
     }
   ]
