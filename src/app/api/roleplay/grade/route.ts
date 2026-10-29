@@ -25,8 +25,11 @@ export async function POST(req: Request) {
 
   const raw = await generateJson<Partial<Grade>>(gradePrompt(s, turns, s.level), GRADE_SCHEMA);
   const arr = (v: unknown) => (Array.isArray(v) ? v.map(String).slice(0, 8) : []);
+  const rawScore = Math.max(0, Math.min(10, Number(raw.score) || 0));
+  // Beginner calls are graded on a curve: 3 -> 6, 5 -> 7, 7 -> 8, 10 -> 10. Anyone who really tried lands at 6+.
+  const curved = s.level === "beginner" && turns.some((m) => m.role === "rep") ? 4.5 + rawScore * 0.55 : rawScore;
   const grade: Grade = {
-    score: Math.max(0, Math.min(10, Math.round(Number(raw.score) || 0))),
+    score: Math.max(0, Math.min(10, Math.round(curved))),
     uncovered: arr(raw.uncovered),
     missed: arr(raw.missed),
     recommendation: String(raw.recommendation || ""),
