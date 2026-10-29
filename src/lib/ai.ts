@@ -22,7 +22,8 @@ export async function streamText(prompt: string, opts: { smart?: boolean; maxTok
   const params = {
     model: opts.smart ? SMART() : FAST(),
     max_tokens: opts.maxTokens ?? 1024,
-    thinking: { type: "disabled" as const },
+    // Thinking off. Haiku uses "disabled"; the newer Sonnet asks for "between_tools" instead.
+    thinking: (opts.smart ? { type: "between_tools" } : { type: "disabled" }) as { type: "disabled" },
     messages: [{ role: "user" as const, content: prompt }],
   };
   const stream = ai().messages.stream(params);
