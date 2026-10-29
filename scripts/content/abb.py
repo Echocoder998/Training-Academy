@@ -90,7 +90,7 @@ LESSONS = [
     ]),
     L("l-abb-vortex", "c-abb-flow", "VortexMaster and SwirlMaster: steam, gas and liquids", 4, 10, [
         "Vortex and swirl meters measure volume flow of steam, gases and clean, low-viscosity liquids. They're a go-to for steam.",
-        "With a built-in temperature sensor (RTD) they can calculate saturated steam mass flow without a separate flow computer.",
+        "With the optional built-in temperature sensor (RTD) they can calculate saturated steam mass flow without a separate flow computer.",
         "The 450 versions (FSV450, FSS450) add flow-computer functions: they can take an external pressure, temperature or density signal and calculate mass and energy flow, including steam energy.",
         "VortexMaster FSV430/450: flanged and wafer designs. Accuracy about ±0.65% of rate for liquids and ±0.9% for gas and steam. Needs a typical vortex straight run upstream and downstream.",
         "SwirlMaster FSS430/450: about ±0.5% of rate. Its big advantage is short straight runs: about 3 pipe diameters in and 1 out after an elbow or reducer, and about 5 in after a control valve.",
@@ -138,7 +138,7 @@ LESSONS = [
     L("l-abb-totalflow", "c-abb-flow", "Totalflow flow computers for oil and gas", 6, 8, [
         "Flow computers take signals from a primary meter (orifice, turbine, ultrasonic, Coriolis) and calculate corrected gas or liquid volumes to industry standards.",
         "ABB Totalflow flow computers are widely used in natural gas production, gathering and transmission.",
-        "The µFLO G5 (microFLO) is a basic single-run gas flow computer with a built-in multivariable sensor (DP, static pressure and temperature).",
+        "The µFLO G5 (microFLO) is a basic single-run gas flow computer. Its built-in multivariable transducer measures differential and static pressure, and it takes an RTD input for temperature.",
         "The XFC G5 is the extendable flow computer for more runs, more I/O and newer communications (such as MQTT, Wi-Fi and Bluetooth).",
         "They calculate to AGA and API standards (for example AGA 3 for orifice meters and AGA 8 for gas properties), which matters for custody transfer.",
         "They're built for remote, unpowered sites, with battery and solar charging options.",
@@ -232,7 +232,7 @@ LESSONS = [
     ]),
     L("l-bc-vortex", "c-abb-battle", "Battle card: vortex and swirl", 3, 8, [
         "Who you'll run into: Emerson Rosemount 8800 vortex, Endress+Hauser Prowirl, Yokogawa digitalYEWFLO, Krohne Optiswirl.",
-        "ABB's unique card is SwirlMaster: about 3 diameters in and 1 out after an elbow or reducer. Many competitors' vortex meters need far more straight pipe.",
+        "ABB's unique card is SwirlMaster: about 3 diameters in and 1 out after an elbow or reducer. Typical vortex meters, including ABB's own VortexMaster, need much longer straight runs.",
         "Retrofit win: when there's no room for a long straight run, SwirlMaster can go in without re-piping. Re-piping cost often dwarfs the meter price.",
         "Steam win: FSV450 and FSS450 calculate steam mass and energy internally, so customers can skip a separate flow computer.",
         "Questions to ask: Where exactly will it go? How much straight pipe is there? Are you measuring steam for billing or energy savings?",

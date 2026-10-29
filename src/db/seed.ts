@@ -10,6 +10,7 @@ config();
 import { sql } from "drizzle-orm";
 import { db, t } from "./index";
 import raw from "./seed-data.json";
+import fixes from "./seed-fixes.json";
 
 const data = { ...raw, scenarios: raw.scenarios.map((s) => ({ ...s, level: s.level as "beginner" | "experienced" })) };
 const RESET = process.argv.includes("--reset");
@@ -39,6 +40,31 @@ async function main() {
         console.log(`Seed: added ${add.join(", ")} to path ${p.id}.`);
       }
     }
+    // Content corrections: update a starter item only if it still matches an older version word for word,
+    // so anything an admin edited in Manage is left alone.
+    // Postgres jsonb reorders object keys, so compare with keys sorted.
+    const canon = (v: unknown): unknown => Array.isArray(v) ? v.map(canon)
+      : v && typeof v === "object" ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, canon((v as Record<string, unknown>)[k])])) : v;
+    const same = (a: unknown, b: unknown) => JSON.stringify(canon(a)) === JSON.stringify(canon(b));
+    const stillOld = (row: Record<string, unknown>, olds: Record<string, unknown>[]) =>
+      olds.some((o) => Object.keys(o).every((k) => same(row[k], o[k])));
+    let fixed = 0;
+    for (const [id, olds] of Object.entries(fixes.lessons ?? {})) {
+      const next = data.lessons.find((l) => l.id === id); if (!next) continue;
+      const [row] = await d.select().from(t.lessons).where(sql`${t.lessons.id} = ${id}`);
+      if (row && stillOld(row, olds)) { await d.update(t.lessons).set({ title: next.title, keyPoints: next.keyPoints, quiz: next.quiz }).where(sql`${t.lessons.id} = ${id}`); fixed++; }
+    }
+    for (const [id, olds] of Object.entries(fixes.specs ?? {})) {
+      const next = data.specs.find((x) => x.id === id); if (!next) continue;
+      const [row] = await d.select().from(t.specs).where(sql`${t.specs.id} = ${id}`);
+      if (row && stillOld(row, olds)) { await d.update(t.specs).set({ title: next.title, application: next.application, options: next.options, answer: next.answer, why: next.why }).where(sql`${t.specs.id} = ${id}`); fixed++; }
+    }
+    for (const [id, olds] of Object.entries(fixes.scenarios ?? {})) {
+      const next = data.scenarios.find((x) => x.id === id); if (!next) continue;
+      const [row] = await d.select().from(t.scenarios).where(sql`${t.scenarios.id} = ${id}`);
+      if (row && stillOld(row, olds)) { await d.update(t.scenarios).set({ title: next.title, persona: next.persona, opening: next.opening, hidden: next.hidden, goodRec: next.goodRec }).where(sql`${t.scenarios.id} = ${id}`); fixed++; }
+    }
+    if (fixed) console.log(`Seed: applied ${fixed} content corrections.`);
     // Tag existing starter scenarios with their topic (e.g. ABB) if they don't have one yet.
     for (const s of data.scenarios) {
       if (s.topic) await d.update(t.scenarios).set({ topic: s.topic }).where(sql`${t.scenarios.id} = ${s.id} and ${t.scenarios.topic} = ''`);

@@ -1,0 +1,343 @@
+{
+  "lessons": {
+    "l-ashcroft": [
+      {
+        "title": "Ashcroft: what to lead with",
+        "keyPoints": "Ashcroft is one of the oldest U.S. pressure gauge makers, dating back to the 1850s. Lead with its reputation for heavy-duty process gauges.\nThe Duragauge (Type 1279) is Ashcroft's flagship process gauge: a solid-front safety design built for tough plant service.\nThe Type 1009 is a common all-stainless general-purpose gauge for corrosive environments.\nAshcroft's PLUS! performance option dampens vibration and pulsation without liquid fill, so there's no fill to leak or discolor.\nThe line also covers pressure transmitters, switches, diaphragm seals, test gauges and bimetal thermometers, so you can quote a complete pressure point.\nAlways confirm current models and options in the latest Ashcroft catalog or PartBuilder before quoting.",
+        "quiz": [
+          {
+            "q": "Which Ashcroft gauge is its flagship heavy-duty process gauge?",
+            "options": [
+              "Type 1009",
+              "Duragauge Type 1279",
+              "Magnehelic",
+              "Type 213.53"
+            ],
+            "answer": 1,
+            "why": "The Duragauge 1279 is Ashcroft's solid-front process gauge for tough service."
+          },
+          {
+            "q": "What does Ashcroft's PLUS! option do?",
+            "options": [
+              "Adds a 4-20 mA output",
+              "Dampens vibration and pulsation without liquid fill",
+              "Cleans the gauge for oxygen service",
+              "Doubles the accuracy grade"
+            ],
+            "answer": 1,
+            "why": "PLUS! gives liquid-filled-style dampening with no fill to leak."
+          },
+          {
+            "q": "A customer needs an all-stainless general-purpose gauge for a corrosive area. Which Ashcroft model fits?",
+            "options": [
+              "Type 1009",
+              "Magnehelic 2000",
+              "Photohelic",
+              "Type 111.10"
+            ],
+            "answer": 0,
+            "why": "The 1009 is Ashcroft's all-stainless general-purpose gauge."
+          },
+          {
+            "q": "Before quoting an Ashcroft model, what should you always do?",
+            "options": [
+              "Quote from memory to save time",
+              "Confirm the model and options in the current catalog or PartBuilder",
+              "Pick the cheapest option",
+              "Ask the customer for the part number format"
+            ],
+            "answer": 1,
+            "why": "Model options change. Checking the current catalog or PartBuilder prevents ordering errors."
+          }
+        ]
+      }
+    ],
+    "l-wika": [
+      {
+        "title": "WIKA: gauges, transmitters and seals",
+        "keyPoints": "WIKA is a large German family-owned instrumentation maker with a broad pressure and temperature lineup and strong U.S. stocking.\nWIKA model numbers describe the gauge family. For example, the 213.53 is a popular liquid-filled brass utility gauge, and the 233.54 is a liquid-filled stainless steel process gauge.\nUse the brass utility gauges for air, water and non-corrosive service; step up to the stainless gauges for corrosive media or harsh environments.\nWIKA makes pressure transmitters for general industrial use (such as the A-10) and higher-performance applications (such as the S-20).\nWIKA is also a major diaphragm seal supplier, so it's a strong fit for corrosive, viscous or sanitary applications that need a seal and gauge or transmitter assembly.\nAlways confirm current models and options in the latest WIKA catalog or PartBuilder before quoting.",
+        "quiz": [
+          {
+            "q": "A customer wants an economical liquid-filled gauge for compressed air. Which WIKA model is a typical fit?",
+            "options": [
+              "233.54 stainless process gauge",
+              "213.53 liquid-filled brass utility gauge",
+              "S-20 transmitter",
+              "A diaphragm seal"
+            ],
+            "answer": 1,
+            "why": "Brass utility gauges like the 213.53 suit air, water and other non-corrosive service."
+          },
+          {
+            "q": "When should you step up from a brass utility gauge to a stainless gauge like the 233.54?",
+            "options": [
+              "When the dial needs to be bigger",
+              "When the media or environment is corrosive or harsh",
+              "Only when the customer asks for the cheapest option",
+              "Never"
+            ],
+            "answer": 1,
+            "why": "Stainless wetted parts and cases hold up to corrosive media and harsh plant environments."
+          },
+          {
+            "q": "Which WIKA product line makes it a strong pick for sanitary or corrosive applications?",
+            "options": [
+              "Diaphragm seals",
+              "Magnehelic gauges",
+              "Check valves",
+              "Vortex meters"
+            ],
+            "answer": 0,
+            "why": "WIKA is a major diaphragm seal supplier, so it can build complete seal assemblies."
+          },
+          {
+            "q": "What's the difference between the WIKA A-10 and S-20 transmitters?",
+            "options": [
+              "The A-10 is for general industrial use; the S-20 is higher performance",
+              "The A-10 measures temperature",
+              "The S-20 is a gauge",
+              "There is no difference"
+            ],
+            "answer": 0,
+            "why": "The A-10 covers general-purpose needs; the S-20 is the higher-performance option."
+          }
+        ]
+      }
+    ],
+    "l-partnumbers": [
+      {
+        "title": "How gauge part numbers are built",
+        "keyPoints": "Most gauge part numbers are a code made of segments. Each segment answers one STAMPED-style question.\nCommon segments: dial size, model or series, wetted materials, connection size and location, options, and range.\nExample (Ashcroft style): 45-1279-SS-04L-200# reads as a 4.5-inch dial, Duragauge 1279, stainless steel wetted parts, 1/4-inch NPT lower connection, 0-200 psi.\nOptions such as liquid fill, oxygen cleaning, special dials or certificates usually add their own codes. Missing one is a common ordering mistake.\nEvery brand uses its own format, so never translate one brand's code into another's by guessing.\nUse PartBuilder or the current catalog to build the exact number, then read it back to the customer in plain words before you order.",
+        "quiz": [
+          {
+            "q": "In the Ashcroft-style number 45-1279-SS-04L-200#, what does \"04L\" mean?",
+            "options": [
+              "4-inch dial, liquid filled",
+              "1/4-inch NPT lower connection",
+              "0-400 psi",
+              "Grade 4A accuracy"
+            ],
+            "answer": 1,
+            "why": "04L is the connection: 1/4-inch NPT, lower (bottom) mount."
+          },
+          {
+            "q": "In the same number, what does \"45\" stand for?",
+            "options": [
+              "4.5-inch dial size",
+              "45 psi range",
+              "Model 45",
+              "45 degree connection"
+            ],
+            "answer": 0,
+            "why": "The leading segment is the dial size, 4.5 inches."
+          },
+          {
+            "q": "What's a common way part-number orders go wrong?",
+            "options": [
+              "Leaving out an option code like liquid fill or oxygen cleaning",
+              "Using too many digits",
+              "Ordering in psi",
+              "Using a dash"
+            ],
+            "answer": 0,
+            "why": "Options carry their own codes. Skip one and the customer gets the wrong gauge."
+          },
+          {
+            "q": "What's the best last step before placing the order?",
+            "options": [
+              "Guess the code from another brand",
+              "Read the part number back to the customer in plain words",
+              "Skip confirmation to save time",
+              "Remove the range code"
+            ],
+            "answer": 1,
+            "why": "Reading it back in plain words catches mistakes before they ship."
+          }
+        ]
+      }
+    ],
+    "l-abb-vortex": [
+      {
+        "title": "VortexMaster and SwirlMaster: steam, gas and liquids",
+        "keyPoints": "Vortex and swirl meters measure volume flow of steam, gases and clean, low-viscosity liquids. They're a go-to for steam.\nWith a built-in temperature sensor (RTD) they can calculate saturated steam mass flow without a separate flow computer.\nThe 450 versions (FSV450, FSS450) add flow-computer functions: they can take an external pressure, temperature or density signal and calculate mass and energy flow, including steam energy.\nVortexMaster FSV430/450: flanged and wafer designs. Accuracy about ±0.65% of rate for liquids and ±0.9% for gas and steam. Needs a typical vortex straight run upstream and downstream.\nSwirlMaster FSS430/450: about ±0.5% of rate. Its big advantage is short straight runs: about 3 pipe diameters in and 1 out after an elbow or reducer, and about 5 in after a control valve.\nLead with SwirlMaster when space is tight, in retrofits, or when the only spot is right after an elbow. It can save up to 75% of the straight pipe a vortex would need.\nCommunication options include 4-20 mA with HART, Modbus, and Ethernet-APL on newer models.\nAsk: steam (saturated or superheated?), gas or liquid; line size; pressure and temperature; flow range; available straight run; and whether they want volume, mass or energy.",
+        "quiz": [
+          {
+            "q": "A plant needs a steam meter right after an elbow with almost no straight pipe. Which meter do you lead with?",
+            "options": [
+              "VortexMaster FSV430",
+              "SwirlMaster FSS430 or FSS450",
+              "AquaMaster",
+              "ProcessMaster"
+            ],
+            "answer": 1,
+            "why": "SwirlMaster needs only about 3 diameters in and 1 out after an elbow."
+          },
+          {
+            "q": "What do the 450 versions add over the 430 versions?",
+            "options": [
+              "A larger display only",
+              "Battery power",
+              "Flow-computer functions: external inputs and mass/energy calculation",
+              "Hygienic connections"
+            ],
+            "answer": 2,
+            "why": "FSV450 and FSS450 can take outside signals and calculate mass and energy flow."
+          },
+          {
+            "q": "Which of these is a good fit for a vortex or swirl meter?",
+            "options": [
+              "Saturated steam to a heat exchanger",
+              "Thick slurry",
+              "Peanut butter",
+              "Very low flow of a viscous oil"
+            ],
+            "answer": 0,
+            "why": "Vortex and swirl meters are a top choice for steam. Slurries and viscous fluids are poor fits."
+          },
+          {
+            "q": "A customer asks for steam 'energy' to bill a department. What do you need to ask about?",
+            "options": [
+              "Liner material",
+              "Paint color",
+              "Tri-clamp size",
+              "Steam type, pressure and temperature, and whether condensate returns"
+            ],
+            "answer": 3,
+            "why": "Energy calculations depend on steam conditions and whether condensate is returned."
+          }
+        ]
+      }
+    ],
+    "l-abb-totalflow": [
+      {
+        "title": "Totalflow flow computers for oil and gas",
+        "keyPoints": "Flow computers take signals from a primary meter (orifice, turbine, ultrasonic, Coriolis) and calculate corrected gas or liquid volumes to industry standards.\nABB Totalflow flow computers are widely used in natural gas production, gathering and transmission.\nThe µFLO G5 (microFLO) is a basic single-run gas flow computer with a built-in multivariable sensor (DP, static pressure and temperature).\nThe XFC G5 is the extendable flow computer for more runs, more I/O and newer communications (such as MQTT, Wi-Fi and Bluetooth).\nThey calculate to AGA and API standards (for example AGA 3 for orifice meters and AGA 8 for gas properties), which matters for custody transfer.\nThey're built for remote, unpowered sites, with battery and solar charging options.\nAsk: gas or liquid; primary meter type; single or multiple runs; custody transfer or check metering; power at the site; and how data gets back (radio, cellular, SCADA).\nPair them with ABB pressure transmitters and the right primary meter for a complete package.",
+        "quiz": [
+          {
+            "q": "What does a flow computer do?",
+            "options": [
+              "Replaces the need for any meter",
+              "Takes meter signals and calculates corrected volumes to industry standards",
+              "Measures tank level",
+              "Controls a valve positioner"
+            ],
+            "answer": 1,
+            "why": "It works with a primary meter and applies the correct calculations, like AGA standards."
+          },
+          {
+            "q": "Which Totalflow model is the basic single-run gas flow computer?",
+            "options": [
+              "µFLO G5",
+              "XFC G5",
+              "FSS450",
+              "266 transmitter"
+            ],
+            "answer": 0,
+            "why": "The µFLO G5 is the basic single-run unit with a built-in multivariable sensor."
+          },
+          {
+            "q": "Why do power options matter for flow computers?",
+            "options": [
+              "They don't",
+              "They change the display color",
+              "They set the accuracy class",
+              "Wellsites and remote stations often have no power, so battery and solar are needed"
+            ],
+            "answer": 3,
+            "why": "Many gas measurement sites are remote and unpowered."
+          },
+          {
+            "q": "Which standard family is used for natural gas flow calculations?",
+            "options": [
+              "NACE",
+              "3-A sanitary",
+              "AGA",
+              "NEMA"
+            ],
+            "answer": 2,
+            "why": "AGA reports (like AGA 3 and AGA 8) cover gas measurement calculations."
+          }
+        ]
+      }
+    ],
+    "l-bc-vortex": [
+      {
+        "title": "Battle card: vortex and swirl",
+        "keyPoints": "Who you'll run into: Emerson Rosemount 8800 vortex, Endress+Hauser Prowirl, Yokogawa digitalYEWFLO, Krohne Optiswirl.\nABB's unique card is SwirlMaster: about 3 diameters in and 1 out after an elbow or reducer. Many competitors' vortex meters need far more straight pipe.\nRetrofit win: when there's no room for a long straight run, SwirlMaster can go in without re-piping. Re-piping cost often dwarfs the meter price.\nSteam win: FSV450 and FSS450 calculate steam mass and energy internally, so customers can skip a separate flow computer.\nQuestions to ask: Where exactly will it go? How much straight pipe is there? Are you measuring steam for billing or energy savings?\nWalk the line with the customer if you can. Seeing the piping often reveals the straight-run problem that ABB solves.\nDon't promise straight-run numbers from memory. Check the installation guide or ABB for the exact requirement for that layout.",
+        "quiz": [
+          {
+            "q": "What's ABB's strongest card against other vortex meters?",
+            "options": [
+              "SwirlMaster's very short straight-run requirement",
+              "Battery power",
+              "Hygienic design",
+              "Laser measurement"
+            ],
+            "answer": 0,
+            "why": "SwirlMaster can go where long straight runs aren't available."
+          },
+          {
+            "q": "Why can SwirlMaster win even if the meter costs more?",
+            "options": [
+              "It's lighter to ship",
+              "It avoids the cost of re-piping for straight run",
+              "It needs no wiring",
+              "It's a different color"
+            ],
+            "answer": 1,
+            "why": "Re-piping labor and downtime can cost more than the meter."
+          },
+          {
+            "q": "A customer wants steam energy for department billing without a separate flow computer. Lead with:",
+            "options": [
+              "AquaMaster",
+              "FCH400",
+              "FMT430",
+              "FSV450 or FSS450"
+            ],
+            "answer": 3,
+            "why": "The 450 versions calculate steam mass and energy internally."
+          },
+          {
+            "q": "Where do you get the exact straight-run requirement for a layout?",
+            "options": [
+              "From memory",
+              "From the competitor",
+              "From the ABB installation guide or ABB support",
+              "From the customer's guess"
+            ],
+            "answer": 2,
+            "why": "Always check the official installation requirements."
+          }
+        ]
+      }
+    ]
+  },
+  "specs": {
+    "sp-abb-6": [
+      {
+        "title": "Gas well sales measurement",
+        "application": "A producer measures natural gas sales at a remote wellsite with an orifice meter. There's no utility power. They need volumes calculated to AGA standards and data sent back to their SCADA system.",
+        "options": [
+          "ABB TZIDC positioner",
+          "ABB Totalflow µFLO G5 flow computer with solar charging",
+          "ABB LLT100 laser level",
+          "ABB AquaMaster"
+        ],
+        "answer": 1,
+        "why": "The µFLO G5 is a single-run gas flow computer with a built-in DP, static pressure and temperature sensor, AGA calculations, and battery/solar power for remote sites."
+      }
+    ]
+  },
+  "scenarios": {
+    "sb-9": [
+      {
+        "title": "Meter for fryer oil",
+        "persona": "Kevin, maintenance tech at a snack food plant",
+        "opening": "We need to start measuring the oil going into our fryers. What kind of flowmeter should I use?",
+        "hidden": "It's vegetable cooking oil. 1-inch line. About 5 gallons per minute. He wants a 4-20 mA signal to the PLC. He needs 1.",
+        "goodRec": "An ABB CoriolisMaster (FCB430, or the hygienic FCH430 if the plant needs sanitary connections), 1-inch, with 4-20 mA, quantity 1. A mag meter won't work because oil isn't conductive."
+      }
+    ]
+  }
+}
