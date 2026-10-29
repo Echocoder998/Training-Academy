@@ -311,6 +311,58 @@
           }
         ]
       }
+    ],
+    "l-welcome-who": [
+      {
+        "title": "Who we are and what we sell",
+        "keyPoints": "DASCO (Daughtridge Sales Co.) is based in Rocky Mount, NC, and is part of the MCE family of companies.\nWe sell industrial instrumentation and process control: pressure, temperature, flow and level instruments, valves and related products.\nKey brands include Ashcroft, WIKA and Dwyer, and we're growing our ABB business, especially flowmeters.\nOur customers are in chemical, oil and gas, water and wastewater treatment, food and beverage, and pharmaceutical plants.\nMCE is a family of companies (including DASCO, AIC, Power & Pumps, Swanson Flo and RitterTech). Sister companies can help when a customer needs something outside our lines.\nOur value isn't just the product. It's getting the application right, quoting it correctly, and supporting the customer after the sale.\nYour manager will walk you through our history, territories and team in person.",
+        "quiz": [
+          {
+            "q": "Which of these is a key brand we sell?",
+            "options": [
+              "Ashcroft",
+              "Caterpillar",
+              "Whirlpool",
+              "Ford"
+            ],
+            "answer": 0,
+            "why": "Ashcroft, WIKA, Dwyer and ABB are among our key brands."
+          },
+          {
+            "q": "Which industry is a core customer for us?",
+            "options": [
+              "Retail clothing",
+              "Water and wastewater treatment",
+              "Restaurants",
+              "Movie theaters"
+            ],
+            "answer": 1,
+            "why": "We serve process industries like water, chemical, oil and gas, food and pharma."
+          },
+          {
+            "q": "Why do MCE sister companies matter to you?",
+            "options": [
+              "They don't",
+              "They set your schedule",
+              "They can help when a customer needs something outside our lines",
+              "They handle payroll only"
+            ],
+            "answer": 2,
+            "why": "Sister companies broaden what we can offer a customer."
+          },
+          {
+            "q": "What's our real value to customers beyond the product?",
+            "options": [
+              "The cheapest price every time",
+              "Fast email replies only",
+              "Free shipping",
+              "Getting the application right, quoting it correctly and supporting it after the sale"
+            ],
+            "answer": 3,
+            "why": "Application know-how and support are why customers buy from a distributor."
+          }
+        ]
+      }
     ]
   },
   "specs": {

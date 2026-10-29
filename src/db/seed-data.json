@@ -869,42 +869,42 @@
       "courseId": "c-welcome",
       "title": "Who we are and what we sell",
       "order": 1,
-      "minutes": 6,
+      "minutes": 8,
       "passScore": 80,
-      "keyPoints": "DASCO (Daughtridge Sales Co.) is based in Rocky Mount, NC, and is part of the MCE family of companies.\nWe sell industrial instrumentation and process control: pressure, temperature, flow and level instruments, valves and related products.\nKey brands include Ashcroft, WIKA and Dwyer, and we're growing our ABB business, especially flowmeters.\nOur customers are in chemical, oil and gas, water and wastewater treatment, food and beverage, and pharmaceutical plants.\nMCE is a family of companies (including DASCO, AIC, Power & Pumps, Swanson Flo and RitterTech). Sister companies can help when a customer needs something outside our lines.\nOur value isn't just the product. It's getting the application right, quoting it correctly, and supporting the customer after the sale.\nYour manager will walk you through our history, territories and team in person.",
+      "keyPoints": "DASCO (Daughtridge Sales Company, Inc.) was started in Rocky Mount, NC, in 1970 by E.L. Daughtridge, and was incorporated in 1974.\nFor most of its independent history, the company operated from its facility at 600 South Grace Street in Rocky Mount.\nDASCO built its business distributing pressure, temperature and flow instrumentation (gauges, thermometers and sensors), backed by instrument calibration and repair services.\nDASCO also has a long history as a federal government contractor (CAGE code 5X318), supplying instrumentation to federal agencies, and has served markets such as aerospace and automotive.\nOn April 1, 2024, after more than 50 years as an independent company, DASCO was acquired by Motion & Control Enterprises (MCE), joining MCE's automation and fluid power distribution platform.\nKey brands include Ashcroft, WIKA and Dwyer, and we're growing our ABB business, especially flowmeters.\nOur process customers are in chemical, oil and gas, water and wastewater treatment, food and beverage, and pharmaceutical plants.\nThe MCE family includes companies such as AIC, Power & Pumps, Swanson Flo and RitterTech. Sister companies can help when a customer needs something outside our lines.\nOur value isn't just the product. It's getting the application right, quoting it correctly, and supporting the customer after the sale.",
       "quiz": [
         {
-          "q": "Which of these is a key brand we sell?",
+          "q": "When and where was DASCO started?",
           "options": [
-            "Ashcroft",
-            "Caterpillar",
-            "Whirlpool",
-            "Ford"
-          ],
-          "answer": 0,
-          "why": "Ashcroft, WIKA, Dwyer and ABB are among our key brands."
-        },
-        {
-          "q": "Which industry is a core customer for us?",
-          "options": [
-            "Retail clothing",
-            "Water and wastewater treatment",
-            "Restaurants",
-            "Movie theaters"
+            "1990 in Raleigh, NC",
+            "1970 in Rocky Mount, NC",
+            "2024 in Rocky Mount, NC",
+            "1955 in Charlotte, NC"
           ],
           "answer": 1,
-          "why": "We serve process industries like water, chemical, oil and gas, food and pharma."
+          "why": "E.L. Daughtridge started the company in Rocky Mount in 1970; it was incorporated in 1974."
         },
         {
-          "q": "Why do MCE sister companies matter to you?",
+          "q": "Who acquired DASCO in April 2024?",
           "options": [
-            "They don't",
-            "They set your schedule",
-            "They can help when a customer needs something outside our lines",
-            "They handle payroll only"
+            "Motion & Control Enterprises (MCE)",
+            "ABB",
+            "WIKA",
+            "DwyerOmega"
+          ],
+          "answer": 0,
+          "why": "DASCO joined Motion & Control Enterprises (MCE) on April 1, 2024."
+        },
+        {
+          "q": "Besides selling instruments, what services has DASCO long offered?",
+          "options": [
+            "Pipe welding",
+            "Software development",
+            "Instrument calibration and repair",
+            "Trucking"
           ],
           "answer": 2,
-          "why": "Sister companies broaden what we can offer a customer."
+          "why": "Calibration and repair have been part of DASCO's business alongside distribution."
         },
         {
           "q": "What's our real value to customers beyond the product?",
