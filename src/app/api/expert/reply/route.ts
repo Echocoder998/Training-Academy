@@ -7,7 +7,7 @@ const Body = z.object({
   turns: z.array(z.object({ role: z.enum(["user", "expert"]), text: z.string().max(4000) })).min(1).max(60),
 });
 
-/** Streams the ABB Expert's answer to the rep's latest question. */
+/** Streams Flow Mind AI's answer to the rep's latest question. */
 export async function POST(req: Request) {
   if (!(await currentUser())) return new Response("Not signed in", { status: 401 });
   if (!aiConfigured()) return new Response("AI is not configured", { status: 503 });
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     return new Response(stream, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
-    console.error(`ABB Expert failed while ${step}:`, e);
-    return new Response(`The ABB Expert couldn't answer (${step}): ${msg.slice(0, 300)}`, { status: 502 });
+    console.error(`Flow Mind AI failed while ${step}:`, e);
+    return new Response(`Flow Mind AI couldn't answer (${step}): ${msg.slice(0, 300)}`, { status: 502 });
   }
 }

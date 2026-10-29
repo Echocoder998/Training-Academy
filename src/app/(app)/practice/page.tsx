@@ -45,8 +45,8 @@ export default async function PracticePage({ searchParams }: { searchParams: Pro
         </div>
         {view === "abb" && (
           <div className="card row spread">
-            <span className="small">Have a product question first? The <b>ABB Expert</b> can answer by chat or voice.</span>
-            <Link className="btn sm" href="/expert">Ask the ABB Expert</Link>
+            <span className="small">Have a product question first? <b>Flow Mind AI</b> can answer by chat or voice.</span>
+            <Link className="btn sm" href="/expert">Ask Flow Mind AI</Link>
           </div>
         )}
         <div className="grid">

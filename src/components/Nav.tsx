@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 export function Nav({ admin }: { admin: boolean }) {
   const path = usePathname();
-  const items: [string, string][] = [["/", "Courses"], ["/practice", "Practice"], ["/expert", "ABB Expert"], ["/progress", "My Progress"]];
+  const items: [string, string][] = [["/", "Courses"], ["/practice", "Practice"], ["/expert", "Flow Mind AI"], ["/progress", "My Progress"]];
   if (admin) items.push(["/admin", "Team Results"], ["/admin/content", "Manage"]);
   const active = (href: string) =>
     href === "/" ? path === "/" || path.startsWith("/courses") || path.startsWith("/lessons")

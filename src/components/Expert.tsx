@@ -50,11 +50,11 @@ function Thread({ turns, live }: { turns: Turn[]; live?: string }) {
     <div className="chat" ref={ref}>
       {turns.map((m, i) => (
         <div key={i} className={`msg ${m.role === "expert" ? "cust" : "rep"}`}>
-          <span className="who">{m.role === "expert" ? "ABB Expert" : "You"}</span>
+          <span className="who">{m.role === "expert" ? "Flow Mind AI" : "You"}</span>
           {m.role === "expert" ? <Rich text={m.text} /> : m.text}
         </div>
       ))}
-      {live !== undefined && <div className="msg cust"><span className="who">ABB Expert</span>{live ? <Rich text={live} /> : "…"}</div>}
+      {live !== undefined && <div className="msg cust"><span className="who">Flow Mind AI</span>{live ? <Rich text={live} /> : "…"}</div>}
     </div>
   );
 }
@@ -75,10 +75,10 @@ function ExpertChat() {
     setTurns(next); setInput(""); setLive("");
     try {
       const r = await fetch("/api/expert/reply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ turns: next }) });
-      if (!r.ok || !r.body) throw new Error(await r.text().catch(() => "") || "The expert couldn't answer.");
+      if (!r.ok || !r.body) throw new Error(await r.text().catch(() => "") || "Flow Mind AI couldn't answer.");
       const reader = r.body.getReader(); const dec = new TextDecoder(); let acc = "";
       for (;;) { const { done, value } = await reader.read(); if (done) break; acc += dec.decode(value, { stream: true }); setLive(acc); }
-      if (!acc.trim()) throw new Error("The expert didn't answer. Try asking again.");
+      if (!acc.trim()) throw new Error("Flow Mind AI didn't answer. Try asking again.");
       setTurns([...next, { role: "expert", text: acc.trim() }]);
     } catch (e) {
       setTurns(turns); setInput(text);
@@ -99,7 +99,7 @@ function ExpertChat() {
         </div>
       ) : <Thread turns={turns} live={live} />}
       <form className="composer" onSubmit={(e) => { e.preventDefault(); ask(input); }}>
-        <textarea rows={2} value={input} disabled={busy} placeholder="Ask the ABB Expert…" onChange={(e) => setInput(e.target.value)}
+        <textarea rows={2} value={input} disabled={busy} placeholder="Ask Flow Mind AI…" onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(input); } }} />
         <button className="btn primary" disabled={busy || !input.trim()}>Ask</button>
       </form>
@@ -132,7 +132,7 @@ function ExpertVoice({ onBusy }: { onBusy: (b: boolean) => void }) {
     catch { setErr("Microphone access is blocked. Allow the microphone for this site and try again."); return; }
     const r = await fetch("/api/voice/session?agent=expert");
     const j = await r.json();
-    if (!r.ok) { setErr(j.error || "Couldn't connect to the expert."); return; }
+    if (!r.ok) { setErr(j.error || "Couldn't connect to Flow Mind AI."); return; }
     if (j.signedUrl) conv.startSession({ signedUrl: j.signedUrl });
     else conv.startSession({ agentId: j.agentId, connectionType: "webrtc" });
   };
@@ -141,10 +141,10 @@ function ExpertVoice({ onBusy }: { onBusy: (b: boolean) => void }) {
     <div className="stack">
       <div className="voice-stage">
         <div className={`voice-ring ${live ? (conv.isSpeaking ? "speaking" : "listening") : ""}`}>
-          <span>{conv.status === "connecting" ? "Connecting…" : live ? (conv.isSpeaking ? "Expert talking" : "Your turn") : "Ready"}</span>
+          <span>{conv.status === "connecting" ? "Connecting…" : live ? (conv.isSpeaking ? "Flow Mind AI talking" : "Your turn") : "Ready"}</span>
         </div>
         {!live ? (
-          <button className="btn primary" onClick={start}>{turns.length ? "Ask something else" : "Talk to the ABB Expert"}</button>
+          <button className="btn primary" onClick={start}>{turns.length ? "Ask something else" : "Talk to Flow Mind AI"}</button>
         ) : (
           <div className="row" style={{ justifyContent: "center" }}>
             <button className="btn" onClick={() => conv.setMuted(!conv.isMuted)}>{conv.isMuted ? "Unmute" : "Mute"}</button>

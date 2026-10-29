@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 /**
  * All AI in the app runs on Anthropic's Claude.
  *   ANTHROPIC_MODEL_FAST → the role-play customer's replies (quick, low cost)
- *   ANTHROPIC_MODEL      → call grading, quiz writing and the ABB Expert (more careful)
+ *   ANTHROPIC_MODEL      → call grading, quiz writing and Flow Mind AI (more careful)
  */
 let client: Anthropic | null = null;
 const ai = () => (client ??= new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY }));

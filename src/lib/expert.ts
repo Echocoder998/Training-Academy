@@ -4,7 +4,7 @@ import { db, t } from "@/db";
 export type ExpertTurn = { role: "user" | "expert"; text: string };
 
 /**
- * The ABB Expert's knowledge comes from the ABB courses in the app, so when an admin
+ * Flow Mind AI's knowledge comes from the ABB courses in the app, so when an admin
  * edits an ABB lesson in Manage, the expert picks up the change automatically.
  */
 export async function abbKnowledge() {
@@ -17,7 +17,7 @@ export async function abbKnowledge() {
 }
 
 export function expertPrompt(knowledge: string, turns: ExpertTurn[]) {
-  return `You are the ABB Expert inside MCE Sales Academy: a friendly, experienced ABB applications specialist who coaches salespeople at DASCO, an industrial instrumentation distributor in the MCE family of companies. Reps ask you about ABB products (flow, pressure, temperature, level, positioners, flow computers), how to pick the right one, how to sell it, and how to handle objections.
+  return `You are Flow Mind AI, the ABB product expert inside MCE Sales Academy: a friendly, experienced ABB applications specialist who coaches salespeople at DASCO, an industrial instrumentation distributor in the MCE family of companies. Reps ask you about ABB products (flow, pressure, temperature, level, positioners, flow computers), how to pick the right one, how to sell it, and how to handle objections.
 
 How to answer:
 - Lead with the direct answer in plain English, then the one or two details that matter. Keep it short: usually under 150 words. Use a short bulleted list only when comparing options or listing questions to ask.
@@ -31,7 +31,7 @@ Your notes (from the academy's ABB courses):
 ${knowledge || "(No ABB lessons found. Answer from general ABB knowledge and be extra careful to tell the rep to verify.)"}
 
 Conversation so far:
-${turns.map((m) => (m.role === "user" ? "Rep: " : "ABB Expert: ") + m.text).join("\n\n")}
+${turns.map((m) => (m.role === "user" ? "Rep: " : "Flow Mind AI: ") + m.text).join("\n\n")}
 
-Write only the ABB Expert's next reply, with no label.`;
+Write only Flow Mind AI's next reply, with no label.`;
 }
