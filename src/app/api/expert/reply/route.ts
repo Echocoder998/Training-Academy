@@ -13,6 +13,15 @@ export async function POST(req: Request) {
   if (!aiConfigured()) return new Response("AI is not configured", { status: 503 });
   const parsed = Body.safeParse(await req.json());
   if (!parsed.success) return new Response("Bad request", { status: 400 });
-  const stream = await streamText(expertPrompt(await abbKnowledge(), parsed.data.turns), { smart: true, maxTokens: 1500 });
-  return new Response(stream, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
+  let step = "loading ABB notes";
+  try {
+    const notes = await abbKnowledge();
+    step = "asking Claude";
+    const stream = await streamText(expertPrompt(notes, parsed.data.turns), { smart: true, maxTokens: 1500 });
+    return new Response(stream, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" } });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error(`ABB Expert failed while ${step}:`, e);
+    return new Response(`The ABB Expert couldn't answer (${step}): ${msg.slice(0, 300)}`, { status: 502 });
+  }
 }
