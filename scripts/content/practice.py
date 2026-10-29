@@ -44,31 +44,44 @@ SPECS = [
 ]
 
 SCENARIOS = [
-    {"id": "sb-7", "num": 13, "level": "beginner", "industry": "Water treatment", "title": "Replace an old magmeter",
+    {"id": "sb-7", "topic": "ABB", "num": 13, "level": "beginner", "industry": "Water treatment", "title": "Replace an old magmeter",
      "persona": "Dave, operator at a wastewater plant",
      "opening": "Hi, our old flowmeter on the return line died. Can you help me replace it?",
      "hidden": "It's a mag meter on wastewater. 6-inch line with flanged connections. It sends a 4-20 mA signal to the plant control system. He needs 1. It's not a hazardous area.",
      "goodRec": "An ABB ProcessMaster (or ABB water mag) 6-inch flanged magmeter with a liner suited for wastewater and 4-20 mA output, quantity 1."},
-    {"id": "sb-8", "num": 14, "level": "beginner", "industry": "Manufacturing", "title": "Track compressed air use",
+    {"id": "sb-8", "topic": "ABB", "num": 14, "level": "beginner", "industry": "Manufacturing", "title": "Track compressed air use",
      "persona": "Sarah, maintenance planner at a plastics plant",
      "opening": "We think we're wasting a lot of compressed air. Is there a way to measure how much we're using?",
      "hidden": "It's the main compressed air header, a 3-inch line. It runs about 100 psi. She wants to see usage on the plant system with a 4-20 mA signal. She needs 1 to start.",
      "goodRec": "An ABB SensyMaster FMT430 thermal mass flowmeter for the 3-inch air header with 4-20 mA output, quantity 1. It reads low flows well, so she can see leaks when the plant is idle."},
-    {"id": "sc-7", "num": 15, "level": "experienced", "industry": "Pulp & paper", "title": "Win the steam meter from the other brand",
+    {"id": "sc-7", "topic": "ABB", "num": 15, "level": "experienced", "industry": "Pulp & paper", "title": "Win the steam meter from the other brand",
      "persona": "Greg, utilities engineer at a paper mill who has always used another brand of vortex meter",
      "opening": "We've always used the other guys' vortex meters. I need a new steam meter on a line with barely any straight pipe. Why would I look at ABB?",
      "hidden": "6-inch saturated steam line at about 125 psig. The only meter spot is about 4 pipe diameters after an elbow. The other brand's quote required re-piping for straight run, which means a shutdown. He wants lb/hr into the DCS with HART. He's budget-sensitive. Decision in about 3 weeks, and the plant manager has to approve anything over budget.",
      "goodRec": "ABB SwirlMaster FSS430 (or FSS450 if they want energy) in 6-inch with the integrated temperature sensor for saturated steam mass flow and HART. Sell the avoided re-piping and shutdown cost, confirm the straight-run requirement from the installation guide, and respect the incumbent instead of knocking it."},
-    {"id": "sc-8", "num": 16, "level": "experienced", "industry": "Chemical", "title": "Defend Coriolis on price",
+    {"id": "sc-8", "topic": "ABB", "num": 16, "level": "experienced", "industry": "Chemical", "title": "Defend Coriolis on price",
      "persona": "Priya, purchasing manager at a specialty chemical plant",
      "opening": "Your Coriolis quote is almost twice what we pay for the turbine meters we use now. Why should I pay that?",
      "hidden": "They batch a solvent (not conductive) into reactors on 2-inch lines. The turbine meters wear and need recalibration about every 6 months. Batches are often off-spec, which wastes product. The lab checks density separately on every batch. Operations wants fewer meter failures. The process engineer, Tom, is part of the decision.",
      "goodRec": "ABB CoriolisMaster FCB430 or FCB450, 2-inch, with batching (FillMass). Sell total cost: no moving parts to wear, VeriMass verification in place instead of pulling meters, in-line density that can cut lab checks, and less product giveaway. Ask what an off-spec batch costs, and bring the process engineer into the conversation."},
-    {"id": "sc-9", "num": 17, "level": "experienced", "industry": "Food & beverage", "title": "Replace the orifice plate on fuel gas",
+    {"id": "sc-9", "topic": "ABB", "num": 17, "level": "experienced", "industry": "Food & beverage", "title": "Replace the orifice plate on fuel gas",
      "persona": "Marcus, energy manager at a food processing plant",
      "opening": "We've got an old orifice plate measuring natural gas to our boilers and nobody trusts the numbers. What would you do?",
      "hidden": "4-inch natural gas line at about 5 psig. Flow swings from very low at night to high in the morning, and the orifice reads poorly at low flow. The impulse lines clog and have frozen in winter. He wants gas use per boiler to prove energy savings. He needs 4-20 mA plus a totalizer. There are 2 boilers.",
      "goodRec": "ABB SensyMaster FMT430 or FMT450 thermal mass meters, 4-inch, one per boiler (quantity 2). Direct mass flow, wide turndown for the low night flows, very low pressure loss, and no impulse lines to clog or freeze, with 4-20 mA and a built-in totalizer."},
+]
+
+SCENARIOS += [
+    {"id": "sb-9", "topic": "ABB", "num": 18, "level": "beginner", "industry": "Food & beverage", "title": "Meter for fryer oil",
+     "persona": "Kevin, maintenance tech at a snack food plant",
+     "opening": "We need to start measuring the oil going into our fryers. What kind of flowmeter should I use?",
+     "hidden": "It's vegetable cooking oil. 1-inch line. About 5 gallons per minute. He wants a 4-20 mA signal to the PLC. He needs 1.",
+     "goodRec": "An ABB CoriolisMaster (FCB430, or the hygienic FCH430 if the plant needs sanitary connections), 1-inch, with 4-20 mA, quantity 1. A mag meter won't work because oil isn't conductive."},
+    {"id": "sb-10", "topic": "ABB", "num": 19, "level": "beginner", "industry": "Facilities", "title": "Steam to a campus building",
+     "persona": "Tony, facilities engineer at a college campus",
+     "opening": "We want to know how much steam each of our buildings uses. Can you help with that?",
+     "hidden": "Saturated steam at about 100 psig. 4-inch line into the building. There's plenty of straight pipe. He wants pounds per hour sent to the building automation system with 4-20 mA. He needs 1 to start.",
+     "goodRec": "An ABB VortexMaster FSV430, 4-inch, with the integrated temperature sensor for saturated steam mass flow and 4-20 mA, quantity 1 (FSV450 if they want steam energy)."},
 ]
 
 NEW_PATHS = [

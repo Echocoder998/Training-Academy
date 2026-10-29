@@ -49,6 +49,7 @@ export const scenarios = pgTable("scenarios", {
   hidden: text("hidden").notNull().default(""),
   goodRec: text("good_rec").notNull().default(""),
   level: text("level").$type<"beginner" | "experienced">().notNull().default("experienced"),
+  topic: text("topic").notNull().default(""), // e.g. "ABB": groups role-plays on the Practice page
 });
 
 export const specs = pgTable("specs", {

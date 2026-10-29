@@ -39,6 +39,10 @@ async function main() {
         console.log(`Seed: added ${add.join(", ")} to path ${p.id}.`);
       }
     }
+    // Tag existing starter scenarios with their topic (e.g. ABB) if they don't have one yet.
+    for (const s of data.scenarios) {
+      if (s.topic) await d.update(t.scenarios).set({ topic: s.topic }).where(sql`${t.scenarios.id} = ${s.id} and ${t.scenarios.topic} = ''`);
+    }
     console.log("Seed: added any missing starter content.");
     return;
   }

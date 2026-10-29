@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 /**
  * All AI in the app runs on Anthropic's Claude.
  *   ANTHROPIC_MODEL_FAST → the role-play customer's replies (quick, low cost)
- *   ANTHROPIC_MODEL      → call grading and quiz writing (more careful)
+ *   ANTHROPIC_MODEL      → call grading, quiz writing and the ABB Expert (more careful)
  */
 let client: Anthropic | null = null;
 const ai = () => (client ??= new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY }));
@@ -18,10 +18,10 @@ export const aiConfigured = () => !!process.env.ANTHROPIC_API_KEY;
  * whole reply budget reasoning (which used to come back as an empty answer).
  * If a stream still ends with no text, it retries once without streaming.
  */
-export async function streamText(prompt: string): Promise<ReadableStream<Uint8Array>> {
+export async function streamText(prompt: string, opts: { smart?: boolean; maxTokens?: number } = {}): Promise<ReadableStream<Uint8Array>> {
   const params = {
-    model: FAST(),
-    max_tokens: 1024,
+    model: opts.smart ? SMART() : FAST(),
+    max_tokens: opts.maxTokens ?? 1024,
     thinking: { type: "disabled" as const },
     messages: [{ role: "user" as const, content: prompt }],
   };

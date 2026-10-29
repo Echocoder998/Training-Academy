@@ -14,11 +14,11 @@ export default async function RolePlayPage({ params, searchParams }: { params: P
   if (!s) notFound();
   return (
     <>
-      <Band eyebrow={`${s.level === "beginner" ? "Beginner" : "Experienced"} · ${s.industry}`} title={s.title}>
+      <Band eyebrow={`${s.topic ? s.topic + " · " : ""}${s.level === "beginner" ? "Beginner" : "Experienced"} · ${s.industry}`} title={s.title}>
         You&apos;re on the phone with {s.persona}. Ask discovery questions, then recommend a product.
       </Band>
       <main>
-        <div><Link className="link" href={s.level === "beginner" ? "/practice" : "/practice?level=experienced"}>← All scenarios</Link></div>
+        <div><Link className="link" href={s.topic === "ABB" ? "/practice?level=abb" : s.level === "beginner" ? "/practice" : "/practice?level=experienced"}>← All scenarios</Link></div>
         {/* Only what the trainee should see goes to the browser. Hidden details stay on the server. */}
         <RolePlay scenario={{ id: s.id, num: s.num, opening: s.opening }} initialMode={mode === "chat" ? "chat" : "voice"} level={s.level} />
       </main>

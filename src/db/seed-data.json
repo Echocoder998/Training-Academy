@@ -2760,6 +2760,7 @@
     },
     {
       "id": "sb-7",
+      "topic": "ABB",
       "num": 13,
       "level": "beginner",
       "industry": "Water treatment",
@@ -2771,6 +2772,7 @@
     },
     {
       "id": "sb-8",
+      "topic": "ABB",
       "num": 14,
       "level": "beginner",
       "industry": "Manufacturing",
@@ -2782,6 +2784,7 @@
     },
     {
       "id": "sc-7",
+      "topic": "ABB",
       "num": 15,
       "level": "experienced",
       "industry": "Pulp & paper",
@@ -2793,6 +2796,7 @@
     },
     {
       "id": "sc-8",
+      "topic": "ABB",
       "num": 16,
       "level": "experienced",
       "industry": "Chemical",
@@ -2804,6 +2808,7 @@
     },
     {
       "id": "sc-9",
+      "topic": "ABB",
       "num": 17,
       "level": "experienced",
       "industry": "Food & beverage",
@@ -2812,6 +2817,30 @@
       "opening": "We've got an old orifice plate measuring natural gas to our boilers and nobody trusts the numbers. What would you do?",
       "hidden": "4-inch natural gas line at about 5 psig. Flow swings from very low at night to high in the morning, and the orifice reads poorly at low flow. The impulse lines clog and have frozen in winter. He wants gas use per boiler to prove energy savings. He needs 4-20 mA plus a totalizer. There are 2 boilers.",
       "goodRec": "ABB SensyMaster FMT430 or FMT450 thermal mass meters, 4-inch, one per boiler (quantity 2). Direct mass flow, wide turndown for the low night flows, very low pressure loss, and no impulse lines to clog or freeze, with 4-20 mA and a built-in totalizer."
+    },
+    {
+      "id": "sb-9",
+      "topic": "ABB",
+      "num": 18,
+      "level": "beginner",
+      "industry": "Food & beverage",
+      "title": "Meter for fryer oil",
+      "persona": "Kevin, maintenance tech at a snack food plant",
+      "opening": "We need to start measuring the oil going into our fryers. What kind of flowmeter should I use?",
+      "hidden": "It's vegetable cooking oil. 1-inch line. About 5 gallons per minute. He wants a 4-20 mA signal to the PLC. He needs 1.",
+      "goodRec": "An ABB CoriolisMaster (FCB430, or the hygienic FCH430 if the plant needs sanitary connections), 1-inch, with 4-20 mA, quantity 1. A mag meter won't work because oil isn't conductive."
+    },
+    {
+      "id": "sb-10",
+      "topic": "ABB",
+      "num": 19,
+      "level": "beginner",
+      "industry": "Facilities",
+      "title": "Steam to a campus building",
+      "persona": "Tony, facilities engineer at a college campus",
+      "opening": "We want to know how much steam each of our buildings uses. Can you help with that?",
+      "hidden": "Saturated steam at about 100 psig. 4-inch line into the building. There's plenty of straight pipe. He wants pounds per hour sent to the building automation system with 4-20 mA. He needs 1 to start.",
+      "goodRec": "An ABB VortexMaster FSV430, 4-inch, with the integrated temperature sensor for saturated steam mass flow and 4-20 mA, quantity 1 (FSV450 if they want steam energy)."
     }
   ],
   "specs": [
