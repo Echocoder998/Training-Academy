@@ -26,24 +26,35 @@ export async function streamText(prompt: string, opts: { smart?: boolean; maxTok
     messages: [{ role: "user" as const, content: prompt }],
   };
   const stream = ai().messages.stream(params);
+  const it = stream[Symbol.asyncIterator]();
   const enc = new TextEncoder();
+  const textOf = (ev: { type: string; delta?: { type: string; text?: string } }) =>
+    ev.type === "content_block_delta" && ev.delta?.type === "text_delta" ? ev.delta.text ?? "" : "";
+
+  // Wait for the first piece of text before answering, so API errors throw here
+  // (and the route can report them) instead of breaking the response mid-stream.
+  let first = "";
+  let done = false;
+  while (!first) {
+    const r = await it.next();
+    if (r.done) { done = true; break; }
+    first = textOf(r.value as never);
+  }
+  if (!first) {
+    const final = await stream.finalMessage().catch(() => null);
+    console.warn("Empty AI reply", { stop_reason: final?.stop_reason, usage: final?.usage });
+    const retry = await ai().messages.create(params);
+    first = retry.content.map((b) => (b.type === "text" ? b.text : "")).join("").trim();
+  }
   return new ReadableStream({
     async start(controller) {
-      let sent = false;
       try {
-        for await (const ev of stream) {
-          if (ev.type === "content_block_delta" && ev.delta.type === "text_delta" && ev.delta.text) {
-            controller.enqueue(enc.encode(ev.delta.text));
-            sent = true;
-          }
-        }
-        if (!sent) {
-          const final = await stream.finalMessage().catch(() => null);
-          console.warn("Empty role-play reply", { stop_reason: final?.stop_reason, usage: final?.usage });
-          const retry = await ai().messages.create(params);
-          const text = retry.content.map((b) => (b.type === "text" ? b.text : "")).join("").trim();
-          if (text) controller.enqueue(enc.encode(text));
-          else console.warn("Empty role-play reply after retry", { stop_reason: retry.stop_reason });
+        if (first) controller.enqueue(enc.encode(first));
+        while (!done) {
+          const r = await it.next();
+          if (r.done) break;
+          const t = textOf(r.value as never);
+          if (t) controller.enqueue(enc.encode(t));
         }
         controller.close();
       } catch (e) {
